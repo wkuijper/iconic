@@ -1,0 +1,328 @@
+<html>
+<style type="text/css">
+    @font-face {
+        font-family: 'fa4';
+        src: url('fonts/fa4/fonts/fontawesome-webfont.eot?v=4.7.0');
+        src: url('fonts/fa4/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('fonts/fa4/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('fonts/fa4/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('fonts/fa4/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('fonts/fa4/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'fa5b';
+        font-style: normal;
+        font-weight: normal;
+        src: url("fonts/fa5/webfonts/fa-brands-400.eot");
+        src: url("fonts/fa5/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-brands-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-brands-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-brands-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-brands-400.svg#fontawesome") format("svg");
+    }
+
+    @font-face {
+        font-family: 'fa5s';
+        font-style: normal;
+        font-weight: 900;
+        src: url("fonts/fa5/webfonts/fa-solid-900.eot");
+        src: url("fonts/fa5/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-solid-900.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-solid-900.woff") format("woff"), url("fonts/fa5/webfonts/fa-solid-900.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+    }
+
+    @font-face {
+        font-family: 'fa5r';
+        font-style: normal;
+        font-weight: 400;
+        src: url("fonts/fa5/webfonts/fa-regular-400.eot");
+        src: url("fonts/fa5/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-regular-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-regular-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-regular-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+    }
+
+    @font-face {
+        font-family: 'capi';
+        src: url('fonts/capi/fonts/captainicon.eot?-1i2a56');
+        src: url('fonts/capi/fonts/captainicon.eot?#iefix-1i2a56') format('embedded-opentype'),
+            url('fonts/capi/fonts/captainicon.woff?-1i2a56') format('woff'),
+            url('fonts/capi/fonts/captainicon.ttf?-1i2a56') format('truetype'),
+            url('fonts/capi/fonts/captainicon.svg?-1i2a56#captainicon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "mad3";
+        src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?v=3.0.39");
+        src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?#iefix&v=3.0.39") format("embedded-opentype"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff2?v=3.0.39") format("woff2"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff?v=3.0.39") format("woff"), url("fonts/mad3/fonts/materialdesignicons-webfont.ttf?v=3.0.39") format("truetype"), url("fonts/mad3/fonts/materialdesignicons-webfont.svg?v=3.0.39#materialdesigniconsregular") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'dev1';
+        src: url("fonts/dev1/fonts/devicons.eot?xqxft6");
+        src: url("fonts/dev1/fonts/devicons.eot?#iefixxqxft6") format("embedded-opentype"), url("fonts/dev1/fonts/devicons.woff?xqxft6") format("woff"), url("fonts/dev1/fonts/devicons.ttf?xqxft6") format("truetype"), url("fonts/dev1/fonts/devicons.svg?xqxft6#devicons") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'ow1';
+        src: url("fonts/ow1/font/openwebicons.eot");
+        src: url("fonts/ow1/font/openwebicons.eot?#iefix") format("embedded-opentype"), url("fonts/ow1/font/openwebicons.woff2") format("woff2"), url("fonts/ow1/font/openwebicons.woff") format("woff"), url("fonts/ow1/font/openwebicons.ttf") format("truetype"), url("fonts/ow1/font/openwebicons.svg#openweb_iconsregular") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'oi1';
+        src: url('fonts/oi1/font/fonts/open-iconic.eot');
+        src: url('fonts/oi1/font/fonts/open-iconic.eot?#iconic-sm') format('embedded-opentype'), url('fonts/oi1/font/fonts/open-iconic.woff') format('woff'), url('fonts/oi1/font/fonts/open-iconic.ttf') format('truetype'), url('fonts/oi1/font/fonts/open-iconic.otf') format('opentype'), url('fonts/oi1/font/fonts/open-iconic.svg#iconic-sm') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'batch';
+        src: url('fonts/batch/Webfont/batch-icons-webfont.eot');
+        src: url('fonts/batch/Webfont/batch-icons-webfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/batch/Webfont/batch-icons-webfont.woff') format('woff'),
+            url('fonts/batch/Webfont/babatch-icons-webfontch.ttf') format('truetype'),
+            url('fonts/batch/Webfont/batch-icons-webfont.svg#batchregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'drip2';
+        src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot");
+        src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot?#iefix") format("embedded-opentype"),
+            url("fonts/drip2/webfont/fonts/dripicons-v2.woff") format("woff"),
+            url("fonts/drip2/webfont/fonts/dripicons-v2.ttf") format("truetype"),
+            url("fonts/drip2/webfont/fonts/dripicons-v2.svg#dripicons-v2") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'iw1';
+        src: url('fonts/iw1/icon-works-webfont.eot');
+        src: url('fonts/iw1/icon-works-webfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/iw1/icon-works-webfont.woff') format('woff'),
+            url('fonts/iw1/icon-works-webfont.ttf') format('truetype'),
+            url('fonts/iw1/icon-works-webfont.svg#icon-worksregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    #main {}
+
+    canvas {
+        font-family: FontAwesome;
+        border: 1px solid #CCC;
+    }
+
+    img {
+        background-color: lightgray;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div class="form-div">
+            <label for="version">Font:&nbsp;</label><select id="version" data-q="f">
+                <option value="fa4">FontAwesome 4.7.0 (Free)</option>
+                <option value="fa5b">FontAwesome 5.5.0 Brands (Free)</option>
+                <option value="fa5r">FontAwesome 5.5.0 Regular (Free)</option>
+                <option value="fa5s">FontAwesome 5.5.0 Solid (Free)</option>
+                <option value="capi">Captain Icon</option>
+                <option value="mad3">Material Design Icons 3.0.39</option>
+                <option value="dev1">DevIcons 1.8.0</option>
+                <option value="ow1">OpenWeb Icons 1.6.0</option>
+                <option value="oi1">Open Iconic 1.1.1</option>
+                <option value="batch">Batch by Adam Whitcroft</option>
+                <option value="drip2">Drip Icons v2</option>
+                <option value="iw1">Icon Works v1</option>
+            </select><br>
+            
+            <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
+            <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
+            <label for="circle">Circle:&nbsp;</label><input id="circle" type="checkbox" checked data-q="ci"><br>
+            <label for="circleRatio">Circle Ratio:&nbsp;</label><input id="circleRatio" type="number" value="1.6" step="0.1"
+                data-q="ciR"><br>
+            <label for="circleColor">Circle Color:&nbsp;</label><input id="circleColor" type="text" value="blue"
+                data-q="ciC"><br>
+            <label for="code">Unicode:&nbsp;</label><input id="code" type="text" value="f1d8" data-q="u"><br>
+        </div>
+        <canvas width="400" height="400" id="canvas"></canvas>
+        <div class="form-div">
+            <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="0" step="1"
+                data-q="tW"><br>
+            <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="0" step="1"
+                data-q="tH"><br>
+            <label for="circleTweakX">Circle Tweak X:&nbsp;</label><input id="circleTweakX" type="number" value="0"
+                step="1" data-q="ciX"><br>
+            <label for="circleTweakY">Circle Tweak Y:&nbsp;</label><input id="circleTweakY" type="number" value="0"
+                step="1" data-q="ciY"><br>
+            <label for="backgroundColor1">Background 1:&nbsp;</label><input id="backgroundColor1" type="text" value="gray"
+                data-q="bg1"><br>
+            <label for="backgroundColor2">Background 2:&nbsp;</label><input id="backgroundColor2" type="text" value="lightgray"
+                data-q="bg2"><br>
+        </div>
+        <pre id="result">
+            blablabla
+        </pre>
+        <img id="preview">
+    </div>
+</body>
+<script>
+    const meta = {
+        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: {'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0'}, sample: 0xf040, homepage: 'https://fontawesome.com/v4.7.0/', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
+        'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf35c, homepage: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
+        'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf044, homepage: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
+        'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf303, homepage: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
+        'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 0xe635, homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', attribution: 'Created by Captain Icon. Consider donating!' },
+        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: {'Font': 'SIL OFL 1.1' }, sample: 0xf303, homepage: 'https://materialdesignicons.com/', attribution: "Created by Google and the Material Design Icons Community. Consider buying one of their sponsor's pro packs!" },
+    }
+
+    const selectVersion = document.getElementById("version");
+    const inputCode = document.getElementById("code");
+    const inputName = document.getElementById("name");
+    const inputSize = document.getElementById("size");
+    const inputColor = document.getElementById("color");
+    const inputCircle = document.getElementById("circle");
+    const inputCircleRatio = document.getElementById("circleRatio");
+    const inputCircleColor = document.getElementById("circleColor");
+    const inputCircleTweakX = document.getElementById("circleTweakX");
+    const inputCircleTweakY = document.getElementById("circleTweakY");
+    const inputTweakWidth = document.getElementById("tweakWidth");
+    const inputTweakHeight = document.getElementById("tweakHeight");
+    const inputBackgroundColor1 = document.getElementById("backgroundColor1");
+    const inputBackgroundColor2 = document.getElementById("backgroundColor2");
+
+    const preview = document.getElementById("preview");
+
+    const inputs = [selectVersion, inputCode, inputSize, inputColor, inputCircle, inputCircleRatio, inputCircleColor, inputCircleTweakX, inputCircleTweakY, inputBackgroundColor1, inputBackgroundColor2, inputTweakWidth, inputTweakHeight];
+
+    function link() {
+        return [
+            "https://wouterkuijper.com/awesome-icon/index.html",
+            inputs.map((element) => {
+                return `${element.getAttribute('data-q')}=${encodeURIComponent(element.value)}`
+            }).join('&')
+        ].join('?')
+    }
+    function redraw() {
+        const canvas = document.getElementById("canvas")
+        const ctx = canvas.getContext("2d")
+        const size = parseInt(inputSize.value)
+        const backgroundColor1 = inputBackgroundColor1.value
+        const backgroundColor2 = inputBackgroundColor2.value
+        const fontFamily = selectVersion.value
+
+        ctx.clearRect(0, 0, 400, 400)
+
+        for (let x = 0; x < 40; x++) {
+            for (let y = 0; y < 40; y++) {
+                if (x % 2 == y % 2) {
+                    ctx.fillStyle = backgroundColor1
+                } else {
+                    ctx.fillStyle = backgroundColor2
+                }
+                ctx.fillRect(x * 10, y * 10, 10, 10)
+            }
+        }
+
+        const icon = String.fromCharCode(parseInt(`0x${inputCode.value}`))
+        ctx.font = `${size}px ${fontFamily}`
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        var metrics = ctx.measureText(icon);
+
+        if (inputCircle.checked) {
+            ctx.fillStyle = inputCircleColor.value
+            ctx.beginPath();
+            ctx.arc(200 + parseInt(inputCircleTweakX.value), 200 + parseInt(inputCircleTweakY.value), Math.floor((size / 2) * parseFloat(inputCircleRatio.value)), 0, 2 * Math.PI);
+            ctx.fill();
+        } else {
+            const width = metrics.width + parseInt(inputTweakWidth.value)
+            const height = size + parseInt(inputTweakHeight.value)
+            ctx.strokeStyle = "red"
+            ctx.strokeRect(200 - (width / 2), 200 - (height / 2), width, height)
+            console.log(width, height)
+        }
+
+        ctx.fillStyle = inputColor.value
+        ctx.fillText(icon, 200, 200);
+
+        var m_canvas = document.createElement('canvas');
+        m_canvas.width = metrics.width;
+        m_canvas.height = 140;
+        var m_ctx = m_canvas.getContext("2d");
+        m_ctx.font = `${size}px ${fontFamily}`
+        m_ctx.textAlign = "left"
+        m_ctx.textBaseline = "middle"
+        m_ctx.fillStyle = "blue"
+        m_ctx.fillText(icon, 0, 140 / 2);
+
+        const dataURL = m_canvas.toDataURL()
+
+        document.getElementById("result").innerHTML = `{
+    code: "${inputCode.value}", 
+    width: ${m_canvas.width}, 
+    height: ${m_canvas.height}, 
+    link: "${link()}", 
+    data: "${dataURL}"
+}`
+
+        preview.src = dataURL
+    }
+
+    const url = window.location.href;
+    function getParameterByName(name, defaultValue) {
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return defaultValue;
+        if (!results[2]) return defaultValue;
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    inputs.forEach(
+        (element) => {
+            element.addEventListener("input", () => {
+                redraw();
+            })
+        }
+    )
+
+    inputs.forEach((element) => {
+        if (element.type == "checkbox") {
+            element.checked = (getParameterByName(element.getAttribute('data-q'), "on") == "on")
+        } else {
+            element.value = getParameterByName(element.getAttribute('data-q'), element.value)
+        }
+    })
+
+    setTimeout(function () {
+        redraw()
+    }, 100)
+    setTimeout(function () {
+        redraw()
+    }, 500)
+    setTimeout(function () {
+        redraw()
+    }, 1000)
+    setTimeout(function () {
+        redraw()
+    }, 1500);
+    setTimeout(function () {
+        redraw()
+    }, 2000);
+    setTimeout(function () {
+        redraw()
+    }, 2500);
+    setTimeout(function () {
+        redraw()
+    }, 3000);
+    setTimeout(function () {
+        redraw()
+    }, 3500);
+    setTimeout(function () {
+        redraw()
+    }, 4000);
+</script>
+
+</html>
