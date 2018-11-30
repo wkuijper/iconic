@@ -114,49 +114,36 @@
         font-family: FontAwesome;
         border: 1px solid #CCC;
     }
-
-    img {
-        background-color: lightgray;
-    }
 </style>
 
 <body>
     <div id="main">
         <div class="form-div">
-            <label for="version">Font:&nbsp;</label><select id="version" data-q="f">
-                <option value="fa4">FontAwesome 4.7.0 (Free)</option>
-                <option value="fa5b">FontAwesome 5.5.0 Brands (Free)</option>
-                <option value="fa5r">FontAwesome 5.5.0 Regular (Free)</option>
-                <option value="fa5s">FontAwesome 5.5.0 Solid (Free)</option>
-                <option value="capi">Captain Icon</option>
-                <option value="mad3">Material Design Icons 3.0.39</option>
-                <option value="dev1">DevIcons 1.8.0</option>
-                <option value="ow1">OpenWeb Icons 1.6.0</option>
-                <option value="oi1">Open Iconic 1.1.1</option>
-                <option value="batch">Batch by Adam Whitcroft</option>
-                <option value="drip2">Drip Icons v2</option>
-                <option value="iw1">Icon Works v1</option>
+            <label for="font">Font:&nbsp;</label><select id="font" data-q="f">
+                <!-- will be populated by script below -->>
             </select><br>
-            
+            <p id="attributionParagraph"></p>
+            <p id="courtesyParagraph"></p>
+            <p><a id="homepageLink" target="_blank">homepage</a></p>
+
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
             <label for="circle">Circle:&nbsp;</label><input id="circle" type="checkbox" checked data-q="ci"><br>
             <label for="circleRatio">Circle Ratio:&nbsp;</label><input id="circleRatio" type="number" value="1.6" step="0.1"
                 data-q="ciR"><br>
-            <label for="circleColor">Circle Color:&nbsp;</label><input id="circleColor" type="text" value="blue"
-                data-q="ciC"><br>
+            <label for="circleColor">Circle Color:&nbsp;</label><input id="circleColor" type="text" value="blue" data-q="ciC"><br>
             <label for="code">Unicode:&nbsp;</label><input id="code" type="text" value="f1d8" data-q="u"><br>
         </div>
         <canvas width="400" height="400" id="canvas"></canvas>
         <div class="form-div">
-            <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="0" step="1"
+            <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="1" step=".01"
                 data-q="tW"><br>
-            <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="0" step="1"
+            <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="1" step=".01"
                 data-q="tH"><br>
-            <label for="circleTweakX">Circle Tweak X:&nbsp;</label><input id="circleTweakX" type="number" value="0"
-                step="1" data-q="ciX"><br>
-            <label for="circleTweakY">Circle Tweak Y:&nbsp;</label><input id="circleTweakY" type="number" value="0"
-                step="1" data-q="ciY"><br>
+            <label for="tweakX">Circle Tweak X:&nbsp;</label><input id="circleTweakX" type="number" value="1" step=".01"
+                data-q="ciX"><br>
+            <label for="tweakY">Circle Tweak Y:&nbsp;</label><input id="circleTweakY" type="number" value="1" step=".01"
+                data-q="ciY"><br>
             <label for="backgroundColor1">Background 1:&nbsp;</label><input id="backgroundColor1" type="text" value="gray"
                 data-q="bg1"><br>
             <label for="backgroundColor2">Background 2:&nbsp;</label><input id="backgroundColor2" type="text" value="lightgray"
@@ -165,53 +152,119 @@
         <pre id="result">
             blablabla
         </pre>
-        <img id="preview">
+        <img id="preview1">
+        <img id="preview2">
+        <img id="preview3">
+        <img id="preview4">
     </div>
 </body>
 <script>
     const meta = {
-        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: {'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0'}, sample: 0xf040, homepage: 'https://fontawesome.com/v4.7.0/', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
-        'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf35c, homepage: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
-        'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf044, homepage: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
-        'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: {'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT'}, sample: 0xf303, homepage: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Created by Font Awesome. Consider buying a pro license!' },
-        'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 0xe635, homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', attribution: 'Created by Captain Icon. Consider donating!' },
-        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: {'Font': 'SIL OFL 1.1' }, sample: 0xf303, homepage: 'https://materialdesignicons.com/', attribution: "Created by Google and the Material Design Icons Community. Consider buying one of their sponsor's pro packs!" },
+        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: { 'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0' }, sample: 'f040', homepage: 'https://fontawesome.com/v4.7.0/icons/', attribution: 'Font Awesome.', courtesy: 'Consider buying a pro license!' },
+        'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f35c', homepage: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f044', homepage: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f303', homepage: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 'e635', homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', attribution: 'Captain Icon', courtesy: 'Consider donating!' },
+        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'f303', homepage: 'https://materialdesignicons.com/', attribution: 'Google and the Material Design Icons Community', courtesy: 'Consider buying a pro pack!' },
+        'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 0xe60e, homepage: 'https://github.com/vorillaz/devicons', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
+        'ow1': { fullname: 'OpenWeb Icons 1.6.0', licenses: { 'Font': 'SIL OFL 1.1', 'Site': 'CC BY 4.0' }, sample: 'f016', homepage: 'https://github.com/pfefferle/openwebicons', attribution: 'Matthias Pfefferle et al.', courtesy: 'Consider using Open Web Standards!' },
+        'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
+        'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
+        'drip2': { fullname: 'Drip Icons v2', licenses: { 'Icons': 'CC BY 4.0', 'Font': 'SIL OFL 1.1' }, sample: 'e02f', homepage: 'http://demo.amitjakhu.com/dripicons/', attribution: 'Amit Jakhu', courtesy: 'Consider appreciating this project on behance!' },
+        'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'a0', homepage: 'http://icon-works.com/', attribution: 'Icon Works', courtesy: 'Consider donating!' },
     }
 
-    const selectVersion = document.getElementById("version");
+    const selectFont = document.getElementById("font");
+
+    for (let font in meta) {
+        let entry = meta[font]
+        let option = document.createElement("option");
+        option.setAttribute('value', font)
+        let fullname = document.createTextNode(entry.fullname);
+        option.appendChild(fullname)
+        selectFont.appendChild(option)
+    }
+
     const inputCode = document.getElementById("code");
-    const inputName = document.getElementById("name");
+
     const inputSize = document.getElementById("size");
     const inputColor = document.getElementById("color");
+
     const inputCircle = document.getElementById("circle");
     const inputCircleRatio = document.getElementById("circleRatio");
     const inputCircleColor = document.getElementById("circleColor");
-    const inputCircleTweakX = document.getElementById("circleTweakX");
-    const inputCircleTweakY = document.getElementById("circleTweakY");
+
     const inputTweakWidth = document.getElementById("tweakWidth");
     const inputTweakHeight = document.getElementById("tweakHeight");
+
+    const inputTweakX = document.getElementById("circleTweakX");
+    const inputTweakY = document.getElementById("circleTweakY");
+
     const inputBackgroundColor1 = document.getElementById("backgroundColor1");
     const inputBackgroundColor2 = document.getElementById("backgroundColor2");
 
-    const preview = document.getElementById("preview");
+    const attributionParagraph = document.getElementById("attributionParagraph");
+    const courtesyParagraph = document.getElementById("courtesyParagraph");
+    const homepageLink = document.getElementById("homepageLink");
 
-    const inputs = [selectVersion, inputCode, inputSize, inputColor, inputCircle, inputCircleRatio, inputCircleColor, inputCircleTweakX, inputCircleTweakY, inputBackgroundColor1, inputBackgroundColor2, inputTweakWidth, inputTweakHeight];
+    const preview1 = document.getElementById("preview1");
+    const preview2 = document.getElementById("preview2");
+    const preview3 = document.getElementById("preview3");
+    const preview4 = document.getElementById("preview4");
+
+    const inputs = [selectFont, inputCode, inputSize, inputColor, inputCircle, inputCircleRatio, inputCircleColor, inputTweakX, inputTweakY, inputBackgroundColor1, inputBackgroundColor2, inputTweakWidth, inputTweakHeight];
 
     function link() {
         return [
-            "https://wouterkuijper.com/awesome-icon/index.html",
+            "https://wouterkuijper.com/iconic/index.html",
             inputs.map((element) => {
                 return `${element.getAttribute('data-q')}=${encodeURIComponent(element.value)}`
             }).join('&')
         ].join('?')
     }
+
+    function drawIcon(ctx, x, y, param) {
+        console.log(param)
+
+        const icon = String.fromCharCode(param.code)
+
+        ctx.font = `${param.size}px ${param.font}`
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        var metrics = ctx.measureText(icon);
+
+        let width = metrics.width * param.tweakWidth
+        let height = param.size * param.tweakHeight
+
+        console.log('w/h', width, height)
+
+        if (inputCircle.checked) {
+            const radius = Math.round((param.size / 2) * param.circleRatio)
+            ctx.fillStyle = param.circleColor
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.fill();
+            width = 2 * radius
+            height = 2 * radius
+        }
+
+        console.log('w/h2:', width, height)
+
+        const halfWidth = width / 2
+        const halfHeight = height / 2
+
+        ctx.fillStyle = param.color
+        ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
+
+        return [Math.round(x - halfWidth), Math.round(y - halfHeight), Math.round(width), Math.round(height)]
+    }
+
     function redraw() {
         const canvas = document.getElementById("canvas")
         const ctx = canvas.getContext("2d")
-        const size = parseInt(inputSize.value)
+
         const backgroundColor1 = inputBackgroundColor1.value
         const backgroundColor2 = inputBackgroundColor2.value
-        const fontFamily = selectVersion.value
 
         ctx.clearRect(0, 0, 400, 400)
 
@@ -226,38 +279,30 @@
             }
         }
 
-        const icon = String.fromCharCode(parseInt(`0x${inputCode.value}`))
-        ctx.font = `${size}px ${fontFamily}`
-        ctx.textAlign = "center"
-        ctx.textBaseline = "middle"
-        var metrics = ctx.measureText(icon);
-
-        if (inputCircle.checked) {
-            ctx.fillStyle = inputCircleColor.value
-            ctx.beginPath();
-            ctx.arc(200 + parseInt(inputCircleTweakX.value), 200 + parseInt(inputCircleTweakY.value), Math.floor((size / 2) * parseFloat(inputCircleRatio.value)), 0, 2 * Math.PI);
-            ctx.fill();
-        } else {
-            const width = metrics.width + parseInt(inputTweakWidth.value)
-            const height = size + parseInt(inputTweakHeight.value)
-            ctx.strokeStyle = "red"
-            ctx.strokeRect(200 - (width / 2), 200 - (height / 2), width, height)
-            console.log(width, height)
+        const param =  {
+            size: parseInt(inputSize.value),
+            font: selectFont.value,
+            code: parseInt(`0x${inputCode.value}`),
+            color: inputColor.value,
+            circleColor: inputCircleColor.value,
+            circleRatio: parseFloat(inputCircleRatio.value),
+            tweakWidth: parseFloat(inputTweakWidth.value),
+            tweakHeight: parseFloat(inputTweakHeight.value),
+            tweakX: parseFloat(inputTweakX.value),
+            tweakY: parseFloat(inputTweakY.value)
         }
 
-        ctx.fillStyle = inputColor.value
-        ctx.fillText(icon, 200, 200);
+        let [x1, y1, width, height] = drawIcon(ctx, 200, 200, param)
+
+        ctx.strokeStyle = "red"
+        ctx.strokeRect(x1, y1, width, height)
 
         var m_canvas = document.createElement('canvas');
-        m_canvas.width = metrics.width;
-        m_canvas.height = 140;
+        m_canvas.width = width
+        m_canvas.height = height
         var m_ctx = m_canvas.getContext("2d");
-        m_ctx.font = `${size}px ${fontFamily}`
-        m_ctx.textAlign = "left"
-        m_ctx.textBaseline = "middle"
-        m_ctx.fillStyle = "blue"
-        m_ctx.fillText(icon, 0, 140 / 2);
-
+        drawIcon(m_ctx, Math.round(width/2), Math.round(height/2), param)
+        
         const dataURL = m_canvas.toDataURL()
 
         document.getElementById("result").innerHTML = `{
@@ -268,7 +313,14 @@
     data: "${dataURL}"
 }`
 
-        preview.src = dataURL
+        preview1.src = dataURL
+        preview1.style = `background-color: white;`
+        preview2.src = dataURL
+        preview2.style = `background-color: ${backgroundColor1};`
+        preview3.src = dataURL
+        preview3.style = `background-color: ${backgroundColor2};`
+        preview4.src = dataURL
+        preview4.style = `background-color: black;`
     }
 
     const url = window.location.href;
@@ -280,14 +332,41 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
+    function updateFont() {
+        let font = selectFont.value
+        let entry = meta[font]
+        attributionParagraph.innerHTML = `Created by: ${entry.attribution}`
+        courtesyParagraph.innerHTML = entry.courtesy
+        homepageLink.innerHTML = entry.homepage
+        homepageLink.setAttribute('href', entry.homepage)
+        inputCode.value = entry.sample
+        setTimeout(function () {
+            requestAnimationFrame(redraw)
+        }, 100)
+        setTimeout(function () {
+            requestAnimationFrame(redraw)
+        }, 250)
+        // redraw repeatedly for 10 secs, should be enough to load the fonts
+        for (let future = 500; future < 10000; future += 500) {
+            setTimeout(() => { requestAnimationFrame(redraw) }, future)
+        }
+    }
+
+    // attach event listener for font selection
+    selectFont.addEventListener('input', () => {
+        updateFont()
+    })
+
+    // attach generic event listeners
     inputs.forEach(
         (element) => {
             element.addEventListener("input", () => {
-                redraw();
+                requestAnimationFrame(redraw);
             })
         }
     )
 
+    // use query parameters to populate form
     inputs.forEach((element) => {
         if (element.type == "checkbox") {
             element.checked = (getParameterByName(element.getAttribute('data-q'), "on") == "on")
@@ -296,33 +375,7 @@
         }
     })
 
-    setTimeout(function () {
-        redraw()
-    }, 100)
-    setTimeout(function () {
-        redraw()
-    }, 500)
-    setTimeout(function () {
-        redraw()
-    }, 1000)
-    setTimeout(function () {
-        redraw()
-    }, 1500);
-    setTimeout(function () {
-        redraw()
-    }, 2000);
-    setTimeout(function () {
-        redraw()
-    }, 2500);
-    setTimeout(function () {
-        redraw()
-    }, 3000);
-    setTimeout(function () {
-        redraw()
-    }, 3500);
-    setTimeout(function () {
-        redraw()
-    }, 4000);
+    updateFont()
 </script>
 
 </html>
