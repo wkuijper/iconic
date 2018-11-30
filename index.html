@@ -135,7 +135,8 @@
                 value="1.0" step="0.1" data-q="bR"><br>
             <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="blue"
                 data-q="bC"><br>
-            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u"><br>
+            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u">
+            <a id="browseLink" target="_blank">browse</a><br>
         </div>
         <canvas width="400" height="400" id="canvas"></canvas>
         <div class="form-div">
@@ -161,18 +162,18 @@
 </body>
 <script>
     const meta = {
-        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: { 'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0' }, sample: 'f040', homepage: 'https://fontawesome.com/v4.7.0/icons/', attribution: 'Font Awesome.', courtesy: 'Consider buying a pro license!' },
-        'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f35c', homepage: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
-        'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f044', homepage: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
-        'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f303', homepage: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
-        'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 'e635', homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', attribution: 'Captain Icon', courtesy: 'Consider donating!' },
-        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'f303', homepage: 'https://materialdesignicons.com/', attribution: 'Google and the Material Design Icons Community', courtesy: 'Consider buying a pro pack!' },
-        'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 0xe60e, homepage: 'https://github.com/vorillaz/devicons', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
-        'ow1': { fullname: 'OpenWeb Icons 1.6.0', licenses: { 'Font': 'SIL OFL 1.1', 'Site': 'CC BY 4.0' }, sample: 'f016', homepage: 'https://github.com/pfefferle/openwebicons', attribution: 'Matthias Pfefferle et al.', courtesy: 'Consider using Open Web Standards!' },
-        'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
-        'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
-        'drip2': { fullname: 'Drip Icons v2', licenses: { 'Icons': 'CC BY 4.0', 'Font': 'SIL OFL 1.1' }, sample: 'e02f', homepage: 'http://demo.amitjakhu.com/dripicons/', attribution: 'Amit Jakhu', courtesy: 'Consider appreciating this project on behance!' },
-        'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'a0', homepage: 'http://icon-works.com/', attribution: 'Icon Works', courtesy: 'Consider donating!' },
+        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: { 'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0' }, sample: 'f040', homepage: 'https://fontawesome.com/v4.7.0/', browse: 'https://fontawesome.com/v4.7.0/icons/', attribution: 'Font Awesome.', courtesy: 'Consider buying a pro license!' },
+        'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f35c', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f044', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f303', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
+        'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 'e635', homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', browse: './fonts/capi/demo.html', attribution: 'Captain Icon', courtesy: 'Consider donating!' },
+        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'f303', homepage: 'https://materialdesignicons.com/', browse: './fonts/mad3/preview.html', attribution: 'Google and the Material Design Icons Community', courtesy: 'Consider buying a pro pack!' },
+        'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 0xe60e, homepage: 'http://vorillaz.github.io/devicons', browse: 'http://vorillaz.github.io/devicons/#/cheat', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
+        'ow1': { fullname: 'OpenWeb Icons 1.6.0', licenses: { 'Font': 'SIL OFL 1.1', 'Site': 'CC BY 4.0' }, sample: 'f016', homepage: 'https://pfefferle.github.io/openwebicons/', browse: 'https://pfefferle.github.io/openwebicons/', attribution: 'Matthias Pfefferle et al.', courtesy: 'Consider using Open Web Standards!' },
+        'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', browse: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
+        'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', browse: './fonts/batch/Webfont/batch_webfont_reference.pdf', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
+        'drip2': { fullname: 'Drip Icons v2', licenses: { 'Icons': 'CC BY 4.0', 'Font': 'SIL OFL 1.1' }, sample: 'e02f', homepage: 'http://demo.amitjakhu.com/dripicons/', browse: 'http://demo.amitjakhu.com/dripicons/', attribution: 'Amit Jakhu', courtesy: 'Consider appreciating this project on behance!' },
+        'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'a0', homepage: 'http://icon-works.com/', browse: './fonts/iw1/Glyph-Chart.html', attribution: 'Icon Works', courtesy: 'Consider donating!' },
     }
 
     const selectFont = document.getElementById("font");
@@ -208,6 +209,7 @@
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
     const homepageLink = document.getElementById("homepageLink");
+    const browseLink = document.getElementById("browseLink");
 
     const preview1 = document.getElementById("preview1");
     const preview2 = document.getElementById("preview2");
@@ -363,6 +365,7 @@
         courtesyParagraph.innerHTML = entry.courtesy
         homepageLink.innerHTML = entry.homepage
         homepageLink.setAttribute('href', entry.homepage)
+        browseLink.setAttribute('href', entry.browse)
         inputUnicode.value = entry.sample
         setTimeout(function () {
             requestAnimationFrame(redraw)
