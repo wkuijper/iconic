@@ -114,6 +114,14 @@
         font-family: FontAwesome;
         border: 1px solid #CCC;
     }
+ 
+    table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
 </style>
 
 <body>
@@ -125,7 +133,7 @@
             <p id="attributionParagraph"></p>
             <p id="courtesyParagraph"></p>
             <p><a id="homepageLink" target="_blank">homepage</a></p>
-
+            <p id="licenseParagraph"></p>
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
             <label for="background">Background:&nbsp;</label><input id="background" type="checkbox" checked data-q="b"><br>
@@ -209,6 +217,7 @@
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
     const homepageLink = document.getElementById("homepageLink");
+    const licenseParagraph = document.getElementById("licenseParagraph");
     const browseLink = document.getElementById("browseLink");
 
     const preview1 = document.getElementById("preview1");
@@ -367,6 +376,18 @@
         homepageLink.setAttribute('href', entry.homepage)
         browseLink.setAttribute('href', entry.browse)
         inputUnicode.value = entry.sample
+        function genLicenseTableRow(thing, license) {
+            return `<tr><td>${thing}</td><td>${license}</td></tr>`
+        }
+        function genLicenseTable(licenses) {
+            let rows = []
+            for (thing in licenses) {
+                license = licenses[thing]
+                rows.push(genLicenseTableRow(thing, license))
+            }
+            return `<table><tr><td colspan=2>Licenses</td></tr>${rows.join('')}</table>`
+        }
+        licenseParagraph.innerHTML = genLicenseTable(entry.licenses)
         setTimeout(function () {
             requestAnimationFrame(redraw)
         }, 100)
