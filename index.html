@@ -128,11 +128,14 @@
 
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
-            <label for="circle">Circle:&nbsp;</label><input id="circle" type="checkbox" checked data-q="ci"><br>
-            <label for="circleRatio">Circle Ratio:&nbsp;</label><input id="circleRatio" type="number" value="1.6" step="0.1"
-                data-q="ciR"><br>
-            <label for="circleColor">Circle Color:&nbsp;</label><input id="circleColor" type="text" value="blue" data-q="ciC"><br>
-            <label for="code">Unicode:&nbsp;</label><input id="code" type="text" value="f1d8" data-q="u"><br>
+            <label for="background">Background:&nbsp;</label><input id="background" type="checkbox" checked data-q="b"><br>
+            <label for="backgroundSize">Background Size:&nbsp;</label><input id="backgroundSize" type="number" value="1.6"
+                step="0.1" data-q="bS"><br>
+            <label for="backgroundRoundness">Background Roundness:&nbsp;</label><input id="backgroundRoundness" type="number"
+                value="1.0" step="0.1" data-q="bR"><br>
+            <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="blue"
+                data-q="bC"><br>
+            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u"><br>
         </div>
         <canvas width="400" height="400" id="canvas"></canvas>
         <div class="form-div">
@@ -140,14 +143,12 @@
                 data-q="tW"><br>
             <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="1" step=".01"
                 data-q="tH"><br>
-            <label for="tweakX">Circle Tweak X:&nbsp;</label><input id="circleTweakX" type="number" value="1" step=".01"
-                data-q="ciX"><br>
-            <label for="tweakY">Circle Tweak Y:&nbsp;</label><input id="circleTweakY" type="number" value="1" step=".01"
-                data-q="ciY"><br>
-            <label for="backgroundColor1">Background 1:&nbsp;</label><input id="backgroundColor1" type="text" value="gray"
-                data-q="bg1"><br>
-            <label for="backgroundColor2">Background 2:&nbsp;</label><input id="backgroundColor2" type="text" value="lightgray"
-                data-q="bg2"><br>
+            <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="number" value="1" step=".01" data-q="tX"><br>
+            <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="number" value="1" step=".01" data-q="tY"><br>
+            <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
+                data-q="cC1"><br>
+            <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
+                data-q="cC2"><br>
         </div>
         <pre id="result">
             blablabla
@@ -185,23 +186,24 @@
         selectFont.appendChild(option)
     }
 
-    const inputCode = document.getElementById("code");
+    const inputUnicode = document.getElementById("unicode");
 
     const inputSize = document.getElementById("size");
     const inputColor = document.getElementById("color");
 
-    const inputCircle = document.getElementById("circle");
-    const inputCircleRatio = document.getElementById("circleRatio");
-    const inputCircleColor = document.getElementById("circleColor");
+    const inputBackground = document.getElementById("background");
+    const inputBackgroundSize = document.getElementById("backgroundSize");
+    const inputBackgroundRoundness = document.getElementById("backgroundRoundness");
+    const inputBackgroundColor = document.getElementById("backgroundColor");
 
     const inputTweakWidth = document.getElementById("tweakWidth");
     const inputTweakHeight = document.getElementById("tweakHeight");
 
-    const inputTweakX = document.getElementById("circleTweakX");
-    const inputTweakY = document.getElementById("circleTweakY");
+    const inputTweakX = document.getElementById("tweakX");
+    const inputTweakY = document.getElementById("tweakY");
 
-    const inputBackgroundColor1 = document.getElementById("backgroundColor1");
-    const inputBackgroundColor2 = document.getElementById("backgroundColor2");
+    const inputCanvasColor1 = document.getElementById("canvasColor1");
+    const inputCanvasColor2 = document.getElementById("canvasColor2");
 
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
@@ -212,7 +214,7 @@
     const preview3 = document.getElementById("preview3");
     const preview4 = document.getElementById("preview4");
 
-    const inputs = [selectFont, inputCode, inputSize, inputColor, inputCircle, inputCircleRatio, inputCircleColor, inputTweakX, inputTweakY, inputBackgroundColor1, inputBackgroundColor2, inputTweakWidth, inputTweakHeight];
+    const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputBackground, inputBackgroundSize, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2, inputTweakWidth, inputTweakHeight];
 
     function link() {
         return [
@@ -223,10 +225,27 @@
         ].join('?')
     }
 
+    function drawRoundedRect(ctx, sx, sy, ex, ey, r) {
+        var r2d = Math.PI / 180;
+        if ((ex - sx) - (2 * r) < 0) { r = ((ex - sx) / 2); } //ensure that the radius isn't too large for x
+        if ((ey - sy) - (2 * r) < 0) { r = ((ey - sy) / 2); } //ensure that the radius isn't too large for y
+        ctx.beginPath();
+        ctx.moveTo(sx + r, sy);
+        ctx.lineTo(ex - r, sy);
+        ctx.arc(ex - r, sy + r, r, r2d * 270, r2d * 360, false);
+        ctx.lineTo(ex, ey - r);
+        ctx.arc(ex - r, ey - r, r, r2d * 0, r2d * 90, false);
+        ctx.lineTo(sx + r, ey);
+        ctx.arc(sx + r, ey - r, r, r2d * 90, r2d * 180, false);
+        ctx.lineTo(sx, sy + r);
+        ctx.arc(sx + r, sy + r, r, r2d * 180, r2d * 270, false);
+        ctx.closePath();
+    }
+
     function drawIcon(ctx, x, y, param) {
         console.log(param)
 
-        const icon = String.fromCharCode(param.code)
+        const icon = String.fromCharCode(param.unicode)
 
         ctx.font = `${param.size}px ${param.font}`
         ctx.textAlign = "center"
@@ -236,26 +255,29 @@
         let width = metrics.width * param.tweakWidth
         let height = param.size * param.tweakHeight
 
-        console.log('w/h', width, height)
-
-        if (inputCircle.checked) {
-            const radius = Math.round((param.size / 2) * param.circleRatio)
-            ctx.fillStyle = param.circleColor
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, 2 * Math.PI);
-            ctx.fill();
-            width = 2 * radius
-            height = 2 * radius
-        }
-
-        console.log('w/h2:', width, height)
-
         const halfWidth = width / 2
         const halfHeight = height / 2
 
+        if (param.background) {
+            const radius = Math.round((param.size / 2) * param.backgroundSize)
+            const diameter = radius*2
+            ctx.fillStyle = param.backgroundColor
+            if (param.backgroundRoundness >= 1) { // circle
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                ctx.fill();
+            } else if (param.backgroundRoundness <= 0) { // square
+                ctx.fillRect(x - radius, y - radius, diameter, diameter)
+            } else { 
+                drawRoundedRect(ctx, x - radius, y - radius, x + radius, y + radius, Math.round(radius * param.backgroundRoundness))
+                ctx.fill()
+            }
+            ctx.fillStyle = param.color
+            ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
+            return [x-radius, y-radius, diameter, diameter]
+        }
         ctx.fillStyle = param.color
         ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-
         return [Math.round(x - halfWidth), Math.round(y - halfHeight), Math.round(width), Math.round(height)]
     }
 
@@ -263,29 +285,31 @@
         const canvas = document.getElementById("canvas")
         const ctx = canvas.getContext("2d")
 
-        const backgroundColor1 = inputBackgroundColor1.value
-        const backgroundColor2 = inputBackgroundColor2.value
+        const canvasColor1 = inputCanvasColor1.value
+        const canvasColor2 = inputCanvasColor2.value
 
         ctx.clearRect(0, 0, 400, 400)
 
         for (let x = 0; x < 40; x++) {
             for (let y = 0; y < 40; y++) {
                 if (x % 2 == y % 2) {
-                    ctx.fillStyle = backgroundColor1
+                    ctx.fillStyle = canvasColor1
                 } else {
-                    ctx.fillStyle = backgroundColor2
+                    ctx.fillStyle = canvasColor2
                 }
                 ctx.fillRect(x * 10, y * 10, 10, 10)
             }
         }
 
-        const param =  {
+        const param = {
             size: parseInt(inputSize.value),
             font: selectFont.value,
-            code: parseInt(`0x${inputCode.value}`),
+            unicode: parseInt(`0x${inputUnicode.value}`),
             color: inputColor.value,
-            circleColor: inputCircleColor.value,
-            circleRatio: parseFloat(inputCircleRatio.value),
+            background: inputBackground.checked,
+            backgroundSize: parseFloat(inputBackgroundSize.value),
+            backgroundRoundness: parseFloat(inputBackgroundRoundness.value),
+            backgroundColor: inputBackgroundColor.value,
             tweakWidth: parseFloat(inputTweakWidth.value),
             tweakHeight: parseFloat(inputTweakHeight.value),
             tweakX: parseFloat(inputTweakX.value),
@@ -301,12 +325,12 @@
         m_canvas.width = width
         m_canvas.height = height
         var m_ctx = m_canvas.getContext("2d");
-        drawIcon(m_ctx, Math.round(width/2), Math.round(height/2), param)
-        
+        drawIcon(m_ctx, Math.round(width / 2), Math.round(height / 2), param)
+
         const dataURL = m_canvas.toDataURL()
 
         document.getElementById("result").innerHTML = `{
-    code: "${inputCode.value}", 
+    code: "${inputUnicode.value}", 
     width: ${m_canvas.width}, 
     height: ${m_canvas.height}, 
     link: "${link()}", 
@@ -316,9 +340,9 @@
         preview1.src = dataURL
         preview1.style = `background-color: white;`
         preview2.src = dataURL
-        preview2.style = `background-color: ${backgroundColor1};`
+        preview2.style = `background-color: ${canvasColor1};`
         preview3.src = dataURL
-        preview3.style = `background-color: ${backgroundColor2};`
+        preview3.style = `background-color: ${canvasColor2};`
         preview4.src = dataURL
         preview4.style = `background-color: black;`
     }
@@ -339,7 +363,7 @@
         courtesyParagraph.innerHTML = entry.courtesy
         homepageLink.innerHTML = entry.homepage
         homepageLink.setAttribute('href', entry.homepage)
-        inputCode.value = entry.sample
+        inputUnicode.value = entry.sample
         setTimeout(function () {
             requestAnimationFrame(redraw)
         }, 100)
