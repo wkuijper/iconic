@@ -137,24 +137,25 @@
         <blockquote>
             <p><i>You always want to distribute your icons as vector fonts<br>...except when you don't.</i></p>
         </blockquote>
-        <p>Pick one of the available open icon fonts.</p>
+        <p>Pick one of the available open icon fonts:</p>
         <form>
             <!--<fieldset>-->
             <!--<legend class="doc">Sample form</legend>-->
-            <label for="font">Font:&nbsp;</label><select id="font" data-q="f">
+            <select id="font" data-q="f">
                 <!-- will be populated by script below -->>
             </select><br>
             <h2>Font Information</h2>
             <p id="attributionParagraph"></p>
-            <p id="licenseParagraph"></p>  
+            <p id="licenseParagraph"></p>
             <p id="courtesyParagraph"></p>
-            <p><a id="homepageLink" target="_blank">homepage</a></p> 
+            <p><a id="homepageLink" target="_blank">homepage</a></p>
             <h2>Select Icon</h2>
             <p><a id="browseLink" target="_blank">Browse</a> the avaiable icons.</p>
             <p>Pick an icon from the font.</p>
-                <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u"><br>
-                <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" value=""><br>
-                <span id="glyphSpan"></span><br>
+            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="" data-q="u"><br>
+            <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="number" value="" step="16"><br>
+            <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" value=""><br>
+            <span id="glyphSpan"></span><br>
             <h2>Style Icon</h2>
             <p>Set the desired size, background and color parameters.</p>
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
@@ -166,7 +167,7 @@
                 value="1.0" step="0.1" data-q="bR"><br>
             <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="blue"
                 data-q="bC"><br>
-            
+
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <p>Optionally fine-tune the resulting bitmap size and the glyph position.</p>
             <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="1" step=".01"
@@ -180,12 +181,12 @@
     </section>
     <section>
         <h1>Check Result</h1>
-        <p>Preview the resulting bitmaps against a white, black or other background.</p>
+        <p>Preview the result against various backgrounds</p>
         <form>
-                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
-                    data-q="cC1"><br>
-                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
-                    data-q="cC2"><br>
+            <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
+                data-q="cC1"><br>
+            <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
+                data-q="cC2"><br>
         </form>
         <img id="preview1">
         <img id="preview2">
@@ -214,7 +215,7 @@
         'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', browse: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
         'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', browse: './fonts/batch/Webfont/batch_webfont_reference.pdf', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
         'drip2': { fullname: 'Drip Icons v2', licenses: { 'Icons': 'CC BY 4.0', 'Font': 'SIL OFL 1.1' }, sample: 'e02f', homepage: 'http://demo.amitjakhu.com/dripicons/', browse: 'http://demo.amitjakhu.com/dripicons/', attribution: 'Amit Jakhu', courtesy: 'Consider appreciating this project on behance!' },
-        'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'a0', homepage: 'http://icon-works.com/', browse: './fonts/iw1/Glyph-Chart.html', attribution: 'Icon Works', courtesy: 'Consider donating!' },
+        'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: '006e', homepage: 'http://icon-works.com/', browse: './fonts/iw1/Glyph-Chart.html', attribution: 'Icon Works', courtesy: 'Consider donating!' },
     }
 
     const selectFont = document.getElementById("font");
@@ -229,6 +230,7 @@
     }
 
     const inputUnicode = document.getElementById("unicode");
+    const inputDecimal = document.getElementById("decimal");
     const inputLiteral = document.getElementById("literal");
     const glyphSpan = document.getElementById("glyphSpan");
 
@@ -402,15 +404,40 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
+    function updateGlyphTable(font) {
+        let hexCode = inputUnicode.value
+        if (hexCode.length < 3) {
+            return
+        }
+        let indices = []
+        let cols = []
+        let hexPage = hexCode.substring(0, 3)
+        for (let c = 0; c < 16; c++) {
+            let d = String.fromCharCode('0'.charCodeAt(0) + c)
+            if (c >= 10) {
+                d = String.fromCharCode('a'.charCodeAt(0) + (c - 10))
+            }
+            let currHexCode = hexPage + d
+            if (currHexCode == hexCode) {
+                indices.push(`<td><u>${d}</u></td>`)
+            } else {
+                indices.push(`<td>${d}</td>`)
+            }
+            cols.push(`<td style="font-family:${font};font-size:20px;">&#x${currHexCode};</td>`)
+        }
+        glyphSpan.innerHTML = `<table><tr><td colspan="16">${hexPage}_</td></tr><tr>${indices.join('')}</tr><tr>${cols.join('')}</tr></table>`
+    }
+
     function updateFont() {
         let font = selectFont.value
         let entry = meta[font]
         attributionParagraph.innerHTML = `Creator: ${entry.attribution}`
         homepageLink.innerHTML = entry.homepage
         homepageLink.setAttribute('href', entry.homepage)
-        courtesyParagraph.innerHTML = entry.courtesy 
+        courtesyParagraph.innerHTML = entry.courtesy
         browseLink.setAttribute('href', entry.browse)
         inputUnicode.value = entry.sample
+        inputDecimal.value = parseInt(entry.sample, 16).toString(10)
         function genLicenseTableRow(thing, license) {
             return `<tr><td>${thing}</td><td>${license}</td></tr>`
         }
@@ -433,8 +460,7 @@
         for (let future = 500; future < 10000; future += 500) {
             setTimeout(() => { requestAnimationFrame(redraw) }, future)
         }
-        glyphSpan.style=`font-family:${font};font-size:40px;`
-        glyphSpan.innerHTML = `&#x${entry.sample}`
+        updateGlyphTable(font)
     }
 
     // attach event listener for font selection
@@ -449,17 +475,24 @@
             return
         }
         if (s.length > 1) {
-            s = s[s.length-1]
+            s = s[s.length - 1]
             inputLiteral.value = s
         }
-        console.log("s==", s)
+        inputDecimal.value = s.charCodeAt(0).toString(10)
         hex = ("000" + s.charCodeAt(0).toString(16)).slice(-4);
         inputUnicode.value = hex
-        glyphSpan.innerHTML = `&#x${hex}`
+        updateGlyphTable(selectFont.value)
+    })
+    inputDecimal.addEventListener('input', () => {
+        inputLiteral.value = ''
+        hex = ("000" + parseInt(inputDecimal.value).toString(16)).slice(-4);
+        inputUnicode.value = hex
+        updateGlyphTable(selectFont.value)
     })
     inputUnicode.addEventListener('input', () => {
         inputLiteral.value = ''
-        glyphSpan.innerHTML = `&#x${unicode.value}`
+        inputDecimal.value = parseInt(inputUnicode.value, 16).toString(10)
+        updateGlyphTable(selectFont.value)
     })
 
     // attach generic event listeners
