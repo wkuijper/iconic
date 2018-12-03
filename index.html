@@ -133,7 +133,10 @@
 
 <body>
     <section>
-        <h1>Font-based Icon Specification</h1>
+        <h1>Create Portable, Rasterized Icons</h1>
+        <blockquote>
+            <p><i>You always want to distribute your icons as vector fonts<br>...except when you don't.</i></p>
+        </blockquote>
         <p>Pick one of the available open icon fonts.</p>
         <form>
             <!--<fieldset>-->
@@ -143,15 +146,17 @@
             </select><br>
             <h2>Font Information</h2>
             <p id="attributionParagraph"></p>
+            <p id="licenseParagraph"></p>  
             <p id="courtesyParagraph"></p>
-            <p><a id="homepageLink" target="_blank">homepage</a></p>
-            <p id="licenseParagraph"></p>
-            <h2>Selected Icon</h2>
-            <p>Pick an icon from the font. Use the browse link to get an overview of the avaiable icons.</p>
-                <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u">
-            <a id="browseLink" target="_blank">browse</a><br>
-            <h2>Style Parameters</h2>
-            <p>Set the desired size, background and color parameters for your portable, rasterized icon.</p>
+            <p><a id="homepageLink" target="_blank">homepage</a></p> 
+            <h2>Select Icon</h2>
+            <p><a id="browseLink" target="_blank">Browse</a> the avaiable icons.</p>
+            <p>Pick an icon from the font.</p>
+                <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u"><br>
+                <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" value=""><br>
+                <span id="glyphSpan"></span><br>
+            <h2>Style Icon</h2>
+            <p>Set the desired size, background and color parameters.</p>
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
             <label for="background">Background:&nbsp;</label><input id="background" type="checkbox" checked data-q="b"><br>
@@ -174,8 +179,8 @@
         </form>
     </section>
     <section>
-        <h1>Result Preview</h1>
-        <p>Check the resulting bitmaps against a white, black or other background.</p>
+        <h1>Check Result</h1>
+        <p>Preview the resulting bitmaps against a white, black or other background.</p>
         <form>
                 <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
                     data-q="cC1"><br>
@@ -188,8 +193,8 @@
         <img id="preview4">
     </section>
     <section>
-        <h1>Presto: One Portable, Rasterized Icon!</h1>
-        <p>Copy/paste the result below into your javascript or html code. </p>
+        <h1>Presto!</h1>
+        <p>Copy/paste the following into your javascript or html code:</p>
         <pre id="result">
             <!-- will be populated by script -->
         </pre>
@@ -203,8 +208,8 @@
         'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f044', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
         'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f303', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
         'capi': { fullname: 'Captain Icon', licenses: { 'Font': 'CC BY-SA' }, sample: 'e635', homepage: 'http://mariodelvalle.github.io/CaptainIconWeb/', browse: './fonts/capi/demo.html', attribution: 'Captain Icon', courtesy: 'Consider donating!' },
-        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'f303', homepage: 'https://materialdesignicons.com/', browse: './fonts/mad3/preview.html', attribution: 'Google and the Material Design Icons Community', courtesy: 'Consider buying a pro pack!' },
-        'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 0xe60e, homepage: 'http://vorillaz.github.io/devicons', browse: 'http://vorillaz.github.io/devicons/#/cheat', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
+        'mad3': { fullname: 'Material Design Icons 3.0.39', licenses: { 'Font': 'SIL OFL 1.1' }, sample: 'f3eb', homepage: 'https://materialdesignicons.com/', browse: './fonts/mad3/preview.html', attribution: 'Google and the Material Design Icons Community', courtesy: 'Consider buying a pro pack!' },
+        'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 'e60e', homepage: 'http://vorillaz.github.io/devicons', browse: 'http://vorillaz.github.io/devicons/#/cheat', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
         'ow1': { fullname: 'OpenWeb Icons 1.6.0', licenses: { 'Font': 'SIL OFL 1.1', 'Site': 'CC BY 4.0' }, sample: 'f016', homepage: 'https://pfefferle.github.io/openwebicons/', browse: 'https://pfefferle.github.io/openwebicons/', attribution: 'Matthias Pfefferle et al.', courtesy: 'Consider using Open Web Standards!' },
         'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', browse: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
         'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', browse: './fonts/batch/Webfont/batch_webfont_reference.pdf', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
@@ -224,6 +229,8 @@
     }
 
     const inputUnicode = document.getElementById("unicode");
+    const inputLiteral = document.getElementById("literal");
+    const glyphSpan = document.getElementById("glyphSpan");
 
     const inputSize = document.getElementById("size");
     const inputColor = document.getElementById("color");
@@ -399,9 +406,9 @@
         let font = selectFont.value
         let entry = meta[font]
         attributionParagraph.innerHTML = `Creator: ${entry.attribution}`
-        courtesyParagraph.innerHTML = entry.courtesy
         homepageLink.innerHTML = entry.homepage
         homepageLink.setAttribute('href', entry.homepage)
+        courtesyParagraph.innerHTML = entry.courtesy 
         browseLink.setAttribute('href', entry.browse)
         inputUnicode.value = entry.sample
         function genLicenseTableRow(thing, license) {
@@ -413,7 +420,7 @@
                 license = licenses[thing]
                 rows.push(genLicenseTableRow(thing, license))
             }
-            return `<table><tr><td colspan=2>Licenses</td></tr>${rows.join('')}</table>`
+            return `<table><tr><td colspan=2>Free License(s)</td></tr>${rows.join('')}</table>`
         }
         licenseParagraph.innerHTML = genLicenseTable(entry.licenses)
         setTimeout(function () {
@@ -426,11 +433,33 @@
         for (let future = 500; future < 10000; future += 500) {
             setTimeout(() => { requestAnimationFrame(redraw) }, future)
         }
+        glyphSpan.style=`font-family:${font};font-size:40px;`
+        glyphSpan.innerHTML = `&#x${entry.sample}`
     }
 
     // attach event listener for font selection
     selectFont.addEventListener('input', () => {
         updateFont()
+    })
+
+    // attach event listener for literal glyph input
+    inputLiteral.addEventListener('input', () => {
+        let s = inputLiteral.value
+        if (!s || s.length < 1) {
+            return
+        }
+        if (s.length > 1) {
+            s = s[s.length-1]
+            inputLiteral.value = s
+        }
+        console.log("s==", s)
+        hex = ("000" + s.charCodeAt(0).toString(16)).slice(-4);
+        inputUnicode.value = hex
+        glyphSpan.innerHTML = `&#x${hex}`
+    })
+    inputUnicode.addEventListener('input', () => {
+        inputLiteral.value = ''
+        glyphSpan.innerHTML = `&#x${unicode.value}`
     })
 
     // attach generic event listeners
