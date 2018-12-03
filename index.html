@@ -1,139 +1,157 @@
+<!DOCTYPE html>
 <html>
-<style type="text/css">
-    @font-face {
-        font-family: 'fa4';
-        src: url('fonts/fa4/fonts/fontawesome-webfont.eot?v=4.7.0');
-        src: url('fonts/fa4/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('fonts/fa4/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('fonts/fa4/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('fonts/fa4/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('fonts/fa4/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
 
-    @font-face {
-        font-family: 'fa5b';
-        font-style: normal;
-        font-weight: normal;
-        src: url("fonts/fa5/webfonts/fa-brands-400.eot");
-        src: url("fonts/fa5/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-brands-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-brands-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-brands-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-brands-400.svg#fontawesome") format("svg");
-    }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/yegor256/tacit/gh-pages/tacit-css-1.3.5.min.css" />
+    <style type="text/css">
+        @font-face {
+            font-family: 'fa4';
+            src: url('fonts/fa4/fonts/fontawesome-webfont.eot?v=4.7.0');
+            src: url('fonts/fa4/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('fonts/fa4/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('fonts/fa4/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('fonts/fa4/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('fonts/fa4/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'fa5s';
-        font-style: normal;
-        font-weight: 900;
-        src: url("fonts/fa5/webfonts/fa-solid-900.eot");
-        src: url("fonts/fa5/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-solid-900.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-solid-900.woff") format("woff"), url("fonts/fa5/webfonts/fa-solid-900.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-solid-900.svg#fontawesome") format("svg");
-    }
+        @font-face {
+            font-family: 'fa5b';
+            font-style: normal;
+            font-weight: normal;
+            src: url("fonts/fa5/webfonts/fa-brands-400.eot");
+            src: url("fonts/fa5/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-brands-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-brands-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-brands-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-brands-400.svg#fontawesome") format("svg");
+        }
 
-    @font-face {
-        font-family: 'fa5r';
-        font-style: normal;
-        font-weight: 400;
-        src: url("fonts/fa5/webfonts/fa-regular-400.eot");
-        src: url("fonts/fa5/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-regular-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-regular-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-regular-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-regular-400.svg#fontawesome") format("svg");
-    }
+        @font-face {
+            font-family: 'fa5s';
+            font-style: normal;
+            font-weight: 900;
+            src: url("fonts/fa5/webfonts/fa-solid-900.eot");
+            src: url("fonts/fa5/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-solid-900.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-solid-900.woff") format("woff"), url("fonts/fa5/webfonts/fa-solid-900.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+        }
 
-    @font-face {
-        font-family: 'capi';
-        src: url('fonts/capi/fonts/captainicon.eot?-1i2a56');
-        src: url('fonts/capi/fonts/captainicon.eot?#iefix-1i2a56') format('embedded-opentype'),
-            url('fonts/capi/fonts/captainicon.woff?-1i2a56') format('woff'),
-            url('fonts/capi/fonts/captainicon.ttf?-1i2a56') format('truetype'),
-            url('fonts/capi/fonts/captainicon.svg?-1i2a56#captainicon') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'fa5r';
+            font-style: normal;
+            font-weight: 400;
+            src: url("fonts/fa5/webfonts/fa-regular-400.eot");
+            src: url("fonts/fa5/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("fonts/fa5/webfonts/fa-regular-400.woff2") format("woff2"), url("fonts/fa5/webfonts/fa-regular-400.woff") format("woff"), url("fonts/fa5/webfonts/fa-regular-400.ttf") format("truetype"), url("fonts/fa5/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+        }
 
-    @font-face {
-        font-family: "mad3";
-        src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?v=3.0.39");
-        src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?#iefix&v=3.0.39") format("embedded-opentype"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff2?v=3.0.39") format("woff2"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff?v=3.0.39") format("woff"), url("fonts/mad3/fonts/materialdesignicons-webfont.ttf?v=3.0.39") format("truetype"), url("fonts/mad3/fonts/materialdesignicons-webfont.svg?v=3.0.39#materialdesigniconsregular") format("svg");
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'capi';
+            src: url('fonts/capi/fonts/captainicon.eot?-1i2a56');
+            src: url('fonts/capi/fonts/captainicon.eot?#iefix-1i2a56') format('embedded-opentype'),
+                url('fonts/capi/fonts/captainicon.woff?-1i2a56') format('woff'),
+                url('fonts/capi/fonts/captainicon.ttf?-1i2a56') format('truetype'),
+                url('fonts/capi/fonts/captainicon.svg?-1i2a56#captainicon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'dev1';
-        src: url("fonts/dev1/fonts/devicons.eot?xqxft6");
-        src: url("fonts/dev1/fonts/devicons.eot?#iefixxqxft6") format("embedded-opentype"), url("fonts/dev1/fonts/devicons.woff?xqxft6") format("woff"), url("fonts/dev1/fonts/devicons.ttf?xqxft6") format("truetype"), url("fonts/dev1/fonts/devicons.svg?xqxft6#devicons") format("svg");
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: "mad3";
+            src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?v=3.0.39");
+            src: url("fonts/mad3/fonts/materialdesignicons-webfont.eot?#iefix&v=3.0.39") format("embedded-opentype"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff2?v=3.0.39") format("woff2"), url("fonts/mad3/fonts/materialdesignicons-webfont.woff?v=3.0.39") format("woff"), url("fonts/mad3/fonts/materialdesignicons-webfont.ttf?v=3.0.39") format("truetype"), url("fonts/mad3/fonts/materialdesignicons-webfont.svg?v=3.0.39#materialdesigniconsregular") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'ow1';
-        src: url("fonts/ow1/font/openwebicons.eot");
-        src: url("fonts/ow1/font/openwebicons.eot?#iefix") format("embedded-opentype"), url("fonts/ow1/font/openwebicons.woff2") format("woff2"), url("fonts/ow1/font/openwebicons.woff") format("woff"), url("fonts/ow1/font/openwebicons.ttf") format("truetype"), url("fonts/ow1/font/openwebicons.svg#openweb_iconsregular") format("svg");
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'dev1';
+            src: url("fonts/dev1/fonts/devicons.eot?xqxft6");
+            src: url("fonts/dev1/fonts/devicons.eot?#iefixxqxft6") format("embedded-opentype"), url("fonts/dev1/fonts/devicons.woff?xqxft6") format("woff"), url("fonts/dev1/fonts/devicons.ttf?xqxft6") format("truetype"), url("fonts/dev1/fonts/devicons.svg?xqxft6#devicons") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'oi1';
-        src: url('fonts/oi1/font/fonts/open-iconic.eot');
-        src: url('fonts/oi1/font/fonts/open-iconic.eot?#iconic-sm') format('embedded-opentype'), url('fonts/oi1/font/fonts/open-iconic.woff') format('woff'), url('fonts/oi1/font/fonts/open-iconic.ttf') format('truetype'), url('fonts/oi1/font/fonts/open-iconic.otf') format('opentype'), url('fonts/oi1/font/fonts/open-iconic.svg#iconic-sm') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'ow1';
+            src: url("fonts/ow1/font/openwebicons.eot");
+            src: url("fonts/ow1/font/openwebicons.eot?#iefix") format("embedded-opentype"), url("fonts/ow1/font/openwebicons.woff2") format("woff2"), url("fonts/ow1/font/openwebicons.woff") format("woff"), url("fonts/ow1/font/openwebicons.ttf") format("truetype"), url("fonts/ow1/font/openwebicons.svg#openweb_iconsregular") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'batch';
-        src: url('fonts/batch/Webfont/batch-icons-webfont.eot');
-        src: url('fonts/batch/Webfont/batch-icons-webfont.eot?#iefix') format('embedded-opentype'),
-            url('fonts/batch/Webfont/batch-icons-webfont.woff') format('woff'),
-            url('fonts/batch/Webfont/babatch-icons-webfontch.ttf') format('truetype'),
-            url('fonts/batch/Webfont/batch-icons-webfont.svg#batchregular') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'oi1';
+            src: url('fonts/oi1/font/fonts/open-iconic.eot');
+            src: url('fonts/oi1/font/fonts/open-iconic.eot?#iconic-sm') format('embedded-opentype'), url('fonts/oi1/font/fonts/open-iconic.woff') format('woff'), url('fonts/oi1/font/fonts/open-iconic.ttf') format('truetype'), url('fonts/oi1/font/fonts/open-iconic.otf') format('opentype'), url('fonts/oi1/font/fonts/open-iconic.svg#iconic-sm') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'drip2';
-        src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot");
-        src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot?#iefix") format("embedded-opentype"),
-            url("fonts/drip2/webfont/fonts/dripicons-v2.woff") format("woff"),
-            url("fonts/drip2/webfont/fonts/dripicons-v2.ttf") format("truetype"),
-            url("fonts/drip2/webfont/fonts/dripicons-v2.svg#dripicons-v2") format("svg");
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'batch';
+            src: url('fonts/batch/Webfont/batch-icons-webfont.eot');
+            src: url('fonts/batch/Webfont/batch-icons-webfont.eot?#iefix') format('embedded-opentype'),
+                url('fonts/batch/Webfont/batch-icons-webfont.woff') format('woff'),
+                url('fonts/batch/Webfont/babatch-icons-webfontch.ttf') format('truetype'),
+                url('fonts/batch/Webfont/batch-icons-webfont.svg#batchregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-        font-family: 'iw1';
-        src: url('fonts/iw1/icon-works-webfont.eot');
-        src: url('fonts/iw1/icon-works-webfont.eot?#iefix') format('embedded-opentype'),
-            url('fonts/iw1/icon-works-webfont.woff') format('woff'),
-            url('fonts/iw1/icon-works-webfont.ttf') format('truetype'),
-            url('fonts/iw1/icon-works-webfont.svg#icon-worksregular') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
+        @font-face {
+            font-family: 'drip2';
+            src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot");
+            src: url("fonts/drip2/webfont/fonts/dripicons-v2.eot?#iefix") format("embedded-opentype"),
+                url("fonts/drip2/webfont/fonts/dripicons-v2.woff") format("woff"),
+                url("fonts/drip2/webfont/fonts/dripicons-v2.ttf") format("truetype"),
+                url("fonts/drip2/webfont/fonts/dripicons-v2.svg#dripicons-v2") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    #main {}
+        @font-face {
+            font-family: 'iw1';
+            src: url('fonts/iw1/icon-works-webfont.eot');
+            src: url('fonts/iw1/icon-works-webfont.eot?#iefix') format('embedded-opentype'),
+                url('fonts/iw1/icon-works-webfont.woff') format('woff'),
+                url('fonts/iw1/icon-works-webfont.ttf') format('truetype'),
+                url('fonts/iw1/icon-works-webfont.svg#icon-worksregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    canvas {
-        font-family: FontAwesome;
-        border: 1px solid #CCC;
-    }
- 
-    table {
-    border-collapse: collapse;
-}
+        #main {}
 
-table, th, td {
-    border: 1px solid black;
-}
-</style>
+        canvas {
+            font-family: FontAwesome;
+            border: 1px solid #CCC;
+        }
+    </style>
+    <!--    table {
+            border-collapse: collapse;
+        }   
+
+        table, th, td {
+            border: 1px solid black;
+        }-->
+    <title>Iconic</title>
+</head>
 
 <body>
-    <div id="main">
-        <div class="form-div">
+    <section>
+        <h1>Font-based Icon Specification</h1>
+        <p>Pick one of the available open icon fonts.</p>
+        <form>
+            <!--<fieldset>-->
+            <!--<legend class="doc">Sample form</legend>-->
             <label for="font">Font:&nbsp;</label><select id="font" data-q="f">
                 <!-- will be populated by script below -->>
             </select><br>
+            <h2>Font Information</h2>
             <p id="attributionParagraph"></p>
             <p id="courtesyParagraph"></p>
             <p><a id="homepageLink" target="_blank">homepage</a></p>
             <p id="licenseParagraph"></p>
+            <h2>Selected Icon</h2>
+            <p>Pick an icon from the font. Use the browse link to get an overview of the avaiable icons.</p>
+                <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u">
+            <a id="browseLink" target="_blank">browse</a><br>
+            <h2>Style Parameters</h2>
+            <p>Set the desired size, background and color parameters for your portable, rasterized icon.</p>
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
             <label for="background">Background:&nbsp;</label><input id="background" type="checkbox" checked data-q="b"><br>
@@ -143,30 +161,40 @@ table, th, td {
                 value="1.0" step="0.1" data-q="bR"><br>
             <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="blue"
                 data-q="bC"><br>
-            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="f1d8" data-q="u">
-            <a id="browseLink" target="_blank">browse</a><br>
-        </div>
-        <canvas width="400" height="400" id="canvas"></canvas>
-        <div class="form-div">
+            
+            <canvas width="400" height="400" id="canvas"></canvas><br>
+            <p>Optionally fine-tune the resulting bitmap size and the glyph position.</p>
             <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="1" step=".01"
                 data-q="tW"><br>
             <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="1" step=".01"
                 data-q="tH"><br>
             <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="number" value="1" step=".01" data-q="tX"><br>
             <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="number" value="1" step=".01" data-q="tY"><br>
-            <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
-                data-q="cC1"><br>
-            <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
-                data-q="cC2"><br>
-        </div>
-        <pre id="result">
-            blablabla
-        </pre>
+
+        </form>
+    </section>
+    <section>
+        <h1>Result Preview</h1>
+        <p>Check the resulting bitmaps against a white, black or other background.</p>
+        <form>
+                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
+                    data-q="cC1"><br>
+                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
+                    data-q="cC2"><br>
+        </form>
         <img id="preview1">
         <img id="preview2">
         <img id="preview3">
         <img id="preview4">
-    </div>
+    </section>
+    <section>
+        <h1>Presto: One Portable, Rasterized Icon!</h1>
+        <p>Copy/paste the result below into your javascript or html code. </p>
+        <pre id="result">
+            <!-- will be populated by script -->
+        </pre>
+        <p>Respect the font license conditions! Keep the link for future reference.</p>
+    </section>
 </body>
 <script>
     const meta = {
@@ -229,7 +257,7 @@ table, th, td {
 
     function link() {
         return [
-            "https://wouterkuijper.com/iconic/index.html",
+            "http://wouterkuijper.com/iconic/index.html",
             inputs.map((element) => {
                 return `${element.getAttribute('data-q')}=${encodeURIComponent(element.value)}`
             }).join('&')
@@ -271,7 +299,7 @@ table, th, td {
 
         if (param.background) {
             const radius = Math.round((param.size / 2) * param.backgroundSize)
-            const diameter = radius*2
+            const diameter = radius * 2
             ctx.fillStyle = param.backgroundColor
             if (param.backgroundRoundness >= 1) { // circle
                 ctx.beginPath();
@@ -279,13 +307,13 @@ table, th, td {
                 ctx.fill();
             } else if (param.backgroundRoundness <= 0) { // square
                 ctx.fillRect(x - radius, y - radius, diameter, diameter)
-            } else { 
+            } else {
                 drawRoundedRect(ctx, x - radius, y - radius, x + radius, y + radius, Math.round(radius * param.backgroundRoundness))
                 ctx.fill()
             }
             ctx.fillStyle = param.color
             ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-            return [x-radius, y-radius, diameter, diameter]
+            return [x - radius, y - radius, diameter, diameter]
         }
         ctx.fillStyle = param.color
         ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
@@ -370,7 +398,7 @@ table, th, td {
     function updateFont() {
         let font = selectFont.value
         let entry = meta[font]
-        attributionParagraph.innerHTML = `Created by: ${entry.attribution}`
+        attributionParagraph.innerHTML = `Creator: ${entry.attribution}`
         courtesyParagraph.innerHTML = entry.courtesy
         homepageLink.innerHTML = entry.homepage
         homepageLink.setAttribute('href', entry.homepage)
