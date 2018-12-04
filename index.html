@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/yegor256/tacit/gh-pages/tacit-css-1.3.5.min.css" />
+    <link rel="stylesheet" href="./tacit-css-1.3.5.min.css" />
     <style type="text/css">
         @font-face {
             font-family: 'fa4';
@@ -119,6 +119,7 @@
         canvas {
             font-family: FontAwesome;
             border: 1px solid #CCC;
+            image-rendering: pixelated;
         }
     </style>
     <!--    table {
@@ -133,11 +134,11 @@
 
 <body>
     <section>
-        <h1>Create Portable, Rasterized Icons</h1>
+        <h1>Rasterize Vector Icons</h1>
         <blockquote>
             <p><i>You always want to distribute your icons as vector fonts<br>...except when you don't.</i></p>
         </blockquote>
-        <p>Pick one of the available open icon fonts:</p>
+        <p>Pick an open icon font:</p>
         <form>
             <!--<fieldset>-->
             <!--<legend class="doc">Sample form</legend>-->
@@ -150,8 +151,7 @@
             <p id="courtesyParagraph"></p>
             <p><a id="homepageLink" target="_blank">homepage</a></p>
             <h2>Select Icon</h2>
-            <p><a id="browseLink" target="_blank">Browse</a> the avaiable icons.</p>
-            <p>Pick an icon from the font.</p>
+            <p><a id="browseLink" target="_blank">Browse</a> the font icons.</p>
             <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="" data-q="u"><br>
             <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="number" value="" step="16"><br>
             <span id="glyphSpan"></span><br>
@@ -169,7 +169,7 @@
                 data-q="bC"><br>
 
             <canvas width="400" height="400" id="canvas"></canvas><br>
-            <p>Optionally fine-tune the resulting bitmap size and the glyph position.</p>
+            <p>Optionally fine-tune the glyph size and position.</p>
             <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="1" step=".01"
                 data-q="tW"><br>
             <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="1" step=".01"
@@ -188,23 +188,55 @@
             <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
                 data-q="cC2"><br>
         </form>
+
+        <h2>Full Size</h2>
+
         <img id="preview1">
         <img id="preview2">
         <img id="preview3">
-        <img id="preview4">
+        <img id="preview4"><br>
+
+        <h2>Half Size (Recommended)</h2>
+
+        <img id="previewHalfsize1">
+        <img id="previewHalfsize2">
+        <img id="previewHalfsize3">
+        <img id="previewHalfsize4">
+
+
+        <h2>Device Pixel Matched Size</h2>
+
+        <img id="previewMatchedsize1">
+        <img id="previewMatchedsize2">
+        <img id="previewMatchedsize3">
+        <img id="previewMatchedsize4">
+        
     </section>
     <section>
         <h1>Voila!</h1>
-        <p>Copy/paste the following into your javascript or html code:</p>
-        <pre id="result">
+        <p>Copy/paste the following into your JavaScript code:</p>
+        <pre id="jsResult">
             <!-- will be populated by script -->
         </pre>
+        <p>Or the following into your HTML code:</p>
+        <pre id="htmlResult">
+                <!-- will be populated by script -->
+            </pre>    
         <p>Respect the font license conditions! Keep the link for future reference.</p>
     </section>
 </body>
 <script>
+    const licenseMeta = {
+        'SIL OFL 1.1': { url: 'http://scripts.sil.org/OFL' },
+        'MIT': { url: 'https://opensource.org/licenses/MIT' },
+        'CC BY 3.0': { url: 'https://creativecommons.org/licenses/by/3.0/' },
+        'CC BY 4.0': { url: 'https://creativecommons.org/licenses/by/4.0/' },
+        'CC BY SA': { url: 'https://creativecommons.org/licenses/by-sa/2.0/' },
+        "Batch' AS IS": { url: 'http://adamwhitcroft.com/batch/' }
+    }
+
     const meta = {
-        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: { 'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0' }, sample: 'f040', homepage: 'https://fontawesome.com/v4.7.0/', browse: 'https://fontawesome.com/v4.7.0/icons/', attribution: 'Font Awesome.', courtesy: 'Consider buying a pro license!' },
+        'fa4': { fullname: 'FontAwesome 4.7.0 (Free)', licenses: { 'Font': 'SIL OFL 1.1', 'Code': 'MIT', 'Docs': 'CC BY 3.0' }, sample: 'f040', homepage: 'https://fontawesome.com/v4.7.0/', browse: 'https://fontawesome.com/v4.7.0/icons/', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
         'fa5b': { fullname: 'FontAwesome 5.5.0 Brands (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f286', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=brands&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
         'fa5r': { fullname: 'FontAwesome 5.5.0 Regular (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f044', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=regular&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
         'fa5s': { fullname: 'FontAwesome 5.5.0 Solid (Free)', licenses: { 'Webfont': 'SIL OFL 1.1', 'SVG+JS': 'CC BY 4.0', 'Code': 'MIT' }, sample: 'f303', homepage: 'https://fontawesome.com/', browse: 'https://fontawesome.com/icons?d=gallery&s=solid&m=free', attribution: 'Font Awesome', courtesy: 'Consider buying a pro license!' },
@@ -213,7 +245,7 @@
         'dev1': { fullname: 'DevIcons 1.8.0', licenses: { 'Font': 'MIT' }, sample: 'e60e', homepage: 'http://vorillaz.github.io/devicons', browse: 'http://vorillaz.github.io/devicons/#/cheat', attribution: 'Theodore Vorillas et al.', courtesy: 'Consider donating!' },
         'ow1': { fullname: 'OpenWeb Icons 1.6.0', licenses: { 'Font': 'SIL OFL 1.1', 'Site': 'CC BY 4.0' }, sample: 'f016', homepage: 'https://pfefferle.github.io/openwebicons/', browse: 'https://pfefferle.github.io/openwebicons/', attribution: 'Matthias Pfefferle et al.', courtesy: 'Consider using Open Web Standards!' },
         'oi1': { fullname: 'Open Iconic 1.1.1', licenses: { 'Icons': 'MIT', 'Font': 'SIL OFL 1.1' }, sample: 'e0a3', homepage: 'https://useiconic.com/open', browse: 'https://useiconic.com/open', attribution: 'Open Iconic', courtesy: 'Consider buying the pro version!' },
-        'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': 'AS IS' }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', browse: './fonts/batch/Webfont/batch_webfont_reference.pdf', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
+        'batch': { fullname: 'Batch by Adam Whitcroft', licenses: { 'Font': "Batch' AS IS" }, sample: 'f139', homepage: 'http://adamwhitcroft.com/batch/', browse: './fonts/batch/Webfont/batch_webfont_reference.pdf', attribution: 'Adam Whitcroft', courtesy: 'Consider buying Adam a cup of coffee!' },
         'drip2': { fullname: 'Drip Icons v2', licenses: { 'Icons': 'CC BY 4.0', 'Font': 'SIL OFL 1.1' }, sample: 'e02f', homepage: 'http://demo.amitjakhu.com/dripicons/', browse: 'http://demo.amitjakhu.com/dripicons/', attribution: 'Amit Jakhu', courtesy: 'Consider appreciating this project on behance!' },
         'iw1': { fullname: 'Icon Works v1', licenses: { 'Font': 'SIL OFL 1.1' }, sample: '006e', homepage: 'http://icon-works.com/', browse: './fonts/iw1/Glyph-Chart.html', attribution: 'Icon Works', courtesy: 'Consider donating!' },
     }
@@ -262,6 +294,16 @@
     const preview3 = document.getElementById("preview3");
     const preview4 = document.getElementById("preview4");
 
+    const previewHalfsize1 = document.getElementById("previewHalfsize1");
+    const previewHalfsize2 = document.getElementById("previewHalfsize2");
+    const previewHalfsize3 = document.getElementById("previewHalfsize3");
+    const previewHalfsize4 = document.getElementById("previewHalfsize4");
+
+    const previewMatchedsize1 = document.getElementById("previewMatchedsize1");
+    const previewMatchedsize2 = document.getElementById("previewMatchedsize2");
+    const previewMatchedsize3 = document.getElementById("previewMatchedsize3");
+    const previewMatchedsize4 = document.getElementById("previewMatchedsize4");
+
     const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputBackground, inputBackgroundSize, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2, inputTweakWidth, inputTweakHeight];
 
     function link() {
@@ -306,6 +348,12 @@
         const halfWidth = width / 2
         const halfHeight = height / 2
 
+        const glyphX1 = Math.round(x - halfWidth)
+        const glyphY1 = Math.round(y - halfHeight)
+
+        const glyphWidth = Math.round(width)
+        const glyphHeight = Math.round(height)
+
         if (param.background) {
             const radius = Math.round((param.size / 2) * param.backgroundSize)
             const diameter = radius * 2
@@ -322,11 +370,11 @@
             }
             ctx.fillStyle = param.color
             ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-            return [x - radius, y - radius, diameter, diameter]
+            return [[x - radius, y - radius, diameter, diameter], [glyphX1, glyphY1, glyphWidth, glyphHeight]]
         }
         ctx.fillStyle = param.color
         ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-        return [Math.round(x - halfWidth), Math.round(y - halfHeight), Math.round(width), Math.round(height)]
+        return [[glyphX1, glyphY1, glyphWidth, glyphHeight], [glyphX1, glyphY1, glyphWidth, glyphHeight]]
     }
 
     function redraw() {
@@ -364,26 +412,43 @@
             tweakY: parseFloat(inputTweakY.value)
         }
 
-        let [x1, y1, width, height] = drawIcon(ctx, 200, 200, param)
+        let [[x1, y1, width, height], [glyphX1, glyphY1, glyphWidth, glyphHeight]] = drawIcon(ctx, 200, 200, param)
+
+        const halfWidth = Math.round(width / 2)
+        const halfHeight = Math.round(height / 2)
 
         ctx.strokeStyle = "red"
-        ctx.strokeRect(x1, y1, width, height)
+        ctx.strokeRect(glyphX1, glyphY1, glyphWidth, glyphHeight)
+
+        ctx.strokeStyle = "green"
+        ctx.strokeRect(x1 - 1, y1 - 1, width + 2, height + 2)
 
         var m_canvas = document.createElement('canvas');
         m_canvas.width = width
         m_canvas.height = height
         var m_ctx = m_canvas.getContext("2d");
-        drawIcon(m_ctx, Math.round(width / 2), Math.round(height / 2), param)
+
+        drawIcon(m_ctx, halfWidth, halfHeight, param)
 
         const dataURL = m_canvas.toDataURL()
+        
+        const font = selectFont.value
+        const fontInfo = meta[font]
 
-        document.getElementById("result").innerHTML = `{
-    code: "${inputUnicode.value}", 
-    width: ${m_canvas.width}, 
-    height: ${m_canvas.height}, 
-    link: "${link()}", 
+        document.getElementById("jsResult").innerHTML = `{
+    id: "${font} ${inputUnicode.value}", 
+    font: "${fontInfo.fullname}",
+    fontCreator: "${fontInfo.attribution}",
+    fontHomepage: "${fontInfo.homepage}",    
+    width: ${width}, 
+    height: ${height}, 
+    halfWidth: ${halfWidth},
+    halfHeight: ${halfWidth},
+    generatorLink: "${link()}", 
     data: "${dataURL}"
 }`
+
+document.getElementById("htmlResult").innerHTML = `&lt;img width="${halfWidth}" height="${halfHeight}" src="${dataURL}"&gt;`
 
         preview1.src = dataURL
         preview1.style = `background-color: white;`
@@ -393,6 +458,50 @@
         preview3.style = `background-color: ${canvasColor2};`
         preview4.src = dataURL
         preview4.style = `background-color: black;`
+
+
+        previewHalfsize1.src = dataURL
+        previewHalfsize1.style = `background-color: white;`
+        previewHalfsize1.width = halfWidth
+        previewHalfsize1.height = halfHeight
+
+        previewHalfsize2.src = dataURL
+        previewHalfsize2.style = `background-color: ${canvasColor1};`
+        previewHalfsize2.width = halfWidth
+        previewHalfsize2.height = halfHeight
+
+        previewHalfsize3.src = dataURL
+        previewHalfsize3.style = `background-color: ${canvasColor2};`
+        previewHalfsize3.width = halfWidth
+        previewHalfsize3.height = halfHeight
+
+        previewHalfsize4.src = dataURL
+        previewHalfsize4.style = `background-color: black;`
+        previewHalfsize4.width = halfWidth
+        previewHalfsize4.height = halfHeight
+
+        const matchedWidth = width / window.devicePixelRatio
+        const matchedHeight = height / window.devicePixelRatio
+
+        previewMatchedsize1.src = dataURL
+        previewMatchedsize1.style = `background-color: white;`
+        previewMatchedsize1.width = matchedWidth
+        previewMatchedsize1.height = matchedHeight
+
+        previewMatchedsize2.src = dataURL
+        previewMatchedsize2.style = `background-color: ${canvasColor1};`
+        previewMatchedsize2.width = matchedWidth
+        previewMatchedsize2.height = matchedHeight
+
+        previewMatchedsize3.src = dataURL
+        previewMatchedsize3.style = `background-color: ${canvasColor2};`
+        previewMatchedsize3.width = matchedWidth
+        previewMatchedsize3.height = matchedHeight
+
+        previewMatchedsize4.src = dataURL
+        previewMatchedsize4.style = `background-color: black;`
+        previewMatchedsize4.width = matchedWidth
+        previewMatchedsize4.height = matchedHeight
     }
 
     const url = window.location.href;
