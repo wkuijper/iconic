@@ -125,6 +125,14 @@
         td {
             vertical-align: middle;
         }
+
+        button {
+            background-color: lightgray;
+        }
+
+        body {
+            padding-left: 1em;
+        }
     </style>
     <!--    table {
             border-collapse: collapse;
@@ -161,26 +169,37 @@
             <span id="glyphSpan"></span><br>
             <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" value=""><br>
             <h2>Style Icon</h2>
-            <p>Set the desired size, background and color parameters.</p>
-            <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s"><br>
-            <label for="color">Color:&nbsp;</label><input id="color" type="text" value="white" data-q="c"><br>
-            <label for="background">Background:&nbsp;</label><input id="background" type="checkbox" checked data-q="b"><br>
-            <label for="backgroundSize">Background Size:&nbsp;</label><input id="backgroundSize" type="number" value="1.6"
-                step="0.1" data-q="bS"><br>
+            <p>Set the icon color using a color-name, #hex, rgb(...) or rgba(...)</p>
+            <label for="color">Color:&nbsp;</label><input id="color" type="text" value="black" data-q="c"><br>
+            <br>
+            <p>Set the desired size in pixels. All other dimensions will be ratios relative to this size: this 
+                way you can always come back and resize the result by adjusting this value.</p>
+            <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s">px<br>
+            <img id="previewSize"></img><br>
+            <br>
+            <p>Style the background. Even if you choose not to render the background, its bounding-box 
+                dimensions will be used for clipping. Note that the background dimensions and color information 
+                will always be passed on to the final generated result. It is actually recommended to draw the
+                background using Canvas or WebGL primitives instead of baking it in: this way you can do more 
+                precise hit-testing and you can make
+                the background color respond to mouse, touch or other state-changes.
+            </p>
+            </p>
+            <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text" value="off"
+                 data-q="b"><br>
+            <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="rgba(0,0,255,0.4)"
+                 data-q="bC"><br>
+            <label for="backgroundWidth">Background Width:&nbsp;</label><input id="backgroundWidth" type="number" value="1.1"
+                step="0.1" data-q="bW"><br>
+            <label for="backgroundHeight">Background Height:&nbsp;</label><input id="backgroundHeight" type="number"
+                value="1.1" step="0.1" data-q="bH"><br>
             <label for="backgroundRoundness">Background Roundness:&nbsp;</label><input id="backgroundRoundness" type="number"
-                value="1.0" step="0.1" data-q="bR"><br>
-            <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="blue"
-                data-q="bC"><br>
-
+                value="0.3" step="0.1" data-q="bR"><br>
             <canvas width="400" height="400" id="canvas"></canvas><br>
-            <p>Optionally fine-tune the glyph size and position.</p>
-            <label for="tweakWidth">Tweak Width:&nbsp;</label><input id="tweakWidth" type="number" value="1" step=".01"
-                data-q="tW"><br>
-            <label for="tweakHeight">Tweak Height:&nbsp;</label><input id="tweakHeight" type="number" value="1" step=".01"
-                data-q="tH"><br>
+            <br>
+            <p>Optionally fine-tune the glyph position.</p>
             <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="number" value="1" step=".01" data-q="tX"><br>
             <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="number" value="1" step=".01" data-q="tY"><br>
-
         </form>
     </section>
     <section>
@@ -215,7 +234,7 @@
         <img id="previewHalfsize4">
     </section>
     <section>
-        <h1>Generated Code</h1>
+        <h1>Generated Singleton</h1>
         <p>JavaScript:</p>
         <pre id="jsResult">
             <!-- will be populated by script -->
@@ -224,6 +243,16 @@
         <pre id="htmlResult">
             <!-- will be populated by script -->
          </pre>
+    </section>
+    <section>
+        <h1>Add To Set</h1>
+        <p>Optionally add the icon to an icon-set to be able to quickly (re)create as a sprite-sheet.</p>
+        <img id="previewAddToSet"></img><br>
+        <form>
+            <label for="iconName">Icon Name:</label><input id="iconName" type="text"></input><br>
+            <button>Add Icon to Setspec</button><br>
+            <textarea rows="16" cols="64" style="font-family: monospace;"></textarea>
+        </form>
     </section>
 </body>
 <script>
@@ -282,13 +311,11 @@
     const inputSize = document.getElementById("size");
     const inputColor = document.getElementById("color");
 
-    const inputBackground = document.getElementById("background");
-    const inputBackgroundSize = document.getElementById("backgroundSize");
+    const inputRenderBackground = document.getElementById("renderBackground");
+    const inputBackgroundWidth = document.getElementById("backgroundWidth");
+    const inputBackgroundHeight = document.getElementById("backgroundHeight");
     const inputBackgroundRoundness = document.getElementById("backgroundRoundness");
     const inputBackgroundColor = document.getElementById("backgroundColor");
-
-    const inputTweakWidth = document.getElementById("tweakWidth");
-    const inputTweakHeight = document.getElementById("tweakHeight");
 
     const inputTweakX = document.getElementById("tweakX");
     const inputTweakY = document.getElementById("tweakY");
@@ -317,17 +344,16 @@
     const previewMatchedsize3 = document.getElementById("previewMatchedsize3");
     const previewMatchedsize4 = document.getElementById("previewMatchedsize4");
 
-    const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputBackground, inputBackgroundSize, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2, inputTweakWidth, inputTweakHeight];
+    const previewAddToSet = document.getElementById("previewAddToSet");
+    const previewSize = document.getElementById("previewSize");
+
+    const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2];
 
     function link() {
         return [
             "http://wouterkuijper.com/iconic/index.html",
             inputs.map((element) => {
-                if (element.type == "checkbox") {
-                    return `${element.getAttribute('data-q')}=${encodeURIComponent(element.checked ? "on" : "off")}`
-                } else {
-                    return `${element.getAttribute('data-q')}=${encodeURIComponent(element.value)}`
-                }
+                return `${element.getAttribute('data-q')}=${encodeURIComponent(element.value)}`
             }).join('&')
         ].join('?')
     }
@@ -349,7 +375,7 @@
         ctx.closePath();
     }
 
-    function drawIcon(ctx, x, y, param) {
+    function drawIcon(ctx, x, y, param, drawBounds = false) {
 
         const icon = String.fromCharCode(param.unicode)
 
@@ -358,39 +384,35 @@
         ctx.textBaseline = "middle"
         var metrics = ctx.measureText(icon);
 
-        let width = metrics.width * param.tweakWidth
-        let height = param.size * param.tweakHeight
+        const backgroundHalfWidth = Math.round((param.size / 2) * param.backgroundWidth)
+        const backgroundHalfHeight = Math.round((param.size / 2) * param.backgroundHeight)
 
-        const halfWidth = width / 2
-        const halfHeight = height / 2
+        const backgroundWidth = backgroundHalfWidth * 2
+        const backgroundHeight = backgroundHalfWidth * 2
 
-        const glyphX1 = Math.round(x - halfWidth)
-        const glyphY1 = Math.round(y - halfHeight)
+        let roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
+        let radius = Math.round(roundness * Math.min(backgroundHalfHeight, backgroundHalfWidth))
 
-        const glyphWidth = Math.round(width)
-        const glyphHeight = Math.round(height)
-
-        if (param.background) {
-            const radius = Math.round((param.size / 2) * param.backgroundSize)
-            const diameter = radius * 2
+        if (param.renderBackground) {
             ctx.fillStyle = param.backgroundColor
-            if (param.backgroundRoundness >= 1) { // circle
+            if (backgroundHalfWidth === backgroundHalfHeight && roundness === 1) { // circle
                 ctx.beginPath();
-                ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                ctx.arc(x, y, backgroundHalfWidth, 0, 2 * Math.PI);
                 ctx.fill();
-            } else if (param.backgroundRoundness <= 0) { // square
-                ctx.fillRect(x - radius, y - radius, diameter, diameter)
+            } else if (roundness === 0) { // rectangle
+                ctx.fillRect(x - backgroundHalfWidth, y - backgroundHalfHeight, backgroundWidth, backgroundHeight)
             } else {
-                drawRoundedRect(ctx, x - radius, y - radius, x + radius, y + radius, Math.round(radius * param.backgroundRoundness))
+                drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
                 ctx.fill()
             }
-            ctx.fillStyle = param.color
-            ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-            return [[x - radius, y - radius, diameter, diameter], [glyphX1, glyphY1, glyphWidth, glyphHeight]]
+        } else if (drawBounds) {
+            ctx.strokeStyle = "red"
+            drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
+            ctx.stroke()
         }
         ctx.fillStyle = param.color
-        ctx.fillText(icon, Math.round((x - halfWidth) + (param.tweakX * halfWidth)), Math.round((y - halfHeight) + (param.tweakY * halfHeight)));
-        return [[glyphX1, glyphY1, glyphWidth, glyphHeight], [glyphX1, glyphY1, glyphWidth, glyphHeight]]
+        ctx.fillText(icon, Math.round((x - backgroundHalfWidth) + (param.tweakX * backgroundHalfWidth)), Math.round((y - backgroundHalfHeight) + (param.tweakY * backgroundHalfHeight)));
+        return [backgroundHalfWidth, backgroundHalfHeight, radius]
     }
 
     function redraw() {
@@ -418,26 +440,19 @@
             font: selectFont.value,
             unicode: parseInt(`0x${inputUnicode.value}`),
             color: inputColor.value,
-            background: inputBackground.checked,
-            backgroundSize: parseFloat(inputBackgroundSize.value),
+            renderBackground: ["off", "no", "false", "0"].indexOf(inputRenderBackground.value.toLowerCase().trim()) == -1,
+            backgroundWidth: parseFloat(inputBackgroundWidth.value),
+            backgroundHeight: parseFloat(inputBackgroundHeight.value),
             backgroundRoundness: parseFloat(inputBackgroundRoundness.value),
             backgroundColor: inputBackgroundColor.value,
-            tweakWidth: parseFloat(inputTweakWidth.value),
-            tweakHeight: parseFloat(inputTweakHeight.value),
             tweakX: parseFloat(inputTweakX.value),
             tweakY: parseFloat(inputTweakY.value)
         }
 
-        let [[x1, y1, width, height], [glyphX1, glyphY1, glyphWidth, glyphHeight]] = drawIcon(ctx, 200, 200, param)
+        let [halfWidth, halfHeight, radius] = drawIcon(ctx, 200, 200, param, true)
 
-        const halfWidth = Math.round(width / 2)
-        const halfHeight = Math.round(height / 2)
-
-        ctx.strokeStyle = "red"
-        ctx.strokeRect(glyphX1, glyphY1, glyphWidth, glyphHeight)
-
-        ctx.strokeStyle = "green"
-        ctx.strokeRect(x1 - 1, y1 - 1, width + 2, height + 2)
+        const width = halfWidth * 2
+        const height = halfHeight * 2
 
         var m_canvas = document.createElement('canvas');
         m_canvas.width = width
@@ -456,11 +471,12 @@
     font: "${fontInfo.fullname}",
     fontCreator: "${fontInfo.attribution}",
     fontHomepage: "${fontInfo.homepage}", 
-    license: "This icon is licensed: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",   
+    license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",   
     width: ${width}, 
     height: ${height}, 
     halfWidth: ${halfWidth},
     halfHeight: ${halfWidth},
+    radius: ${radius},
     generatorLink: "${link()}", 
     data: "${dataURL}"
 }`
@@ -475,7 +491,6 @@
         preview3.style = `background-color: ${canvasColor2};`
         preview4.src = dataURL
         preview4.style = `background-color: black;`
-
 
         previewHalfsize1.src = dataURL
         previewHalfsize1.style = `background-color: white;`
@@ -496,6 +511,14 @@
         previewHalfsize4.style = `background-color: black;`
         previewHalfsize4.width = halfWidth
         previewHalfsize4.height = halfHeight
+
+        previewAddToSet.src = dataURL
+        previewAddToSet.width = halfWidth
+        previewAddToSet.height = halfHeight
+
+        previewSize.src = dataURL
+        previewSize.width = halfWidth
+        previewSize.height = halfHeight
 
         const matchedWidth = width / window.devicePixelRatio
         const matchedHeight = height / window.devicePixelRatio
@@ -530,6 +553,17 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
+    function setUnicode(u) {
+        inputUnicode.value = u
+        n = parseInt(u, 16)
+        inputDecimal.value = n.toString(10)
+        inputLiteral.value = String.fromCharCode(n)
+        font = selectFont.value
+        inputLiteral.style=`font-family:${font};`
+        updateGlyphTable(font)
+        requestAnimationFrame(redraw)
+    }
+
     function updateGlyphTable(font) {
         let hexCode = inputUnicode.value
         if (hexCode.length < 3) {
@@ -545,13 +579,19 @@
             }
             let currHexCode = hexPage + d
             if (currHexCode == hexCode) {
-                indices.push(`<td><u>${d}</u></td>`)
+                indices.push(`<td class="glyph-td" data-u="${currHexCode}"><u>${d}</u></td>`)
             } else {
-                indices.push(`<td>${d}</td>`)
+                indices.push(`<td class="glyph-td" data-u="${currHexCode}">${d}</td>`)
             }
-            cols.push(`<td style="font-family:${font};font-size:20px;">&#x${currHexCode};</td>`)
+            cols.push(`<td class="glyph-td" data-u="${currHexCode}" style="font-family:${font};font-size:20px;">&#x${currHexCode};</td>`)
         }
         glyphSpan.innerHTML = `<table><tr><td colspan="16">${hexPage}_</td></tr><tr>${indices.join('')}</tr><tr>${cols.join('')}</tr></table>`
+        let tds = document.getElementsByClassName("glyph-td")
+        for (let i = 0; i < tds.length; i++) {
+            tds[i].addEventListener("click", () => {
+                setUnicode(tds[i].getAttribute("data-u"))
+            })
+        }
     }
 
     function updateFont(unicode) {
@@ -565,8 +605,7 @@
         if (!unicode) {
             unicode = entry.sample
         }
-        inputUnicode.value = unicode
-        inputDecimal.value = parseInt(entry.sample, 16).toString(10)
+        setUnicode(unicode)
         function genLicenseTableRow(thing, license, info) {
             return `<tr><td>${thing}</td><td><a href="${info.url}">${license}</a></td><td>${info.icons}</td></tr>`
         }
@@ -590,7 +629,6 @@
         for (let future = 500; future < 10000; future += 500) {
             setTimeout(() => { requestAnimationFrame(redraw) }, future)
         }
-        updateGlyphTable(font)
     }
 
     // attach event listener for font selection
@@ -608,21 +646,15 @@
             s = s[s.length - 1]
             inputLiteral.value = s
         }
-        inputDecimal.value = s.charCodeAt(0).toString(10)
         hex = ("000" + s.charCodeAt(0).toString(16)).slice(-4);
-        inputUnicode.value = hex
-        updateGlyphTable(selectFont.value)
+        setUnicode(hex)
     })
     inputDecimal.addEventListener('input', () => {
-        inputLiteral.value = ''
         hex = ("000" + parseInt(inputDecimal.value).toString(16)).slice(-4);
-        inputUnicode.value = hex
-        updateGlyphTable(selectFont.value)
+        setUnicode(hex)
     })
     inputUnicode.addEventListener('input', () => {
-        inputLiteral.value = ''
-        inputDecimal.value = parseInt(inputUnicode.value, 16).toString(10)
-        updateGlyphTable(selectFont.value)
+        
     })
 
     // attach generic event listeners
