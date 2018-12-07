@@ -134,7 +134,8 @@
             padding-left: 1em;
         }
 
-        .glyph-pg, .glyph-td {
+        .glyph-pg,
+        .glyph-td {
             cursor: pointer;
         }
     </style>
@@ -178,23 +179,24 @@
             <p>Set the icon color using a color-name, #hex, rgb(...) or rgba(...)</p>
             <label for="color">Color:&nbsp;</label><input id="color" type="text" value="black" data-q="c"><br>
             <br>
-            <p>Set the desired size in pixels. All other dimensions will be ratios relative to this size: this 
+            <p>Set the desired size in pixels. All other dimensions will be ratios relative to this size: this
                 way you can always come back and resize the result by adjusting this value.</p>
             <label for="size">Size:&nbsp;</label><input id="size" type="number" value="140" step="10" data-q="s">px<br>
             <img id="previewSize"></img><br>
             <br>
-            <p>Style the background. Even if you choose not to render the background, its bounding-box 
-                dimensions will be used for clipping. Note that the background dimensions and color information 
+            <p>Style the background. Even if you choose not to render the background, its bounding-box
+                dimensions will be used for clipping. Note that the background dimensions and color information
                 will always be passed on to the final generated result. It is actually recommended to draw the
-                background using Canvas or WebGL primitives instead of baking it in: this way you can do more 
+                background using Canvas or WebGL primitives instead of baking it in: this way you can do more
                 precise hit-testing and you can make
                 the background color respond to mouse, touch or other state-changes.
             </p>
             </p>
-            <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text" value="off"
-                 data-q="b"><br>
+            <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text"
+                value="off" data-q="b"><br>
+            <button id="toggleBackground" type="button">Toggle Background</button><br>
             <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="rgba(0,0,255,0.4)"
-                 data-q="bC"><br>
+                data-q="bC"><br>
             <label for="backgroundWidth">Background Width:&nbsp;</label><input id="backgroundWidth" type="number" value="1.1"
                 step="0.1" data-q="bW"><br>
             <label for="backgroundHeight">Background Height:&nbsp;</label><input id="backgroundHeight" type="number"
@@ -204,8 +206,9 @@
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
             <p>Optionally fine-tune the glyph position.</p>
-            <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="number" value="1" step=".01" data-q="tX"><br>
-            <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="number" value="1" step=".01" data-q="tY"><br>
+            <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="number" value="0" step=".01" data-q="tX"><br>
+            <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="number" value="0" step=".01" data-q="tY"><br>
+            <button id="autoCenter" type="button">Auto-Center</button>
         </form>
     </section>
     <section>
@@ -256,7 +259,7 @@
         <img id="previewAddToSet"></img><br>
         <form>
             <label for="iconName">Icon Name:</label><input id="iconName" type="text"></input><br>
-            <button>Add Icon to Setspec</button><br>
+            <button type="button">Add Icon to Setspec</button><br>
             <textarea rows="16" cols="64" style="font-family: monospace;"></textarea>
         </form>
     </section>
@@ -312,6 +315,7 @@
     const inputColor = document.getElementById("color");
 
     const inputRenderBackground = document.getElementById("renderBackground");
+    const toggleBackgroundButton = document.getElementById("toggleBackground");
     const inputBackgroundWidth = document.getElementById("backgroundWidth");
     const inputBackgroundHeight = document.getElementById("backgroundHeight");
     const inputBackgroundRoundness = document.getElementById("backgroundRoundness");
@@ -319,6 +323,9 @@
 
     const inputTweakX = document.getElementById("tweakX");
     const inputTweakY = document.getElementById("tweakY");
+    const autoCenterButton = document.getElementById("autoCenter");
+    let autoCenterX = 0
+    let autoCenterY = 0
 
     const inputCanvasColor1 = document.getElementById("canvasColor1");
     const inputCanvasColor2 = document.getElementById("canvasColor2");
@@ -408,14 +415,100 @@
                 drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
                 ctx.fill()
             }
-        } else if (drawBounds) {
+        }
+
+        if (drawBounds) {
             ctx.strokeStyle = "red"
             drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
             ctx.stroke()
         }
+
         ctx.fillStyle = param.color
-        ctx.fillText(icon, Math.round((x - backgroundHalfWidth) + (param.tweakX * backgroundHalfWidth)), Math.round((y - backgroundHalfHeight) + (param.tweakY * backgroundHalfHeight)));
+        ctx.fillText(icon, Math.round(x + (param.tweakX * param.size)), Math.round(y + (param.tweakY * param.size)));
+
         return [backgroundHalfWidth, backgroundHalfHeight, radius]
+    }
+
+    function determineBounds(canvas, drawBounds) {
+        let cols = canvas.width
+        let rows = canvas.height
+
+        let halfWidth = cols/2
+        let halfHeight = rows/2
+
+        let ctx = canvas.getContext("2d")
+
+        console.log("-->", cols, rows)
+
+        let imgData = ctx.getImageData(0, 0, cols, rows).data
+
+        function p(x, y) {
+            let s = ((y * cols) + x) * 4
+            if (imgData[s] !== 0 || imgData[s + 1] !== 0 || imgData[s + 2] !== 0 || imgData[s + 3] !== 0) {
+                return true
+            }
+            return false
+        }
+
+        let top = -1
+        let bot = -1
+        let left = -1
+        let right = -1
+        // determine top
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                if (p(x, y)) {
+                    top = y
+                    break
+                }
+            }
+            if (top > 0) {
+                break
+            }
+        }
+        // is the sprite empty?
+        if (top < 0) {
+            top = bot = halfHeight
+            left = right = halfWidth
+        } else {
+            // determine bottom
+            for (let y = rows - 1; y >= 0; y--) {
+                for (let x = 0; x < cols; x++) {
+                    if (p(x, y)) {
+                        bot = y
+                        break
+                    }
+                }
+                if (bot > 0) {
+                    break
+                }
+            }
+            // determine left
+            for (let x = 0; x < cols; x++) {
+                for (let y = 0; y < rows; y++) {
+                    if (p(x, y)) {
+                        left = x
+                        break
+                    }
+                }
+                if (left > 0) {
+                    break
+                }
+            }
+            // determine right
+            for (let x = cols - 1; x >= 0; x--) {
+                for (let y = 0; y < rows; y++) {
+                    if (p(x, y)) {
+                        right = x
+                        break
+                    }
+                }
+                if (right > 0) {
+                    break
+                }
+            }
+        }
+        return [left-halfWidth, top-halfHeight, right-halfHeight, bot-halfWidth]
     }
 
     function redraw() {
@@ -458,11 +551,17 @@
         const height = halfHeight * 2
 
         var m_canvas = document.createElement('canvas');
-        m_canvas.width = width
-        m_canvas.height = height
+        m_canvas.width = width + 2
+        m_canvas.height = height + 2
         var m_ctx = m_canvas.getContext("2d");
 
-        drawIcon(m_ctx, halfWidth, halfHeight, param)
+        drawIcon(m_ctx, halfWidth + 1, halfHeight + 1, param)
+        let [left, top, right, bot] = determineBounds(m_canvas, true)
+        autoCenterX = (Math.abs(left) - right)/(2*param.size)
+        autoCenterY = (Math.abs(top) - bot)/(2*param.size)
+
+        ctx.strokeStyle = "green"
+        ctx.strokeRect(200 + left, 200 + top, right-left, bot-top)
 
         const dataURL = m_canvas.toDataURL()
 
@@ -562,7 +661,7 @@
         inputDecimal.value = n.toString(10)
         inputLiteral.value = String.fromCharCode(n)
         font = selectFont.value
-        inputLiteral.style=`font-family:${font};`
+        inputLiteral.style = `font-family:${font};`
         updateGlyphTable(font)
         requestAnimationFrame(redraw)
     }
@@ -672,11 +771,24 @@
     })
 
     pageUpImg.addEventListener('click', () => {
-        setUnicode((parseInt(inputUnicode.value, 16)-16).toString(16))
+        setUnicode((parseInt(inputUnicode.value, 16) - 16).toString(16))
     })
 
     pageDownImg.addEventListener('click', () => {
-        setUnicode((parseInt(inputUnicode.value, 16)+16).toString(16))
+        setUnicode((parseInt(inputUnicode.value, 16) + 16).toString(16))
+    })
+
+    // attach event listener for buttons
+
+    toggleBackgroundButton.addEventListener("click", () => {
+        inputRenderBackground.value = ["off", "no", "false", "0"].indexOf(inputRenderBackground.value.toLowerCase().trim()) == -1 ? "off" : "on"
+        requestAnimationFrame(redraw)
+    })
+
+    autoCenterButton.addEventListener("click", () => {
+        inputTweakX.value = autoCenterX.toString(10)
+        inputTweakY.value = autoCenterY.toString(10)
+        requestAnimationFrame(redraw)
     })
 
     // attach generic event listeners
