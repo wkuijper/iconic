@@ -385,7 +385,7 @@
         ctx.closePath();
     }
 
-    function drawIcon(ctx, x, y, param, drawBounds = false) {
+    function drawIcon(ctx, x, y, param, drawBounds = false, suppressBackground = false) {
 
         const icon = String.fromCharCode(param.unicode)
 
@@ -394,16 +394,20 @@
         ctx.textBaseline = "middle"
         var metrics = ctx.measureText(icon);
 
-        const backgroundHalfWidth = Math.round((param.size / 2) * param.backgroundWidth)
-        const backgroundHalfHeight = Math.round((param.size / 2) * param.backgroundHeight)
+        const backgroundQuarterWidth = Math.round((param.size / 4) * param.backgroundWidth)
+        const backgroundQuarterHeight = Math.round((param.size / 4) * param.backgroundHeight)
+
+        const backgroundHalfWidth = backgroundQuarterWidth * 2
+        const backgroundHalfHeight = backgroundQuarterHeight * 2
 
         const backgroundWidth = backgroundHalfWidth * 2
-        const backgroundHeight = backgroundHalfWidth * 2
+        const backgroundHeight = backgroundHalfHeight * 2
 
-        let roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
-        let radius = Math.round(roundness * Math.min(backgroundHalfHeight, backgroundHalfWidth))
+        const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
+        const halfRadius = Math.round(roundness * Math.min(backgroundQuarterHeight, backgroundQuarterWidth))
+        const radius = halfRadius*2
 
-        if (param.renderBackground) {
+        if (param.renderBackground && !suppressBackground) {
             ctx.fillStyle = param.backgroundColor
             if (backgroundHalfWidth === backgroundHalfHeight && roundness === 1) { // circle
                 ctx.beginPath();
@@ -417,7 +421,7 @@
             }
         }
 
-        if (drawBounds) {
+        if (drawBounds && !param.renderBackground) {
             ctx.strokeStyle = "red"
             drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
             ctx.stroke()
@@ -426,19 +430,17 @@
         ctx.fillStyle = param.color
         ctx.fillText(icon, Math.round(x + (param.tweakX * param.size)), Math.round(y + (param.tweakY * param.size)));
 
-        return [backgroundHalfWidth, backgroundHalfHeight, radius]
+        return [backgroundQuarterWidth, backgroundQuarterHeight, halfRadius]
     }
 
-    function determineBounds(canvas, drawBounds) {
+    function determineBounds(canvas) {
         let cols = canvas.width
         let rows = canvas.height
 
-        let halfWidth = cols/2
-        let halfHeight = rows/2
+        let halfWidth = cols / 2
+        let halfHeight = rows / 2
 
         let ctx = canvas.getContext("2d")
-
-        console.log("-->", cols, rows)
 
         let imgData = ctx.getImageData(0, 0, cols, rows).data
 
@@ -508,12 +510,48 @@
                 }
             }
         }
-        return [left-halfWidth, top-halfHeight, right-halfHeight, bot-halfWidth]
+        return [left - halfWidth, top - halfHeight, right - halfWidth, bot - halfHeight]
     }
 
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+
+    let lastClickX = -1
+    let lastClickY = -1
+    let dragging = false
+
+    canvas.addEventListener("mousemove", (event) => {
+        if (dragging) {
+            lastClickX = event.offsetX
+            lastClickY = event.offsetY
+            requestAnimationFrame(redraw)
+        }
+    })
+
+    canvas.addEventListener("mousedown", (event) => {
+        if (event.button === 0) {
+            if (lastClickX > 0 && lastClickY > 0 && 
+                    (Math.abs(lastClickX - event.offsetX) > 8 || 
+                        Math.abs(lastClickY - event.offsetY) > 8)) {
+                lastClickX = -1
+                lastClickY = -1
+            } else {
+                lastClickX = event.offsetX
+                lastClickY = event.offsetY
+                dragging = true
+            }
+            requestAnimationFrame(redraw)
+        }
+    })
+
+    canvas.addEventListener("mouseup", (event) => {
+        if (event.button === 0) {
+            dragging = false
+            requestAnimationFrame(redraw)
+        }
+    })
+
     function redraw() {
-        const canvas = document.getElementById("canvas")
-        const ctx = canvas.getContext("2d")
 
         const canvasColor1 = inputCanvasColor1.value
         const canvasColor2 = inputCanvasColor2.value
@@ -545,26 +583,64 @@
             tweakY: parseFloat(inputTweakY.value)
         }
 
-        let [halfWidth, halfHeight, radius] = drawIcon(ctx, 200, 200, param, true)
+        let [quarterWidth, quarterHeight, halfRadius] = drawIcon(ctx, 200, 200, param, true)
+
+        const halfWidth = quarterWidth * 2
+        const halfHeight = quarterHeight * 2
+        const radius = halfRadius * 2
+        
+        const imageData = ctx.getImageData(0, 0, 400, 400).data
 
         const width = halfWidth * 2
         const height = halfHeight * 2
 
-        var m_canvas = document.createElement('canvas');
-        m_canvas.width = width + 2
-        m_canvas.height = height + 2
-        var m_ctx = m_canvas.getContext("2d");
-
-        drawIcon(m_ctx, halfWidth + 1, halfHeight + 1, param)
-        let [left, top, right, bot] = determineBounds(m_canvas, true)
-        autoCenterX = (Math.abs(left) - right)/(2*param.size)
-        autoCenterY = (Math.abs(top) - bot)/(2*param.size)
-
+        var b_canvas = document.createElement('canvas');
+        b_canvas.width = width 
+        b_canvas.height = height 
+        var b_ctx = b_canvas.getContext("2d");
+        drawIcon(b_ctx, halfWidth, halfHeight, param, false, true)
+        let [left, top, right, bot] = determineBounds(b_canvas, true)
+        autoCenterX = (Math.abs(left) - right) / (2 * param.size)
+        autoCenterY = (Math.abs(top) - bot) / (2 * param.size)
         ctx.strokeStyle = "green"
-        ctx.strokeRect(200 + left, 200 + top, right-left, bot-top)
+        ctx.strokeRect(200 + left, 200 + top, right - left, bot - top)
 
+        if (lastClickX >= 0 && lastClickY >= 0) {
+            console.log("last:", lastClickX, lastClickY)
+            const px = 80
+            const py = 80
+            ctx.fillStyle = "rgb(20,20,20)"
+            ctx.fillRect(px - 70, py - 70, 141, 141)
+            ctx.strokeStyle = "black"
+            ctx.strokeRect(px - 70, py - 70, 141, 141)
+            for (let dx = -8; dx <= 8; dx++) {
+                const x = lastClickX + dx
+                for (let dy = -8; dy <= 8; dy++) {
+                    const y = lastClickY + dy
+                    if (x >= 0 && x < 400 && y >= 0 && y < 400) {
+                        const offset = (y * 400 * 4) + (x * 4)
+                        const r = imageData[offset]
+                        const g = imageData[offset + 1]
+                        const b = imageData[offset + 2]
+                        const a = imageData[offset + 3]
+                        const xx = px + (8 * dx) - 4
+                        const yy = py + (8 * dy) - 4
+                        ctx.fillStyle = `rgb(${r},${g},${b})`
+                        ctx.fillRect(xx + 1, yy + 1, 7, 7)
+                    }
+                }
+            }
+            ctx.strokeStyle="gold"
+            ctx.strokeRect(px-4,py-4,9,9)
+            ctx.strokeRect(lastClickX-8, lastClickY-8, 17, 17)
+        }
+
+        var m_canvas = document.createElement('canvas');
+        m_canvas.width = width 
+        m_canvas.height = height 
+        var m_ctx = m_canvas.getContext("2d");
+        drawIcon(m_ctx, halfWidth, halfHeight, param)
         const dataURL = m_canvas.toDataURL()
-
         const font = selectFont.value
         const fontInfo = meta[font]
 
@@ -573,12 +649,10 @@
     font: "${fontInfo.fullname}",
     fontCreator: "${fontInfo.attribution}",
     fontHomepage: "${fontInfo.homepage}", 
-    license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",   
-    width: ${width}, 
-    height: ${height}, 
-    halfWidth: ${halfWidth},
-    halfHeight: ${halfWidth},
-    radius: ${radius},
+    license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
+    quarterWidth: ${quarterWidth},
+    quarterHeight: ${quarterHeight},
+    halfRadius: ${radius},
     generatorLink: "${link()}", 
     data: "${dataURL}"
 }`
