@@ -119,7 +119,6 @@
         canvas {
             font-family: FontAwesome;
             border: 1px solid #CCC;
-            image-rendering: pixelated;
         }
 
         td {
@@ -152,6 +151,20 @@
 <body>
     <section>
         <h1>Rasterize Vector Icons</h1>
+        <!-- "http://wouterkuijper.com/iconic/index.html?f=mad3&u=fb91&s=64&c=white&b=off&bW=.7&bH=.7&bR=0.3&bC=rgba(0%2C0%2C255%2C0.4)&tX=0&tY=0&cC1=lightgray&cC2=gray" -->
+        <img id="dock_w" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACiklEQVRoQ+2Yz8tPQRTGP8ePotgKWUhSLCRZiI0ddlKsFEu//gGSKMVSkZQF2b6vBRvKRvmd8mOj2CgbCzuSbDw6NXS9vvc7M1/v3O57m9nd7nOfM8955pyZucbAhw1cH1XgXHe4Olgd7HkG6hLtuUHR6VUHoynqOaA62HODotOrDkZT1HNAdbDNIEk7zOxBzw2c7Lok6Q6wC9hkZm/7LDJ7iUp6CmwFvgGbzez9IARKWgo8B9YHQd+Dg3NfoKRlwBtgecOtYQiUtBOYBpbMWIpzX6Ckw8AlYMGIOksWKOkmsLuRpB/AfTPbV7p+W5uMpHPACWBeyySiAsPS9rpd3cLx2buxmb0sJXSkQEk3gIORoCkC3wHrIjyfzGxlZwIl3QO87mJjrEBJp4GzMZLw/oqZHUvEZsH+clDSC2BLIkNM4HXgUCLXbTPbk4jNgv0RKOkxsC3j65jAV75PJvJ9MLM1idgsWFPgUeAisDCRISbwbjjOpdA9MbPtKcBczMwl6rU3BfipJTZiAn17OR4jCe+nzGx/IjYL9k8XDa39NbDif7qopFWAH+MWR3h+An4zeZg180Rw2zbhDj4DNozhSdkmfC89CWNvLcU6qM997G1C0iOgrTaiAj2ApCPAGcDPs83xBThvZhcSzZgIFr0uSboF7B3BniTw93eS/OCwNjx/NLNrE80486OowODCZcC7bBOfJTBzXrMGTxIYRJ4KS21+iD4sgUGkL7OrwKLB3egbteS/K3wT9067cXD/ZIKT3hG9SRwws6+zVjAFiJJrsEDsTiirwE7SXDBIdbBgcjuhrg52kuaCQaqDBZPbCXV1sJM0FwxSHSyY3E6oq4OdpLlgkOpgweR2Qv0LQnDFOUJrp+4AAAAASUVORK5CYII=">
+        <img id="dock_sw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACCUlEQVRYR+2YvWsVQRTFfydWghG0sBALEbFNmoAgQkrFJo1pY4oUEv0HUoQEBK1Vgmghip1VqhR2BgJaGJA02phIwELzQQiCIl4Z2Pgx5L135+1uNsGZbuHcO789c2Z3dsUBGzpgvGTgulcsO5wdjhzIkciRyJGoOwPZ4exwewf+7+ewmT0FLgNHCp++AS8kXa0qOZU4bGYngFfA6RZgn4FLkt6UBa8K+B1wrgPMJ0knGwc2s0lg2gkyI2ncqd1VVtphM3sMXHNCzEoacmprA14E+p0QHySdcWprA54LG8oJsSDpglNbG/A94IYT4rmkYae2M7CZhWZPgDFJzzyNzewU8B443EH/ExiUNO/p20rzz6YzsyvALGDAaAL0LWAC2v42KP2ECDfRCvgQ8CMR+jowBYSXyN9jC7gt6U4ZZ3dqY+Aw6X2gpxAkQYcaMxsBzhb1HyU9qgK0FfDDkN9ogmToKgHjXrHDwd3d3kT7BtoLHG50X0DHwHeBm22WtHHoGPglcLFDBhuFjoFfAwOOTdMYdLfAjWW6DHAj0DFwylFxJzl7Go/fwGbWC6wAxxwZjiV7Bh0DLwPHuwAOJeE0Ni7pQZf1rrIYeBU46qr8Iwrufi9OeEuSzifWJ8njDIf/Cn1AOGF9BbaBdWAT2CiuvwBrQPgKfps0WwXi0h+hFTAktcjASXZ1If4FpVGvLWXVutEAAAAASUVORK5CYII=">
+        <!-- "http://wouterkuijper.com/iconic/index.html?f=mad3&u=f6c0&s=64&c=white&b=off&bW=1&bH=1&bR=0&bC=rgba(0%2C0%2C255%2C0.4)&tX=-0.0078125&tY=0&cC1=lightgray&cC2=gray" -->
+        <img id="pan_w" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC9ElEQVR4Xu2azatOURSHn5+PjEwUMwPFxICEGCgGZmZCmclASZlIIZSJJAPFRJSRkVz5E5DyWQxQhvIPICMfS/t2bl3Xe/be7znv2Xvf95wz3V/r9+y1P87aS/T8U8/1MwAYPKDnBIYl0HMHiN8EzWwlcB3YDPHtMgD+AJyV9CVm7KglYGYXgXPAiphOC6jzC7gi6ULIliAAM3OdXCp81kfpNOCypPM+CF4AZrYG+AisCpEstPwbsF3Spzr7QgD2AY+ApYUKDJnlvOCkpJtNAVwDToVGKbz8rqSjTQE4cicKFxgy776kQwOAGgKhPWDwgA6XwG9gSYLjtcgl8APYC2wBbnR8yhQHYFa8pOduWZrZ8Y4hFAXgH/Fz+5KZnQauhrbzhuXFAKgT736y3gAbGgoMNSsCQC7xDk52ACPFV+v/PbAxNIUty7MCyC0+qweUID4bAJ/4d8Cmlm49TvPkS8An/m0VUhtHQNu6SQH4xL8GtrZV06B9MgClzfwcqyQAasVXx50LrKx2N98GM1jX5GflUe5/wvd1DsArfoKC/+vKzGIiVp0CcDO6W9LTLoXW9W1mMfGKTgE4255J2tVnAE77C0k7U0Mws1vAsdx7wNz4tRDM7DOwFnAvNpP8lkV01vkSmG/DSAhmdhC4ByyPMHjSVZICqF0OGSEkB+CD4OLzzhNiXHdSnpAFQEkQsgHwQTgC3E7kCVkBhCDc6Tgk7sbPDiA3hCIA+CD06l2g7p7Qi3eBkTfGKvlq6t8FFp7ps55QiXcxwnWTOvRH9FPMHrDQtpdV7tH6DsUXcwp0rNHbfbEekArKAKBNjlBMwCHVTDYdp5UHuDt7iutqU3Ghdi5meUZSbe5BKEnKhbmeZApkhMTFlP8BDkh6WFc5Jlf4AbA/ZrQC6zyWtMdnVxCAa2xmr4BtBQr0meRynHdI+t4aQAXBxeAPL4LE6a/AjC89dj6QKA9YZDM/lrkDgLFwTWHlwQOmcFLHkjR4wFi4prBy7z3gL+Ltn1DQCxcZAAAAAElFTkSuQmCC">
+        <img id="pan_n" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADKElEQVR4Xu2aO4sUQRSFv+MDTHxgYCSIgoorrIkvNtrAzExEMRMDA0UDTUQw08REQQ0EwR+wrOJPUBBEEXygC+6CgqKmIr5QLLnSAzO90901Pf2o3akJZ+pxz1enbnXdaTHiH424fiKA6IARJxC3wIgbwD8JOudWAleBHeDfr2HA5uhZ4IKkNz5ze20B59xZ4CKwwmfQANo44IakU0WxFAJwzp0ArgFLigYL8Pcrks7kxZULILH9HLAuQHE+IX0Ddkt6ndW4CMB+4B6w1Ge2ANvYVjgt6XpZAJeA8wEKGySk25KOlQVg5E4OMluAbackHYoAMggU5YC6HfAD+APYM0Zdn2AdYBl6H/ABeAmsqYlAkAD+i5f0yEQ759bXCCE4AD3iO6teI4SgAPQVXzOEYADkiq8RQhAAvMTXBKF1AAOJrwFCqwBKia8YQmsAMsU758Ylveg+951zY/1ubRWcDq0AyBP/DFgtaWMKgH2/StKm9APRkBAaB1Ak3kpqs5K2pAA8BnYBc5I2VwihUQB54p8D44mwPADW5K3VHiV9TUEq88TYGABf8aapCECVEBoBkCf+FTCWsrQPAOvyzlwzpBNqB2Blp8OSpvrs237ifR3QGe49sL0PBINqJ0lRua52ABboJ2CyU4tPiqlPgK0ZV1xfB3RDmJBkV2e7PVr9wHJKz0mSMVcjAGzuz0kW/wI8BeZl8q4ABwVgXT8CewAb31e89WsMQAfCd2DeWV4yB6QX1SD/AjZkrHa/rxsF4BtXGQf4jp1uFwGEWBWODsh5FC5r9ax+cQvELRDgP0MxB8QckF0PiEmwYgLxFIinQICnwIykniKJc+4hMFGx/Ru/DfrG/zMpZixLOvwGtllV2HeAAdoFmQMGiH/ophHAMEnwJnB86DVod4ChHHAUuOVReGxXYvbsVrA9J+lyVpOil6T2Ag+A5aEqLIjrL3BQ0t1SAKyTc24aOLBAAdyXNJkXe+HL0gkEK3HvXGAQZqyKnP4/Ia3BC0ACwd4ZPAKsDRyElc3v5L0e2x2/N4DARZcOLwIojW6RdIwOWCQLWVpGdEBpdIuk48g74B8PEAVfYEJyxgAAAABJRU5ErkJggg==">
+        <img id="dock_nw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACBUlEQVRYR+3YMUhVURzH8e+PpqCGlgZJiIhGCTEIXJzCaGkxmtKhRWxobogERfeixSFoaGmSQIfGQLGg5iSIdHCwqUgL0r8cvEqdrvee27n33SecC48Hj/8553P+/O+5//vEMbt0zLz8BTazPuAqsA58lfSu2zZ0CDaz08An4KyH/A24zw7wE/gFbANbf3z/AL4DnyU9aHKTPvgLcCZiwdeSrkWMLx1aJ3hB0o3SFSMD/BpeA3r/Y86OYJ3LBy9nN10Vc8eweeC3wJUK2o5iY8Edx+aB3bk7EJDhVrB54Dngbgm4NWwe+AkwUQBuFVsV3Dq2CrgrsHngacDvBboGmwe+DrwCTmR1XAlrZs8BN8epbLxrlFx/MRJw8gSF+E861wvMZ+BgrJm5Dm8FOH/EqpvAsKT3QaqCIB98G3gBLFZpZMzsI3CpBLMhqaducD9wR9L90InN7CEwGRj/VFLRsVk6TfQrkpk9A8ZKV9oPmJd0MzA2N6wO8AfgciDCvZFcCIxtDLzobqhAxJKkwcDYxsCPgXuBiJeSbgXGNgY+B6wCJ0sgu8CQpDetgt3iZjaVPSGL7onoE+KfJ13Mzs1sHHiU8zfBN2BG0mzM/Adjo08JH2Fmo8DF7Pc1Sa7Hru2qHVyb7IiJEjhl2MtAKolUEqkkmq6BlOGU4eIMpHO46QpJGW46w3sj/6Utcrpx4QAAAABJRU5ErkJggg==">
+        <img id="dock_n" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACXUlEQVRoQ+2YMahOYRjHf/8siMGiyCDJQEmmK5JMDOqmMDIpsVoUUYrFJEqUMpIBwx1u3EFuWdxBhEVZDIoig8VfJ4e+Lvd+7/nO+5xTX+/Zvnre5/n//v/O+XofMeaPxpyPTgFtvwGWA1skfevC3M4Abc8CO2qol5K2jg2g7fvAwXlAM5L2RkOGJ2j7BnB8AZC7ko5EQoYC2j4LXIBF3/Vrkk5FQYYB2j4G3AKWDBFv4LSkKxGQIYC2J4AZYGmi6J/ApKRHifXJZdkBba8Gqr+DVckqfhd+B3ZLetHw3KLlWQFtrwReA+tGFPkFmJD0bsTz/xzLDfgK2NxS3HtJG1r2+Hs8G6Dtx0Cu/7U5SdtzQGYBtP0QOJBD0ECPZ5J2te2ZC/AJsKatmHnnP0va2bZnFsC2IiLPF8BId7voXRLswuXIGSXBSHe76N1JgrbvAPuBFTXUD2Ba0qFoyFDA+mbxHFi/AMgnYF/uG8TgrGjAt8CmISl9lLQ2KskwQNvn6nVFivbrkk6mFDatiQS8DVRri5TngaTJlMKmNZGAc8C2REFZ74CdvIO2p6oPSCLgbI6bw/9mRSZ4FUhdB96TdDjRjEZlkYDVXqbarSwboqjaqO2R9LSR8sTiMMBqvu2LwJkhi9+wL2ilIRSwhjwBnAeqdeLg8xW4JOlyYhgjlYUD/lFl+yiwsf79QdLNkRQ3PNQZYENd2coLYDYre2pUEuzJ+GxjS4LZrOypUUmwJ+OzjS0JZrOyp0YlwZ6Mzza2JJjNyp4alQR7Mj7b2JJgNit7alQS7Mn4bGPHPsFfLISFOWN84tAAAAAASUVORK5CYII=">
+        <img id="dock_s" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACfElEQVRoQ+2Zz6tNURiGnzcZKEopSZTkx8DEkBiQAQaKAdNrSNdfYHCjFDMDJUUpmZm4DAwM5deEgbrFRN3JHSgDBkj5tLRunYFz9rf2XmvffU9rz269a5/n+d7b2WvtI6b80pT7UQVXe8O1wdrgwCdQ/0UHXlAjXm2wcUQDD9QGB15QI15tsHFEAw/UBgdeUCNebbBxRAMP1AYHXlAjXm2wcUSOgJk9AE4C62P8F/Bc0lnH8k6Rog2a2WbgLbBjDOUX4ISkd50sJiwuLfgR2NMAvyRp66oTNLM54KoT/LakWWc2KVasQTO7D5x30sxLOu3MJsVKCr4H9jtpPkva6cwmxUoKPgtfIE6aV5IOObNJsZKCt4BLTppHks45s0mxkoLbgE/AugaiP8ARSS+SyJ3hYoLh883sGnAZJv7IU+wbNDAUFYySF4ErQHjoj17fgOuSbjjLaBUrLrhMZWYzwK7496Kku62IExf1JpjIlS1eBbONcoVuVBtcocFn+9jaoGeUZha2WVs82YTMjxyPkiwNmtkisD0B3hP9KmmTJzgpk0sw7Ds/ABu7AsX1P4Gjkt50vV8WwbglOw48BdZ2hAqb7xlJDzve59/ybIJRMpzg7wFrWsIZMCcpbNKzXFkFo6TnBDEOPvvJIrtglEx5H7Ms+1jSmSy1jdykiGCUfAKccgK/lHTYmU2KFROMkq+BAw1EC5L2JVEnhIsKRsnw2mL3GKYlYK+k7wnMSdE+BMNJPjwj/3eiPyhpIYk4MVxcMLYYNgJBZEPk+w0cK/WiaXQGvQhGyfDr0nx8Rs5KupNYRqt4b4JR8kJ4jSjpZivaFot6FWzB13nJ1Av+BbKtiznMvWWeAAAAAElFTkSuQmCC">
+        <img id="dock_ne" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACC0lEQVRYR+2XsWsUQRTGfx8mqDGtFiIiIYhYSUiXxlI7LRJiZUgXov+ARVSImN6ghUXEQgsbrQykFELSaBFIiBaBIFjYCSI2vjCwJ5sll7zbmdvbwA5sccf3dn733TfzZsQxGzpmvNQS2MxGgLPARWBD0lrL2K4Dm9lD4ApwBhgEBrLnNBCek8Ap4ATQD/QV/vXfwIikr+H7KoDfApMR0fsDjErarAQ4TGJmb4A7JaGrB46E/plF4ntlDrecLen0lqSrlS26YgxKQH+TdLlnwCXi0XvgDqHrAdwB9HtJt3saiXyuHZl+J2miNsAOp+sHfAR0PYEPgV6SNN2VSJjZa+BmdsgJc/wFViSNe9tyIdMGTEt6lRTYzM4B68ClNmChvd6Q9NkDnoMOwLOSXqQG3gb+d6M2UD8knfcAF+JxX9JiMmAzmwMeO0GeS5p1asMp7wmwLOlTSuAlYMoJ8UHSLaf2QFn0Ad7MvgDXnBA7koac2q4BfwwLygmxKmnMqe0a8DPgnhNiXxNw1uyTpYjEBSBcEMOF8rDxD7ieX0A9Ac62oHngwRGX2o52iHY/Jtrh1ovNbAZ4BIQmkh+/gKeSFso4WqxJBpwDvwsMZ593Jb1MAZpsH04J43lXcoc9k8ZoGuAY9zy1jcMel2I0jcMx7nlqG4c9LsVoGodj3PPUNg57XIrRNA7HuOep3QM2naAtafgZ1AAAAABJRU5ErkJggg==">
+        <img id="pan_s" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC+klEQVR4Xu2aOagTURSGv98FbCxs7C20EEQbURDhdYraubQuhbhho4i7hSuCKCq4gpWVoIiFdiKIqI1WCvpKtXZpxSPnkUASkpk7mZnMDblpc++Z839z7vbPFRP+04TrJwFIFTDhBNIQmPACCJ8EzWw+cA1YDuH9GgD8CTgm6VvIs4OGgJkdAs4B80KCRtDmL3BJ0qm8XHIBmNk+4AYwKy9YZP8bcEHSyay8MgG0yn4aWBiZuNB0fgMrJX0Z1CEPwEbgKTA79ImRtfMqOCjp5rAAzgPHIxNVNJ0HknYNC8DJ7S/6xMjaP5K0LQEYQCBvDkgVUNMQmJa0uPOlmNkHYEUNwyfKIfBV0pIeAO99yUoAqieQKiDGVSANgTQHpEkwrQJpGUz7gA4CZpY2QmknmLbC430WcPvpNOB29P0cG22YnWA7/g/gbgGbbiRngS4H1sz2AO4lDPISiwKYES/JrXnMbG/LqQ7xKmsH4MmdkXS2Z1nbAdwD5vQ54BUB0CW+HcvM3Ofz+Hl2fe0APKfXktb2CjWzQRBCAbj4E5Iu9on9DNgUcHoeCQDP452k1YEQQgD8A45IutIn5gtgXYB4bzIyAFkQ3JV92DEc8gC4+MOSrpYUP3IAWRC2tiDMBbIAuPgDkm5VIL4RACEQvkta1DNpfgSWuQkr6XZF4hsDkAVhOzAlaWcPAP8A65VxvULxjQIYCCFw8pppZmZFJrx+oUc6CfZLoO/qEAKhAvGNV0BbZ2EIFYmPBkCh4VCh+KgABEGoWHx0ADIh1CA+SgB9IdQkPloAXRBqFB81AE/uDfAT2BCyLA7ZpvF9wJB5V9YtASjzdfgOsLuyd9FMoFIV4I5OnsHZjKywp7qjdFTS5UHN8y5JrQFeAn6GH8efewtbJD0ZCkDrNPYcWD+O6oFXkqaycg+5LO3X5N8CS8cMwmdglaQ/pQC0O5uZW9CbgQWRg/gFPM66HtuZf24FRC62dHoJQGmEYx4gVcCYv8DS6acKKI1wzANMfAX8Bz47+FCa5tNiAAAAAElFTkSuQmCC">
+        <img id="pan_e" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC6ElEQVR4Xu2aOYhUQRCGv98DTAQxMDISjAQF8cJAxcTAzEAQFMXAwAtEUTw38ERYFBVEEEw2EwPBwFTTDQVRWVBQ1MBENxVbSmZhj5n3ema6xu6d99LXr7r+r6v6eiWG/NGQ66cB0ETAkBNoUmDIAyB+EgwhLAXuAusg/rv/APgtcF7Sl5i+o1IghHAauAYsiTGaQZvfwC1Jl+t8qQUQQjgK3AcW1BnL7H0Abki6VOVXJYBW2E8AKzITF+vOL2CjpA+dPqgDsBt4DiyM7TGzdhYFJyU96BXAdeBCZqK6deeJpMO9AjByx7rtMbP2TyXtbQB0IFA3BzQRMKAUsHV7kVPqZJ0CNkuPAI+A98AyBwjZApixUQkhrATeOEDIFsBtSeemj7gThGwBfAa2zj60OEDIFoAN/ldgszOErAEYBO9IyB7AFIQ1kiYd5oQiAJjuT8BaBwjFADAIH+3GKTGEogAYhAlJq2dviPpYHYoDkBpCkQD+pYOkVQkiwR3AO+CVw4XppKQT7c4GXaaDO4AxSQccDjGVJruA4A6gsgNPMCEESxE7RVYdpec1gJfArhrI8xNACCFGvLFxB2Cd2I1Oyseu4X8A69v94upC/MAApBRvtv4ApyTda7MMxo781KcDiYCUAEz8cUkPE4gvLgJM/BlJdxKJLwqAh/hiAJj4s5JGE458MXOA3Q5flHTTQXz2EWDir0iy4osZT5dLXdUknO0qMAjxWUfAnP8C5m3Ckc9+DvgG7JheveEgPusIMOe+A9sNgpP47AGYg1bOZjU8O1NuJ6fZynYSdNI7x2wDoCmR6aNGyAoXjgwqVp366SsFDgGPC68THJF0tRPcuiKpLcBrYLHT6HibtUPWQUljPQFo7cyeAXu8PXWyPy5pU5Xt2mLpFoRxYIOTk15m7Ufrtrqy+SgALQhWM7gPWO7lcSK7P4EXkvbH2IsGEGOsxDYNgBJHLaXPTQSkpFmirSYCShy1lD4PfQT8BaXNpVAlrZJjAAAAAElFTkSuQmCC">
+        <img id="dock_se" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAB+klEQVRYR+3YMUhVURzH8e8PB1OUCqQhDETEoaWIJl3ays2CnAJbRWcHBy0Kak90cAiCpgZxcnAUhBYFh0CDAheHNkFEBP/xh/vivYe+d+67976rdO50L/zve5/3u/9z3jlXXLND18xLBBf9xGLCMeG6BGJLxJaILVF0D8SEY8KNE/i/52Ez+wKMAT1JTqfAhqSXeXVOLgmb2R3gOzBwCewP8EzSdlZ4XuA9YLgJ5lDS3dLBZjYPvA2ELEmaDqy9sCxzwmb2GXgdiFiTNB5YWxh4B3gYiPgtaTCwtjDwug+oQMSWpNHA2sLAn4CZQMQ3SROBtYWB+4F9oKsJ5Bx4ImkzBGxmT4FVYFbSYuWezIPOP8jM3gNz0PC1QfAMUYW9AUxLWs4VnKCngDeA/4lUH0fAB0kfUybrT8wKA1cwZjYJDCXXB5JWQqDJj660QaW9HLwg6V3uCYeiLquraoP6sbAq6cWVAjfAurNmZsll0GVJtwn2aoEDsA7+KulV6S0RiHXnrqQHpYJTYN35U9K/pWvbezgltlxwC9jywC1iHVyzJG1LS2TAOvgEeCzph18UDjYz3zH7btoXMq0cx8AjSb4ibAt4AxhJFjKdQEfK7z3zHU3bEr4oUjO7D9wDbgN9QG9yfqvqvBu4CfyS9LzUebiVvojgLKmlufcvH/ybLVF4VNgAAAAASUVORK5CYII=">
+        <img id="dock_e" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACZElEQVRoQ+2YMahOYRjHf/9RsRgMuoMkg4VNuQbJwCYhGwZKbExClFxZ7qAslJKBFJkMBkrEgixiIdQdDIqFxaPndk7dvr5z3vc433t7z+092+l7nuc8v+f/vO/zvp9Y4o+WOB8FcOgKFwWLgplXoLRo5gIF0ysKBkuUuUFRMHOBgukVBYMlytygKJiDQGa2TdLT/8klewXNbAUwB7yVtLUr5FAAPwMrgXeSNnaBHBqgs30Ftkj6FgM6REDn+gHskPQ6BDlUQOf6DRyRdLsNclEAzewWsAtYXiXzB3gsaV9IgWqTqdfgqPlf4IykmaY4SQHNbBXwCljTkMB3YGdbqwUAPawBNyQdHfeN1IAfgPUBleYkrW6yiQCsXR9I2jMaJxmgmZ0DLoRasPr9mqTj42w7ALr789FZmRLwJnAoEvChpN0TAPQQ74HNkn75S0rAN8CmSMBPktZOCHAeUtKG1ICPfAOJBHwhaXpCgL6znpV0KTXgVeBEJOA9SfsnAOiz8bCkO3WslC06BXwElgUgveJ+W3jWE3Ds6SYZ4PyAMrsInA6s9cYdtIrht4mmQV/XpPF8mhSwSvAYcB7wob/w+QnMSLrcpnDEmGi9YSQHrJM3s4PAuur9i6TrMeszAPhE0va2OIsGGAPTcQ3elXQgFHeIgH72nJV0MgSXdEzEfDzGZqRFfcc9JWk2xndIgP6fjHfbXkl+gIh+sm/Raie+D1yR9DKarDIcBGBXqIX2BbBP9XLwLQrmoEKfHIqCfaqXg29RMAcV+uRQFOxTvRx8i4I5qNAnh6Jgn+rl4FsUzEGFPjn8A9mWvjnHzumKAAAAAElFTkSuQmCC">
         <blockquote>
             <p><i>You always want to distribute your icons as vector fonts<br>...except when you don't.</i></p>
         </blockquote>
@@ -357,6 +370,20 @@
     const pageUpImg = document.getElementById("pageUp");
     const pageDownImg = document.getElementById("pageDown");
 
+    const panNorthImg = document.getElementById("pan_n");
+    const panEastImg = document.getElementById("pan_e");
+    const panSouthImg = document.getElementById("pan_s");
+    const panWestImg = document.getElementById("pan_w");
+
+    const dockNorthEastImg = document.getElementById("dock_ne");
+    const dockNorthWestImg = document.getElementById("dock_nw");
+    const dockSouthWestImg = document.getElementById("dock_sw");
+    const dockSouthEastImg = document.getElementById("dock_se");
+    const dockNorthImg = document.getElementById("dock_n");
+    const dockEastImg = document.getElementById("dock_e");
+    const dockSouthImg = document.getElementById("dock_s");
+    const dockWestImg = document.getElementById("dock_w");
+
     const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2];
 
     function link() {
@@ -405,7 +432,7 @@
 
         const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
         const halfRadius = Math.round(roundness * Math.min(backgroundQuarterHeight, backgroundQuarterWidth))
-        const radius = halfRadius*2
+        const radius = halfRadius * 2
 
         if (param.renderBackground && !suppressBackground) {
             ctx.fillStyle = param.backgroundColor
@@ -516,28 +543,59 @@
     const canvas = document.getElementById("canvas")
     const ctx = canvas.getContext("2d")
 
-    let lastClickX = -1
-    let lastClickY = -1
+    let detailPosX = 200 - 111
+    let detailPosY = 200 - 111
+    let detailLocX = -1
+    let detailLocY = -1
     let dragging = false
 
     canvas.addEventListener("mousemove", (event) => {
         if (dragging) {
-            lastClickX = event.offsetX
-            lastClickY = event.offsetY
+            detailLocX = event.offsetX
+            detailLocY = event.offsetY
             requestAnimationFrame(redraw)
         }
     })
 
     canvas.addEventListener("mousedown", (event) => {
         if (event.button === 0) {
-            if (lastClickX > 0 && lastClickY > 0 && 
-                    (Math.abs(lastClickX - event.offsetX) > 8 || 
-                        Math.abs(lastClickY - event.offsetY) > 8)) {
-                lastClickX = -1
-                lastClickY = -1
+            if (detailLocX > 0 && detailLocY > 0 &&
+                (Math.abs(detailLocX - event.offsetX) > 8 ||
+                    Math.abs(detailLocY - event.offsetY) > 8)) {
+                if (event.offsetX > detailPosX - 80 && event.offsetX < detailPosX + 80 &&
+                    event.offsetY > detailPosY - 80 && event.offsetY < detailPosY + 80) {
+                    if (event.offsetX < detailPosX - 48) {
+                        if (event.offsetY < detailPosY - 48) {
+                            detailPosX = 200 - 111
+                            detailPosY = 200 - 111
+                        } else if (event.offsetY > detailPosY + 49) {
+                            detailPosX = 200 - 111
+                            detailPosY = 200 + 111
+                        } else {
+                            detailLocX = Math.max(detailLocX - .5, 8)
+                        }
+                    } else if (event.offsetX > detailPosX + 49) {
+                        if (event.offsetY < detailPosY - 48) {
+                            detailPosX = 200 + 111
+                            detailPosY = 200 - 111
+                        } else if (event.offsetY > detailPosY + 49) {
+                            detailPosX = 200 + 111
+                            detailPosY = 200 + 111
+                        } else {
+                            detailLocX = Math.min(detailLocX + .5, 392)
+                        }
+                    } else if (event.offsetY < detailPosY - 48) {
+                        detailLocY = Math.max(detailLocY - .5, 8)
+                    } else if (event.offsetY > detailPosY + 49) {
+                        detailLocY = Math.min(detailLocY + .5, 392)
+                    }
+                } else {
+                    detailLocX = -1
+                    detailLocY = -1
+                }
             } else {
-                lastClickX = event.offsetX
-                lastClickY = event.offsetY
+                detailLocX = event.offsetX
+                detailLocY = event.offsetY
                 dragging = true
             }
             requestAnimationFrame(redraw)
@@ -588,15 +646,18 @@
         const halfWidth = quarterWidth * 2
         const halfHeight = quarterHeight * 2
         const radius = halfRadius * 2
-        
-        const imageData = ctx.getImageData(0, 0, 400, 400).data
+
+        let imageData = undefined
+        if (detailLocX >= 8 && detailLocY >= 8 && detailLocX < 392 && detailLocY < 392) {
+            imageData = ctx.getImageData(Math.round(detailLocX) - 8, Math.round(detailLocY) - 8, 17, 17).data
+        }
 
         const width = halfWidth * 2
         const height = halfHeight * 2
 
         var b_canvas = document.createElement('canvas');
-        b_canvas.width = width 
-        b_canvas.height = height 
+        b_canvas.width = width
+        b_canvas.height = height
         var b_ctx = b_canvas.getContext("2d");
         drawIcon(b_ctx, halfWidth, halfHeight, param, false, true)
         let [left, top, right, bot] = determineBounds(b_canvas, true)
@@ -605,39 +666,106 @@
         ctx.strokeStyle = "green"
         ctx.strokeRect(200 + left, 200 + top, right - left, bot - top)
 
-        if (lastClickX >= 0 && lastClickY >= 0) {
-            console.log("last:", lastClickX, lastClickY)
-            const px = 80
-            const py = 80
-            ctx.fillStyle = "rgb(20,20,20)"
-            ctx.fillRect(px - 70, py - 70, 141, 141)
-            ctx.strokeStyle = "black"
-            ctx.strokeRect(px - 70, py - 70, 141, 141)
+        if (imageData) {
+            const px = detailPosX
+            const py = detailPosY
+            ctx.fillStyle = "rgb(30,30,30)"
+            ctx.fillRect(px - 80, py - 80, 161, 161)
+            let ppx = px - 3
+            let ppy = py - 3
+            if (detailLocX % 1 > 0) {
+                ppx += 3
+            }
+            if (detailLocY % 1 > 0) {
+                ppy += 3
+            }
             for (let dx = -8; dx <= 8; dx++) {
-                const x = lastClickX + dx
+                const x = 8 + dx
                 for (let dy = -8; dy <= 8; dy++) {
-                    const y = lastClickY + dy
+                    const y = 8 + dy
                     if (x >= 0 && x < 400 && y >= 0 && y < 400) {
-                        const offset = (y * 400 * 4) + (x * 4)
+                        const offset = (y * 17 * 4) + (x * 4)
                         const r = imageData[offset]
                         const g = imageData[offset + 1]
                         const b = imageData[offset + 2]
                         const a = imageData[offset + 3]
-                        const xx = px + (8 * dx) - 4
-                        const yy = py + (8 * dy) - 4
+                        const xx = ppx + (6 * dx)
+                        const yy = ppy + (6 * dy)
                         ctx.fillStyle = `rgb(${r},${g},${b})`
-                        ctx.fillRect(xx + 1, yy + 1, 7, 7)
+                        ctx.fillRect(xx + 1, yy + 1, 5, 5)
                     }
                 }
             }
-            ctx.strokeStyle="gold"
-            ctx.strokeRect(px-4,py-4,9,9)
-            ctx.strokeRect(lastClickX-8, lastClickY-8, 17, 17)
+            ctx.fillStyle = "black"
+            ctx.strokeStyle = "white"
+            ctx.fillRect(px - 80, py - 80, 161, 32)
+            ctx.fillRect(px - 80, py + 49, 161, 32)
+            ctx.fillRect(px - 80, py - 80, 32, 161)
+            ctx.fillRect(px + 49, py - 80, 32, 161)
+            ctx.strokeRect(px - 80, py - 80, 161, 161)
+            ctx.beginPath()
+            ctx.moveTo(px - 48, py - 80)
+            ctx.lineTo(px - 48, py + 80)
+            ctx.moveTo(px + 49, py - 80)
+            ctx.lineTo(px + 49, py + 80)
+            ctx.moveTo(px - 80, py - 48)
+            ctx.lineTo(px + 80, py - 48)
+            ctx.moveTo(px - 80, py + 49)
+            ctx.lineTo(px + 80, py + 49)
+            ctx.stroke()
+            ctx.drawImage(panNorthImg, px - 8, py - 64 - 8, 16, 16)
+            ctx.drawImage(panEastImg, px + 64 - 8, py - 8, 16, 16)
+            ctx.drawImage(panSouthImg, px - 8, py + 64 - 8, 16, 16)
+            ctx.drawImage(panWestImg, px - 64 - 8, py - 8, 16, 16)
+            if (px > 200 || py > 200) {
+                if (px < 200) {
+                    ctx.drawImage(dockNorthImg, px - 65 - 14, py - 65 - 14, 28, 28)
+                } else if (py < 200) {
+                    ctx.drawImage(dockWestImg, px - 65 - 14, py - 65 - 14, 28, 28)
+                } else {
+                    ctx.drawImage(dockNorthWestImg, px - 66 - 11, py - 66 - 11, 22, 22)
+                }
+            }
+            if (px < 200 || py > 200) {
+                if (px > 200) {
+                    ctx.drawImage(dockNorthImg, px + 65 - 14, py - 65 - 14, 28, 28)
+                } else if (py < 200) {
+                    ctx.drawImage(dockEastImg, px + 65 - 14, py - 65 - 14, 28, 28)
+                } else {
+                    ctx.drawImage(dockNorthEastImg, px + 66 - 11, py - 66 - 11, 22, 22)
+                }
+            }
+            if (px < 200 || py < 200) {
+                if (px > 200) {
+                    ctx.drawImage(dockSouthImg, px + 65 - 14, py + 65 - 14, 28, 28)
+                } else if (py > 200) {
+                    ctx.drawImage(dockEastImg, px + 65 - 14, py + 65 - 14, 28, 28)
+                } else {
+                    ctx.drawImage(dockSouthEastImg, px + 66 - 11, py + 66 - 11, 22, 22)
+                }
+            }
+            if (px > 200 || py < 200) {
+                if (px < 200) {
+                    ctx.drawImage(dockSouthImg, px - 65 - 14, py + 65 - 14, 28, 28)
+                } else if (py > 200) {
+                    ctx.drawImage(dockWestImg, px - 65 - 14, py + 65 - 14, 28, 28)
+                } else {
+                    ctx.drawImage(dockSouthWestImg, px - 66 - 11, py + 66 - 11, 22, 22)
+                }
+            }
+            ctx.strokeStyle = "gold"
+            ctx.beginPath()
+            ctx.moveTo(px - 6.5, py + .5)
+            ctx.lineTo(px + 7.5, py + .5)
+            ctx.moveTo(px + .5, py - 6.5)
+            ctx.lineTo(px + .5, py + 7.5)
+            ctx.stroke()
+            ctx.strokeRect(detailLocX - 8, detailLocY - 8, 17, 17)
         }
 
         var m_canvas = document.createElement('canvas');
-        m_canvas.width = width 
-        m_canvas.height = height 
+        m_canvas.width = width
+        m_canvas.height = height
         var m_ctx = m_canvas.getContext("2d");
         drawIcon(m_ctx, halfWidth, halfHeight, param)
         const dataURL = m_canvas.toDataURL()
