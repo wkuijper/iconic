@@ -138,23 +138,14 @@
             cursor: pointer;
         }
     </style>
-    <!--    table {
-            border-collapse: collapse;
-        }   
-
-        table, th, td {
-            border: 1px solid black;
-        }-->
     <title>Iconic</title>
 </head>
 
 <body>
     <section>
         <h1>Rasterize Vector Icons</h1>
-        <!-- "http://wouterkuijper.com/iconic/index.html?f=mad3&u=fb91&s=64&c=white&b=off&bW=.7&bH=.7&bR=0.3&bC=rgba(0%2C0%2C255%2C0.4)&tX=0&tY=0&cC1=lightgray&cC2=gray" -->
         <img id="dock_w" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACiklEQVRoQ+2Yz8tPQRTGP8ePotgKWUhSLCRZiI0ddlKsFEu//gGSKMVSkZQF2b6vBRvKRvmd8mOj2CgbCzuSbDw6NXS9vvc7M1/v3O57m9nd7nOfM8955pyZucbAhw1cH1XgXHe4Olgd7HkG6hLtuUHR6VUHoynqOaA62HODotOrDkZT1HNAdbDNIEk7zOxBzw2c7Lok6Q6wC9hkZm/7LDJ7iUp6CmwFvgGbzez9IARKWgo8B9YHQd+Dg3NfoKRlwBtgecOtYQiUtBOYBpbMWIpzX6Ckw8AlYMGIOksWKOkmsLuRpB/AfTPbV7p+W5uMpHPACWBeyySiAsPS9rpd3cLx2buxmb0sJXSkQEk3gIORoCkC3wHrIjyfzGxlZwIl3QO87mJjrEBJp4GzMZLw/oqZHUvEZsH+clDSC2BLIkNM4HXgUCLXbTPbk4jNgv0RKOkxsC3j65jAV75PJvJ9MLM1idgsWFPgUeAisDCRISbwbjjOpdA9MbPtKcBczMwl6rU3BfipJTZiAn17OR4jCe+nzGx/IjYL9k8XDa39NbDif7qopFWAH+MWR3h+An4zeZg180Rw2zbhDj4DNozhSdkmfC89CWNvLcU6qM997G1C0iOgrTaiAj2ApCPAGcDPs83xBThvZhcSzZgIFr0uSboF7B3BniTw93eS/OCwNjx/NLNrE80486OowODCZcC7bBOfJTBzXrMGTxIYRJ4KS21+iD4sgUGkL7OrwKLB3egbteS/K3wT9067cXD/ZIKT3hG9SRwws6+zVjAFiJJrsEDsTiirwE7SXDBIdbBgcjuhrg52kuaCQaqDBZPbCXV1sJM0FwxSHSyY3E6oq4OdpLlgkOpgweR2Qv0LQnDFOUJrp+4AAAAASUVORK5CYII=">
         <img id="dock_sw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACCUlEQVRYR+2YvWsVQRTFfydWghG0sBALEbFNmoAgQkrFJo1pY4oUEv0HUoQEBK1Vgmghip1VqhR2BgJaGJA02phIwELzQQiCIl4Z2Pgx5L135+1uNsGZbuHcO789c2Z3dsUBGzpgvGTgulcsO5wdjhzIkciRyJGoOwPZ4exwewf+7+ewmT0FLgNHCp++AS8kXa0qOZU4bGYngFfA6RZgn4FLkt6UBa8K+B1wrgPMJ0knGwc2s0lg2gkyI2ncqd1VVtphM3sMXHNCzEoacmprA14E+p0QHySdcWprA54LG8oJsSDpglNbG/A94IYT4rmkYae2M7CZhWZPgDFJzzyNzewU8B443EH/ExiUNO/p20rzz6YzsyvALGDAaAL0LWAC2v42KP2ECDfRCvgQ8CMR+jowBYSXyN9jC7gt6U4ZZ3dqY+Aw6X2gpxAkQYcaMxsBzhb1HyU9qgK0FfDDkN9ogmToKgHjXrHDwd3d3kT7BtoLHG50X0DHwHeBm22WtHHoGPglcLFDBhuFjoFfAwOOTdMYdLfAjWW6DHAj0DFwylFxJzl7Go/fwGbWC6wAxxwZjiV7Bh0DLwPHuwAOJeE0Ni7pQZf1rrIYeBU46qr8Iwrufi9OeEuSzifWJ8njDIf/Cn1AOGF9BbaBdWAT2CiuvwBrQPgKfps0WwXi0h+hFTAktcjASXZ1If4FpVGvLWXVutEAAAAASUVORK5CYII=">
-        <!-- "http://wouterkuijper.com/iconic/index.html?f=mad3&u=f6c0&s=64&c=white&b=off&bW=1&bH=1&bR=0&bC=rgba(0%2C0%2C255%2C0.4)&tX=-0.0078125&tY=0&cC1=lightgray&cC2=gray" -->
         <img id="pan_w" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC9ElEQVR4Xu2azatOURSHn5+PjEwUMwPFxICEGCgGZmZCmclASZlIIZSJJAPFRJSRkVz5E5DyWQxQhvIPICMfS/t2bl3Xe/be7znv2Xvf95wz3V/r9+y1P87aS/T8U8/1MwAYPKDnBIYl0HMHiN8EzWwlcB3YDPHtMgD+AJyV9CVm7KglYGYXgXPAiphOC6jzC7gi6ULIliAAM3OdXCp81kfpNOCypPM+CF4AZrYG+AisCpEstPwbsF3Spzr7QgD2AY+ApYUKDJnlvOCkpJtNAVwDToVGKbz8rqSjTQE4cicKFxgy776kQwOAGgKhPWDwgA6XwG9gSYLjtcgl8APYC2wBbnR8yhQHYFa8pOduWZrZ8Y4hFAXgH/Fz+5KZnQauhrbzhuXFAKgT736y3gAbGgoMNSsCQC7xDk52ACPFV+v/PbAxNIUty7MCyC0+qweUID4bAJ/4d8Cmlm49TvPkS8An/m0VUhtHQNu6SQH4xL8GtrZV06B9MgClzfwcqyQAasVXx50LrKx2N98GM1jX5GflUe5/wvd1DsArfoKC/+vKzGIiVp0CcDO6W9LTLoXW9W1mMfGKTgE4255J2tVnAE77C0k7U0Mws1vAsdx7wNz4tRDM7DOwFnAvNpP8lkV01vkSmG/DSAhmdhC4ByyPMHjSVZICqF0OGSEkB+CD4OLzzhNiXHdSnpAFQEkQsgHwQTgC3E7kCVkBhCDc6Tgk7sbPDiA3hCIA+CD06l2g7p7Qi3eBkTfGKvlq6t8FFp7ps55QiXcxwnWTOvRH9FPMHrDQtpdV7tH6DsUXcwp0rNHbfbEekArKAKBNjlBMwCHVTDYdp5UHuDt7iutqU3Ghdi5meUZSbe5BKEnKhbmeZApkhMTFlP8BDkh6WFc5Jlf4AbA/ZrQC6zyWtMdnVxCAa2xmr4BtBQr0meRynHdI+t4aQAXBxeAPL4LE6a/AjC89dj6QKA9YZDM/lrkDgLFwTWHlwQOmcFLHkjR4wFi4prBy7z3gL+Ltn1DQCxcZAAAAAElFTkSuQmCC">
         <img id="pan_n" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADKElEQVR4Xu2aO4sUQRSFv+MDTHxgYCSIgoorrIkvNtrAzExEMRMDA0UDTUQw08REQQ0EwR+wrOJPUBBEEXygC+6CgqKmIr5QLLnSAzO90901Pf2o3akJZ+pxz1enbnXdaTHiH424fiKA6IARJxC3wIgbwD8JOudWAleBHeDfr2HA5uhZ4IKkNz5ze20B59xZ4CKwwmfQANo44IakU0WxFAJwzp0ArgFLigYL8Pcrks7kxZULILH9HLAuQHE+IX0Ddkt6ndW4CMB+4B6w1Ge2ANvYVjgt6XpZAJeA8wEKGySk25KOlQVg5E4OMluAbackHYoAMggU5YC6HfAD+APYM0Zdn2AdYBl6H/ABeAmsqYlAkAD+i5f0yEQ759bXCCE4AD3iO6teI4SgAPQVXzOEYADkiq8RQhAAvMTXBKF1AAOJrwFCqwBKia8YQmsAMsU758Ylveg+951zY/1ubRWcDq0AyBP/DFgtaWMKgH2/StKm9APRkBAaB1Ak3kpqs5K2pAA8BnYBc5I2VwihUQB54p8D44mwPADW5K3VHiV9TUEq88TYGABf8aapCECVEBoBkCf+FTCWsrQPAOvyzlwzpBNqB2Blp8OSpvrs237ifR3QGe49sL0PBINqJ0lRua52ABboJ2CyU4tPiqlPgK0ZV1xfB3RDmJBkV2e7PVr9wHJKz0mSMVcjAGzuz0kW/wI8BeZl8q4ABwVgXT8CewAb31e89WsMQAfCd2DeWV4yB6QX1SD/AjZkrHa/rxsF4BtXGQf4jp1uFwGEWBWODsh5FC5r9ax+cQvELRDgP0MxB8QckF0PiEmwYgLxFIinQICnwIykniKJc+4hMFGx/Ru/DfrG/zMpZixLOvwGtllV2HeAAdoFmQMGiH/ophHAMEnwJnB86DVod4ChHHAUuOVReGxXYvbsVrA9J+lyVpOil6T2Ag+A5aEqLIjrL3BQ0t1SAKyTc24aOLBAAdyXNJkXe+HL0gkEK3HvXGAQZqyKnP4/Ia3BC0ACwd4ZPAKsDRyElc3v5L0e2x2/N4DARZcOLwIojW6RdIwOWCQLWVpGdEBpdIuk48g74B8PEAVfYEJyxgAAAABJRU5ErkJggg==">
         <img id="dock_nw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACBUlEQVRYR+3YMUhVURzH8e+PpqCGlgZJiIhGCTEIXJzCaGkxmtKhRWxobogERfeixSFoaGmSQIfGQLGg5iSIdHCwqUgL0r8cvEqdrvee27n33SecC48Hj/8553P+/O+5//vEMbt0zLz8BTazPuAqsA58lfSu2zZ0CDaz08An4KyH/A24zw7wE/gFbANbf3z/AL4DnyU9aHKTPvgLcCZiwdeSrkWMLx1aJ3hB0o3SFSMD/BpeA3r/Y86OYJ3LBy9nN10Vc8eweeC3wJUK2o5iY8Edx+aB3bk7EJDhVrB54Dngbgm4NWwe+AkwUQBuFVsV3Dq2CrgrsHngacDvBboGmwe+DrwCTmR1XAlrZs8BN8epbLxrlFx/MRJw8gSF+E861wvMZ+BgrJm5Dm8FOH/EqpvAsKT3QaqCIB98G3gBLFZpZMzsI3CpBLMhqaducD9wR9L90InN7CEwGRj/VFLRsVk6TfQrkpk9A8ZKV9oPmJd0MzA2N6wO8AfgciDCvZFcCIxtDLzobqhAxJKkwcDYxsCPgXuBiJeSbgXGNgY+B6wCJ0sgu8CQpDetgt3iZjaVPSGL7onoE+KfJ13Mzs1sHHiU8zfBN2BG0mzM/Adjo08JH2Fmo8DF7Pc1Sa7Hru2qHVyb7IiJEjhl2MtAKolUEqkkmq6BlOGU4eIMpHO46QpJGW46w3sj/6Utcrpx4QAAAABJRU5ErkJggg==">
@@ -167,10 +158,8 @@
         <img id="dock_e" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACZElEQVRoQ+2YMahOYRjHf/9RsRgMuoMkg4VNuQbJwCYhGwZKbExClFxZ7qAslJKBFJkMBkrEgixiIdQdDIqFxaPndk7dvr5z3vc433t7z+092+l7nuc8v+f/vO/zvp9Y4o+WOB8FcOgKFwWLgplXoLRo5gIF0ysKBkuUuUFRMHOBgukVBYMlytygKJiDQGa2TdLT/8klewXNbAUwB7yVtLUr5FAAPwMrgXeSNnaBHBqgs30Ftkj6FgM6REDn+gHskPQ6BDlUQOf6DRyRdLsNclEAzewWsAtYXiXzB3gsaV9IgWqTqdfgqPlf4IykmaY4SQHNbBXwCljTkMB3YGdbqwUAPawBNyQdHfeN1IAfgPUBleYkrW6yiQCsXR9I2jMaJxmgmZ0DLoRasPr9mqTj42w7ALr789FZmRLwJnAoEvChpN0TAPQQ74HNkn75S0rAN8CmSMBPktZOCHAeUtKG1ICPfAOJBHwhaXpCgL6znpV0KTXgVeBEJOA9SfsnAOiz8bCkO3WslC06BXwElgUgveJ+W3jWE3Ds6SYZ4PyAMrsInA6s9cYdtIrht4mmQV/XpPF8mhSwSvAYcB7wob/w+QnMSLrcpnDEmGi9YSQHrJM3s4PAuur9i6TrMeszAPhE0va2OIsGGAPTcQ3elXQgFHeIgH72nJV0MgSXdEzEfDzGZqRFfcc9JWk2xndIgP6fjHfbXkl+gIh+sm/Raie+D1yR9DKarDIcBGBXqIX2BbBP9XLwLQrmoEKfHIqCfaqXg29RMAcV+uRQFOxTvRx8i4I5qNAnh6Jgn+rl4FsUzEGFPjn8A9mWvjnHzumKAAAAAElFTkSuQmCC">
         <p>Pick an open icon font:</p>
         <form>
-            <!--<fieldset>-->
-            <!--<legend class="doc">Sample form</legend>-->
             <select id="font" data-q="f">
-                <!-- will be populated by script below -->>
+                <!-- will be populated by script below -->
             </select><br>
             <h2>Font Information</h2>
             <p id="attributionParagraph"></p>
@@ -179,38 +168,35 @@
             <p><a id="homepageLink" target="_blank">homepage</a></p>
             <h2>Select Icon</h2>
             <p><a id="browseLink" target="_blank">Browse</a> the font icons.</p>
-            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" value="" data-q="u"><br>
-            <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="number" value="" step="16"><br>
-            <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" value=""><br>
+            <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" size="10" value="" data-q="u"><br>
+            <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="number" size="10" value="" step="16"><br>
+            <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" size="10" value=""><br>
             <img class="glyph-pg" id="pageUp" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAD30lEQVRoQ+2aW8iOWRTHfySSRimmaXIxI5NpkpkyymGKSFKUHAopRZPI6WKQJIcLNE1uRAo1EU1cUFIoh5xqMOR4QVFD0bgg0ghF/9oPX5/v2XuvvZ+H19e76u17v961116/vfZx7d2Bdi4d2jkfTcDPPcLNCDYjWN4CXwM/AP2APkBvoCvQEXgOPARuAzfdR/9XLlV3UUGNB5Y6KIvDl4BNwCHgkaWgT7cqwG+B34B5FTkm0D+Af3Pt5QL2AFYDC3MdKSm/BtgIPE21nwM4DDiTWrGh3DNgBKAubJZUwCnAXnNteQXGufFpspICOAHYb6qlOuUxwFGLOSvgx+qWPoafgX9iIS2AWsfuxRquUe8/oH/sUhIL2Ak4CSiCjSAHgYnA65AzsYBzgS0hYxG/TwK6AHsidEMqM4GdIaUYwG+AuyFDEb8PBv52epr2T0SU8amoq/7otnylejGAG4Blmc60hCtMVQG5Aljn8y0E2BO4AXyZAdgWXFWQ94EBwOMy/0KAk4F9NcFVBTkWOJwCKHjBaWJIEV/kWtvL6a47gF+BN2056YtgzuRigcuNpCab78u6qQ9Qi+m1hNClwOVCDgIuWiM4HdhtBMyBy4H8CbhiBbROMDFwnd1YeRVoOOuYnAb8ZQWcAeyKjGAMXDe3uGvMqPFeVAg5H9hsBdwOzI4AtMBprEiUd6kSMimCvwNLAoApcIXJKiG1TCggH4hvFvWNQaURRrfYW5a1Q9Eti8i11qsKMqmL+gA1oNUtfBKCs0RSudRTnuPaKOC4NYK+1IQiqLNh2ToZCxcLqR5w3tOaSevgd8Atj9EySCtcCDIEp/LalOhQYBqDvYDrgZOEIH8BrjrLqXBlkDFwdxzg/1ZA6cecBYsJR/maA0DZhBKx4rxbQmY5p49FFFoLrCrTCx2XhgJnIyr5lCoDfUnhEKC6nAa3bokaUTRHaPyVbv1CgIKaA2xtRDq3VLW5By38jQHsDlxOuA6ru028k4sFULrDXV60bqct9mO2iaZXFpqtVlo8qFF3uZvhg1XEdNHCiBK2pytYBoJOBRS0f9UuK5jVlh0LoPS/cifnnDRiDmAwTdjauBVQ5fu6xwM5jqaU1UFZN0umC6AUwAJSG4CPFUlFbgigvyZJBVQlup/XhcxUU4125T+BRan39DmAhasjgW01rJMXgMXAOXubvC9RBaCs6f5Qh069iMjd1h0B1rsDbpvZagtwVYAt69TLJt0XLDBEVS8o1BV1x6DXT5VJHYAtndM41esnfb4AlBeVvASeAA/cR99rkboBa3HaYrQJaGmtRtRtRrARo2Lxqd1H8C1rnL05qQvpvgAAAABJRU5ErkJggg==">
             <span id="glyphSpan"></span>
             <img class="glyph-pg" id="pageDown" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAEB0lEQVRoQ+2ab8iOdxTHP7QmaUqNlrzYRCQho7AXEy0pav4VUl5Iy3/Jn1hrpjZa4oUsZSsspe2FF1Iokn9hWDO82IraFPHCMKlN6FvXlbvbff1+5/yu636ex9N96u65n+7zO+d8fudcv79XFzq5dOnkfLQA3/QMtzLYymBxD/QFhgCDgP5AP6A70BV4AtwF/gRuZB/9X7lUXaKCmgqszaA8AV8BdgCHgfuehiHdqgA/AFYDiysKTKBbgb/K2isL2AvYCCwvG0hB+6+AbcCjVPtlAD8CzqQ6drR7DIwHVMJuSQWcBfzk9lauwZTs+XRZSQH8FDjo8lKd8iTgmMecF7CtyjLEMAq4bIX0AGoe+9tquIl694Ch1qnECvgWcBJQBjuCHAKmA89iwVgBFwHfxYy18e/zgX0xnxbA94FbMUPt8LtKdXi25Ct0bwHcAqxrBwCLy8+Bb0KKMcB3getAH4u3dtC5DQwDHhT5jgHOBH42BK7VhnYGIw26FpWrWeAW3cnAkRRAwQtuRsTLeUBOHgLrga8tUQV0lgI7AVXPcQPoD8BC4EUjm6EMWgYXwX0C/FtjfEMJyBwuN6fFvKYnlWGRaLAZXFSmIUBNpr8HDDeCy9VTIOvhPJCjgUveDM4F9hcA3gRGAHr2isQDWQSX21a5XghsohXLb17A0ACjlYQW3c8jz5sFMgYnFzrmUMUoU41kDnDACzgP+DEAsMS4uglBWuAUggav0HxXaCf0DH4PLIhkaBWw3TBqNoK0wlmqICmD3wJrDMGnQFYJpxA1TSghr0kog9ZJXkatkCo1zZeWhbslczlQUol6AD2QhqLAAyd7E4ET3gymHE1YMxmC9MLJVtI8OBD4w9LddTplIFPg5F6LEm0KXM9gb+Ba4k4iBTIVTosOAT71Akq/zF7QA5kKpxg3AV8WVVpsuzQOOJtQpnkTC2QZOPn5MHQoHAPsAVzMbolSOUOQZeE0Rqg8/0/NoNp9BuxKpcvaNYIsCyfThSuYPN5YBqXXE/g14Tqsvk9qIauACw4uHkDpfpxtPEsmkr1Zh00rawgYk22hgqYsGcwNaLT6ooLAqjChJZ9G+Kh4ALsBpwN7sqizihR0A6xVVvRUW/48gNJ/L9s5t9cxYvSYsL4TvYBqPyA7IqwoIWYzOlzSzZLrAigFMIfUAqCtMqnMjQX01yWpgHKiIz3t62a7PPqV9wArUu/pywDmoU4AdlcwT9aj/wKsBM75++RViyoAZU33h9p06o0IvfxTRo4Cm4FTRafVHuNVAdb61JtNOspf5siq3qBQKeqOQXcclUkzAGuD03Oqt5/0eQd4O/vxP+Af4E720femSLMBmxK0x2gL0NNbHVG3lcGOmBVPTJ0+gy8BeP+2OWn8C7oAAAAASUVORK5CYII="><br>
             <h2>Style Icon</h2>
-            <button type="button" id="glyphButton">Glyph</button><button type="button" id="borderButton">Border</button><button
-                type="button" id="alignButton">Align</button><br>
+            <button type="button" id="glyphButton">Glyph</button>
+            <button type="button" id="borderButton">Border</button>
+            <button type="button" id="alignButton">Align</button>
+            <button type="button" id="pinsButton">Pins</button><br>
             <hr>
             <div id="glyphDiv" style="display:block;">
-                <!--<p>Set the glyph color using a color-name, #hex, rgb(...) or rgba(...) Set the desired glyph size in pixels. All other dimensions will be ratios 
-                relative to the glyph size so that the end-result can always be resized by adjusting this value.</p>-->
-                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
-                    data-q="cC1"><br>
-                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
-                    data-q="cC2"><br>
-                <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" value="black" data-q="c"><br>
+                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" size="12" type="text"
+                    value="lightgray" data-q="cC1"><br>
+                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="12" type="text"
+                    value="gray" data-q="cC2"><br>
+                <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" size="12" value="black"
+                    data-q="c"><br>
                 <label for="size">Glyph Size:&nbsp;</label><input id="size" type="text" value="128" size="8" data-q="s">&nbsp;
-                <button id="decrSize" type="button">-</button><button id="incrSize" type="button">+</button>
-                <!--<img id="previewSize"></img><br>-->
-                <!--<br>
-            <p>Style the background. This determines the final size of the resulting icon bitmap. 
-                For flexibility it is recommended to use Canvas or WebGL primitives to draw the 
-                background instead of rendering it here.
-            </p>-->
+                <button id="decrSize" type="button">-</button><button id="incrSize" type="button">+</button><br>
+                <label for="alias">Anti-antialias:&nbsp;</label><input id="alias" size="6" type="text" value="off"
+                    data-q="a">&nbsp;<button id="decrAlias" type="button">-</button><button id="incrAlias" type="button">+</button><br>
             </div>
             <div id="borderDiv" style="display:none;">
                 <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text"
                     value="off" data-q="b" size="8">&nbsp;<button id="toggleBackground" type="button">Toggle</button><br>
                 <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text"
-                    value="rgba(0,0,255,0.4)" data-q="bC"><br>
+                    value="rgba(0,0,255,0.4)" size="12" data-q="bC"><br>
                 <label for="backgroundWidth">Width:&nbsp;</label><input id="backgroundWidth" type="text" value="1" size="8"
                     data-q="bW">&nbsp;
                 <button id="decrBackgroundWidth" type="button">-</button><button id="incrBackgroundWidth" type="button">+</button><br>
@@ -226,18 +212,21 @@
                 <button type="button" id="decrTweakX">-</button><button id="incrTweakX" type="button">+</button><br>
                 <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
                 <button type="button" id="decrTweakY">-</button><button id="incrTweakY" type="button">+</button><br>
-                <button id="autoCenter" type="button">Auto-Center Glyph on Background</button><br>
+                <button id="autoCenter" type="button">Auto-Center Glyph in Border</button><br>
                 <label for="pixelX">Pixel X:&nbsp;</label><input id="pixelX" type="text" value="0" size="8" data-q="pX">&nbsp;
                 <button type="button" id="decrPixelX">-</button><button id="incrPixelX" type="button">+</button><br>
-                <!--label for="pixelY">Pixel Y:&nbsp;</label><input id="pixelY" type="number" value="0" step=".5" data-q="pY"><br>-->
             </div>
-            <div id="settingsDiv" style="display:none">
-                
+            <div id="pinsDiv" style="display:none">
+                <label for="pinCoord">Coord:&nbsp;</label>
+                <input id="pinCoord" type="text" value="0,0" size="24"><br>
+                <label for="pinName">Name:&nbsp;</label>
+                <input id="pinName" type="text" value="" size="14">&nbsp;
+                <button type="button" id="pinButton">Pin</button><br>
+                <textarea id="pins" cols="32" rows="4" data-q="pins">{}</textarea>
             </div>
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
             <button type="button" id="generateSingletonButton">Generate Singleton</button><br>
-            <!--<button type="button" id="addToSetButton">Add to Set</button>-->
         </form>
     </section>
     <section id="generatedSingletonSection" style="display:none;">
@@ -282,16 +271,6 @@
             <!-- will be populated by script -->
          </pre>
     </section>
-    <!--<section>
-        <h1>Add To Set</h1>
-        <p>Optionally add the icon to an icon-set to be able to quickly (re)create as a sprite-sheet.</p>
-        <img id="previewAddToSet"></img><br>
-        <form>
-            <label for="iconName">Icon Name:</label><input id="iconName" type="text"></input><br>
-            <button type="button">Add Icon to Setspec</button><br>
-            <textarea rows="16" cols="64" style="font-family: monospace;"></textarea>
-        </form>
-    </section>-->
 </body>
 <script>
     const cc = `<img width="33" height="33" src="data:image/png;base64,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">`
@@ -346,6 +325,10 @@
 
     const inputColor = document.getElementById("color");
 
+    const inputAlias = document.getElementById("alias");
+    const incrAlias = document.getElementById("incrAlias");
+    const decrAlias = document.getElementById("decrAlias");
+
     const inputRenderBackground = document.getElementById("renderBackground");
     const toggleBackgroundButton = document.getElementById("toggleBackground");
     const inputBackgroundWidth = document.getElementById("backgroundWidth");
@@ -381,6 +364,11 @@
 
     const inputCanvasColor1 = document.getElementById("canvasColor1");
     const inputCanvasColor2 = document.getElementById("canvasColor2");
+
+    const inputPinCoord = document.getElementById("pinCoord")
+    const inputPinName = document.getElementById("pinName")
+    const pinButton = document.getElementById("pinButton")
+    const inputPins = document.getElementById("pins")
 
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
@@ -431,10 +419,12 @@
     const glyphButton = document.getElementById("glyphButton")
     const borderButton = document.getElementById("borderButton")
     const alignButton = document.getElementById("alignButton")
+    const pinsButton = document.getElementById("pinsButton")
 
     const glyphDiv = document.getElementById("glyphDiv")
     const borderDiv = document.getElementById("borderDiv")
     const alignDiv = document.getElementById("alignDiv")
+    const pinsDiv = document.getElementById("pinsDiv")
 
     let generateSingletonFlag = false
     const generateSingletonButton = document.getElementById("generateSingletonButton")
@@ -445,19 +435,28 @@
         glyphDiv.style.display = "block"
         borderDiv.style.display = "none"
         alignDiv.style.display = "none"
+        pinsDiv.style.display = "none"
     })
     borderButton.addEventListener("click", () => {
         glyphDiv.style.display = "none"
         borderDiv.style.display = "block"
         alignDiv.style.display = "none"
+        pinsDiv.style.display = "none"
     })
     alignButton.addEventListener("click", () => {
         glyphDiv.style.display = "none"
         borderDiv.style.display = "none"
         alignDiv.style.display = "block"
+        pinsDiv.style.display = "none"
+    })
+    pinsButton.addEventListener("click", () => {
+        glyphDiv.style.display = "none"
+        borderDiv.style.display = "none"
+        alignDiv.style.display = "none"
+        pinsDiv.style.display = "block"
     })
 
-    const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputPixelX, /*inputPixelY,*/ inputCanvasColor1, inputCanvasColor2];
+    const inputs = [inputPins, selectFont, inputUnicode, inputSize, inputAlias, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputPixelX, /*inputPixelY,*/ inputCanvasColor1, inputCanvasColor2];
 
     function link() {
         return [
@@ -492,7 +491,7 @@
         ctx.font = `${param.size}px ${param.font}`
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        var metrics = ctx.measureText(icon);
+        //var metrics = ctx.measureText(icon);
 
         const backgroundQuarterWidth = Math.round((param.size / 4) * param.backgroundWidth)
         const backgroundQuarterHeight = Math.round((param.size / 4) * param.backgroundHeight)
@@ -623,10 +622,33 @@
     let detailLocY = -1
     let dragging = false
 
+    inputPinCoord.addEventListener("input", () => {
+        const size = parseFloat(inputSize.value)
+        const parts = inputPinCoord.value.split(",")
+        if (parts.length != 2) {
+            return
+        }
+        detailLocX = 200 + (parts[0] * size)
+        detailLocY = 200 + (parts[1] * size)
+        requestAnimationFrame(redraw)
+    })
+
+    function updatePinCoordValue() {
+        if (detailLocX < 0 || detailLocY < 0) {
+            inputPinCoord.value = ""
+            return
+        }
+        const size = parseFloat(inputSize.value)
+        const x = (detailLocX - 200)/size
+        const y = (detailLocY - 200)/size
+        inputPinCoord.value = `${x},${y}`
+    }
+    
     canvas.addEventListener("mousemove", (event) => {
         if (dragging) {
             detailLocX = event.offsetX
             detailLocY = event.offsetY
+            updatePinCoordValue()
             requestAnimationFrame(redraw)
         }
     })
@@ -672,6 +694,7 @@
                 detailLocY = event.offsetY
                 dragging = true
             }
+            updatePinCoordValue()
             requestAnimationFrame(redraw)
         }
     })
@@ -682,6 +705,161 @@
             requestAnimationFrame(redraw)
         }
     })
+
+    function createGlyphCanvas(param, width, height, glyphX, glyphY) {
+        const canvas = document.createElement('canvas')
+
+        canvas.width = width
+        canvas.height = height
+
+        const ctx = canvas.getContext("2d")
+
+        ctx.font = `${param.size}px ${param.font}`
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+
+        ctx.fillStyle = param.color
+
+        const char = String.fromCharCode(param.unicode)
+        ctx.fillText(char, glyphX, glyphY);
+
+        let imgData = ctx.getImageData(0, 0, width, height)
+        const img = imgData.data
+
+        function p(x, y) {
+            const s = ((y * width) + x) * 4
+            return (img[s] !== 0 || img[s + 1] !== 0 || img[s + 2] !== 0 || img[s + 3] !== 0)
+        }
+
+        let top = -1
+        let bot = -1
+        let left = -1
+        let right = -1
+
+        // determine top
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                if (p(x, y)) {
+                    top = y
+                    break
+                }
+            }
+            if (top > 0) {
+                break
+            }
+        }
+        // is the sprite empty?
+        if (top < 0) {
+            top = bot = glyphY
+            left = right = glyphX
+            return [left, top, right, bot, canvas]
+        } else {
+            // determine bottom
+            for (let y = height - 1; y >= 0; y--) {
+                for (let x = 0; x < width; x++) {
+                    if (p(x, y)) {
+                        bot = y
+                        break
+                    }
+                }
+                if (bot > 0) {
+                    break
+                }
+            }
+            // determine left
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    if (p(x, y)) {
+                        left = x
+                        break
+                    }
+                }
+                if (left > 0) {
+                    break
+                }
+            }
+            // determine right
+            for (let x = width - 1; x >= 0; x--) {
+                for (let y = 0; y < height; y++) {
+                    if (p(x, y)) {
+                        right = x
+                        break
+                    }
+                }
+                if (right > 0) {
+                    break
+                }
+            }
+        }
+
+        if (param.alias === "off") {
+            return [left, top, right, bot, canvas]
+        }
+
+        const aliasTreshold = Math.round(param.alias * 255)
+
+        for (let y = top; y <= bot; y++) {
+            const offset = (y * width * 4) + 3
+            for (let x = left; x <= right; x++) {
+                const alpha = offset + (x * 4)
+                if (img[alpha] > aliasTreshold) {
+                    img[alpha] = 255
+                } else {
+                    img[alpha] = 0
+                }
+            }
+        }
+
+        ctx.putImageData(imgData, 0, 0)
+
+        return [left, top, right, bot, canvas]
+    }
+
+    function createIconCanvas(param) {
+
+        const quarterWidth = Math.round((param.size / 4) * param.backgroundWidth)
+        const quarterHeight = Math.round((param.size / 4) * param.backgroundHeight)
+
+        const halfWidth = quarterWidth * 2
+        const halfHeight = quarterHeight * 2
+
+        const width = halfWidth * 2
+        const height = halfHeight * 2
+
+        const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
+        const quarterRadius = Math.round(roundness * (Math.min(quarterHeight, quarterWidth) / 2))
+        const halfRadius = quarterRadius * 2
+        const radius = halfRadius * 2
+
+        const glyphX = Math.round(halfWidth + (param.tweakX * param.size)) + param.pixelX
+        const glyphY = Math.round(halfHeight + (param.tweakY * param.size))
+
+        const canvas = document.createElement('canvas')
+
+        canvas.width = width
+        canvas.height = height
+
+        const ctx = canvas.getContext("2d")
+
+        if (param.renderBackground) {
+            ctx.fillStyle = param.backgroundColor
+            if (halfWidth === halfHeight && roundness === 1) { // circle
+                ctx.beginPath();
+                ctx.arc(halfWidth, halfHeight, halfWidth, 0, 2 * Math.PI);
+                ctx.fill();
+            } else if (roundness === 0) { // rectangle
+                ctx.fillRect(0, 0, width, height)
+            } else {
+                drawRoundedRect(ctx, 0, 0, width, height, radius)
+                ctx.fill()
+            }
+        }
+
+        let [left, top, right, bot, glyphCanvas] = createGlyphCanvas(param, width, height, glyphX, glyphY)
+        ctx.drawImage(glyphCanvas, 0, 0)
+
+        return [quarterWidth, quarterHeight, quarterRadius, left, top, right, bot, canvas]
+    }
 
     function redraw() {
 
@@ -713,39 +891,58 @@
             backgroundColor: inputBackgroundColor.value,
             tweakX: parseFloat(inputTweakX.value),
             tweakY: parseFloat(inputTweakY.value),
-            pixelX: parseFloat(inputPixelX.value)/*,
-            pixelY: parseFloat(inputPixelY.value)*/
+            pixelX: parseFloat(inputPixelX.value),
+            alias: inputAlias.value === "off" ? "off" : parseFloat(inputAlias.value)
         }
 
-        let [quarterWidth, quarterHeight, quarterRadius] = drawIcon(ctx, 200, 200, param, true)
+        //
 
-        const halfWidth = quarterWidth * 2
-        const halfHeight = quarterHeight * 2
-        const halfRadius = quarterRadius * 2
-        const radius = halfRadius * 2
+        let [quarterWidth, quarterHeight, quarterRadius, left, top, right, bot, iconCanvas] = createIconCanvas(param)
 
-        let imageData = undefined
-        if (detailLocX >= 8 && detailLocY >= 8 && detailLocX < 392 && detailLocY < 392) {
-            imageData = ctx.getImageData(Math.round(detailLocX) - 8, Math.round(detailLocY) - 8, 17, 17).data
-        }
+        const halfWidth = 2 * quarterWidth
+        const halfHeight = 2 * quarterHeight
 
-        const width = halfWidth * 2
-        const height = halfHeight * 2
+        const width = 2 * halfWidth
+        const height = 2 * halfHeight
 
-        var b_canvas = document.createElement('canvas');
-        b_canvas.width = width
-        b_canvas.height = height
-        var b_ctx = b_canvas.getContext("2d");
-        drawIcon(b_ctx, halfWidth, halfHeight, param, false, true)
-        let [left, top, right, bot] = determineBounds(b_canvas, true)
+        const halfRadius = 2 * quarterRadius
+        const radius = 2 * halfRadius
 
-        autoCenterX = Math.round((param.tweakX * param.size) + ((Math.abs(left) - right) / 2)) / param.size
-        autoCenterY = Math.round((param.tweakY * param.size) + ((Math.abs(top) - bot) / 2)) / param.size
+        autoCenterX = Math.round((param.tweakX * param.size) + ((Math.abs(left - (halfWidth)) - (right - (halfWidth))) / 2)) / param.size
+        autoCenterY = Math.round((param.tweakY * param.size) + ((Math.abs(top - (halfHeight)) - (bot - (halfHeight))) / 2)) / param.size
+
+        ctx.drawImage(iconCanvas, 200 - halfWidth, 200 - halfHeight)
 
         ctx.strokeStyle = "green"
-        ctx.strokeRect(200 + left, 200 + top, right - left, bot - top)
+        ctx.strokeRect(200 - halfWidth + left - .5, 200 - halfHeight + top -.5, right - left + 1, bot - top + 1)
 
-        if (imageData) {
+        ctx.strokeStyle = "red"
+        drawRoundedRect(ctx, 200 - halfWidth - .5, 200 - halfHeight -.5, 200 + halfWidth + .5, 200 + halfHeight +.5, radius)
+        ctx.stroke()
+
+        let detailImg = undefined
+        if (detailLocX >= 8 && detailLocY >= 8 && detailLocX < 392 && detailLocY < 392) {
+            detailImg = ctx.getImageData(Math.round(detailLocX) - 8, Math.round(detailLocY) - 8, 17, 17).data
+        }
+
+        let pinnedLocs = []
+        try {
+            const pins = JSON.parse(inputPins.value)
+            for (name in pins) {
+                const parts = pins[name].split(",")
+                const x = Math.round((200 + (parseFloat(parts[0]) * param.size)) * 2) / 2
+                const y = Math.round((200 + (parseFloat(parts[1]) * param.size)) * 2) / 2
+                ctx.strokeStyle = "gold"
+                ctx.beginPath()
+                ctx.arc(x, y, 2, 0, 2*Math.PI)
+                ctx.stroke()
+                pinnedLocs.push([x, y])
+            }
+        } catch {
+            // NOOP
+        }
+
+        if (detailImg) {
             const px = detailPosX
             const py = detailPosY
             ctx.fillStyle = "rgb(30,30,30)"
@@ -764,10 +961,10 @@
                     const y = 8 + dy
                     if (x >= 0 && x < 400 && y >= 0 && y < 400) {
                         const offset = (y * 17 * 4) + (x * 4)
-                        const r = imageData[offset]
-                        const g = imageData[offset + 1]
-                        const b = imageData[offset + 2]
-                        const a = imageData[offset + 3]
+                        const r = detailImg[offset]
+                        const g = detailImg[offset + 1]
+                        const b = detailImg[offset + 2]
+                        const a = detailImg[offset + 3]
                         const xx = ppx + (6 * dx)
                         const yy = ppy + (6 * dy)
                         ctx.fillStyle = `rgb(${r},${g},${b})`
@@ -840,18 +1037,25 @@
             ctx.lineTo(px + .5, py + 7.5)
             ctx.stroke()
             ctx.strokeRect(detailLocX - 8, detailLocY - 8, 17, 17)
+            for (pinnedLoc of pinnedLocs) {
+                ctx.strokeStyle = "gold"
+                const x = (pinnedLoc[0]-detailLocX)
+                const y = (pinnedLoc[1]-detailLocY)
+                if (x > -8 && x < 8 && y > -8 && y < 8) {
+                    const xx = px + (6*x) + .5
+                    const yy = py + (6*y) + .5
+                    ctx.beginPath()
+                    ctx.arc(xx, yy, 4, 0, Math.PI*2)
+                    ctx.stroke()
+                }
+            }
         }
 
         if (!generateSingletonFlag) {
-            return 
+            return
         }
 
-        var m_canvas = document.createElement('canvas');
-        m_canvas.width = width
-        m_canvas.height = height
-        var m_ctx = m_canvas.getContext("2d");
-        drawIcon(m_ctx, halfWidth, halfHeight, param)
-        const dataURL = m_canvas.toDataURL()
+        const dataURL = iconCanvas.toDataURL()
         const font = selectFont.value
         const fontInfo = meta[font]
 
@@ -950,7 +1154,7 @@
         previewMatchedsize4.width = matchedWidth
         previewMatchedsize4.height = matchedHeight
 
-        generatedSingletonSection.style.display="block"
+        generatedSingletonSection.style.display = "block"
 
         generateSingletonFlag = false
     }
@@ -1260,6 +1464,41 @@
             })
         }
     )
+
+    incrAlias.addEventListener("click", () => {
+        if (inputAlias.value === "off") {
+            inputAlias.value = ".5"
+        } else {
+            let alias = parseFloat(inputAlias.value)
+            alias = Math.min(alias + .125, 1)
+            inputAlias.value = alias.toString(10)
+        }
+        requestAnimationFrame(redraw)
+    })
+    decrAlias.addEventListener("click", () => {
+        if (inputAlias.value === "off" || inputAlias.value === "0") {
+            inputAlias.value = "off"
+        } else {
+            let alias = parseFloat(inputAlias.value)
+            alias = Math.max(alias - .125, 0)
+            inputAlias.value = alias.toString(10)
+        }
+        requestAnimationFrame(redraw)
+    })
+
+    // attach event listener for pinning
+
+    pinButton.addEventListener("click", () => {
+        const coord = inputPinCoord.value
+        if (coord == "" || coord.split(",").length != 2) {
+            return
+        }
+        const name = inputPinName.value
+        currPins = JSON.parse(inputPins.value)
+        currPins[name] = coord
+        inputPins.value = JSON.stringify(currPins)
+        requestAnimationFrame(redraw)
+    })
 
     // use query parameters to populate form
     inputDecimal.value = ''
