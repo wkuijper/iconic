@@ -181,10 +181,6 @@
             <button type="button" id="pinsButton">Pin</button><br>
             <hr>
             <div id="glyphDiv" style="display:block;">
-                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" size="12" type="text"
-                    value="lightgray" data-q="cC1"><br>
-                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="12" type="text"
-                    value="gray" data-q="cC2"><br>
                 <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" size="12" value="black"
                     data-q="c"><br>
                 <label for="size">Glyph Size:&nbsp;</label><input id="size" type="text" value="128" size="8" data-q="s">&nbsp;
@@ -226,6 +222,10 @@
             </div>
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
+            <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" size="10" type="text" value="lightgray"
+                data-q="cC1">&nbsp;<button type="button" id="swapCanvasColorButton1">Swap</button><br>
+            <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="10" type="text" value="gray"
+                data-q="cC2">&nbsp;<button type="button" id="swapCanvasColorButton2">Swap</button><br>
             <button type="button" id="generateSingletonButton">Generate</button><br>
         </form>
     </section>
@@ -234,36 +234,36 @@
         <h2>Preview</h2>
 
         <p>Device Pixel Matched Size:<br>
-        <img id="previewMatchedsize1">
-        <img id="previewMatchedsize2">
-        <img id="previewMatchedsize3">
-        <img id="previewMatchedsize4"></p>
+            <img id="previewMatchedsize1">
+            <img id="previewMatchedsize2">
+            <img id="previewMatchedsize3">
+            <img id="previewMatchedsize4"></p>
 
         <p>Full Size:<br>
-        <img id="preview1">
-        <img id="preview2">
-        <img id="preview3">
-        <img id="preview4"></p>
+            <img id="preview1">
+            <img id="preview2">
+            <img id="preview3">
+            <img id="preview4"></p>
 
         <p>Half Size (Recommended):<br>
-        <img id="previewHalfsize1">
-        <img id="previewHalfsize2">
-        <img id="previewHalfsize3">
-        <img id="previewHalfsize4"></p>
+            <img id="previewHalfsize1">
+            <img id="previewHalfsize2">
+            <img id="previewHalfsize3">
+            <img id="previewHalfsize4"></p>
 
 
         <p>Quarter Size:<br>
-        <img id="previewQuartersize1">
-        <img id="previewQuartersize2">
-        <img id="previewQuartersize3">
-        <img id="previewQuartersize4"></p>
+            <img id="previewQuartersize1">
+            <img id="previewQuartersize2">
+            <img id="previewQuartersize3">
+            <img id="previewQuartersize4"></p>
 
         <h2>Javascript</h2>
 
         <pre id="jsResult">
             <!-- will be populated by script -->
         </pre>
-        
+
         <h2>HTML</h2>
 
         <pre id="htmlResult">
@@ -363,6 +363,8 @@
 
     const inputCanvasColor1 = document.getElementById("canvasColor1");
     const inputCanvasColor2 = document.getElementById("canvasColor2");
+    const swapCanvasColorButton1 = document.getElementById("swapCanvasColorButton1");
+    const swapCanvasColorButton2 = document.getElementById("swapCanvasColorButton2");
 
     const inputPinCoord = document.getElementById("pinCoord")
     const inputPinName = document.getElementById("pinName")
@@ -638,11 +640,11 @@
             return
         }
         const size = parseFloat(inputSize.value)
-        const x = (detailLocX - 200)/size
-        const y = (detailLocY - 200)/size
+        const x = (detailLocX - 200) / size
+        const y = (detailLocY - 200) / size
         inputPinCoord.value = `${x},${y}`
     }
-    
+
     canvas.addEventListener("mousemove", (event) => {
         if (dragging) {
             detailLocX = event.offsetX
@@ -726,8 +728,7 @@
         const img = imgData.data
 
         function p(x, y) {
-            const s = ((y * width) + x) * 4
-            return (img[s] !== 0 || img[s + 1] !== 0 || img[s + 2] !== 0 || img[s + 3] !== 0)
+            return (img[(((y * width) + x) * 4) + 3] > 0)
         }
 
         let top = -1
@@ -807,6 +808,71 @@
                     img[alpha] = 0
                 }
             }
+        }
+
+        // adjust top
+        let adjustedTop = -1
+        for (let y = top; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                if (p(x, y)) {
+                    adjustedTop = y
+                    break
+                }
+            }
+            if (adjustedTop > 0) {
+                break
+            }
+        }
+        if (adjustedTop >= 0) {
+            top = adjustedTop
+        }
+        // adjust bottom
+        let adjustedBottom = -1
+        for (let y = bot; y >= 0; y--) {
+            for (let x = 0; x < width; x++) {
+                if (p(x, y)) {
+                    adjustedBottom = y
+                    break
+                }
+            }
+            if (adjustedBottom > 0) {
+                break
+            }
+        }
+        if (adjustedBottom >= 0) {
+            bot = adjustedBottom
+        }
+        // adjust left
+        let adjustedLeft = -1
+        for (let x = left; x < width; x++) {
+            for (let y = 0; y < height; y++) {
+                if (p(x, y)) {
+                    adjustedLeft = x
+                    break
+                }
+            }
+            if (adjustedLeft > 0) {
+                break
+            }
+        }
+        if (adjustedLeft >= 0) {
+            left = adjustedLeft
+        }
+        // adjust right
+        let adjustedRight = -1
+        for (let x = right; x >= 0; x--) {
+            for (let y = 0; y < height; y++) {
+                if (p(x, y)) {
+                    adjustedRight = x
+                    break
+                }
+            }
+            if (adjustedRight > 0) {
+                break
+            }
+        }
+        if (adjustedRight >= 0) {
+            right = adjustedRight
         }
 
         ctx.putImageData(imgData, 0, 0)
@@ -913,10 +979,10 @@
         ctx.drawImage(iconCanvas, 200 - halfWidth, 200 - halfHeight)
 
         ctx.strokeStyle = "green"
-        ctx.strokeRect(200 - halfWidth + left - .5, 200 - halfHeight + top -.5, right - left + 1, bot - top + 1)
+        ctx.strokeRect(200 - halfWidth + left - .5, 200 - halfHeight + top - .5, right - left + 1, bot - top + 1)
 
         ctx.strokeStyle = "red"
-        drawRoundedRect(ctx, 200 - halfWidth - .5, 200 - halfHeight -.5, 200 + halfWidth + .5, 200 + halfHeight +.5, radius)
+        drawRoundedRect(ctx, 200 - halfWidth - .5, 200 - halfHeight - .5, 200 + halfWidth + .5, 200 + halfHeight + .5, radius)
         ctx.stroke()
 
         let detailImg = undefined
@@ -934,7 +1000,7 @@
                 const y = Math.round((200 + (parseFloat(parts[1]) * param.size)) * 2) / 2
                 ctx.strokeStyle = "gold"
                 ctx.beginPath()
-                ctx.arc(x, y, 2, 0, 2*Math.PI)
+                ctx.arc(x, y, 2, 0, 2 * Math.PI)
                 ctx.stroke()
                 pinnedLocs.push([x, y])
                 const xx = Math.round((halfWidth + (parseFloat(parts[0]) * param.size)) * 2) / 2
@@ -1042,13 +1108,13 @@
             ctx.strokeRect(detailLocX - 8, detailLocY - 8, 17, 17)
             for (pinnedLoc of pinnedLocs) {
                 ctx.strokeStyle = "gold"
-                const x = (pinnedLoc[0]-detailLocX)
-                const y = (pinnedLoc[1]-detailLocY)
+                const x = (pinnedLoc[0] - detailLocX)
+                const y = (pinnedLoc[1] - detailLocY)
                 if (x > -8 && x < 8 && y > -8 && y < 8) {
-                    const xx = px + (6*x) + .5
-                    const yy = py + (6*y) + .5
+                    const xx = px + (6 * x) + .5
+                    const yy = py + (6 * y) + .5
                     ctx.beginPath()
-                    ctx.arc(xx, yy, 4, 0, Math.PI*2)
+                    ctx.arc(xx, yy, 4, 0, Math.PI * 2)
                     ctx.stroke()
                 }
             }
@@ -1471,7 +1537,7 @@
 
     incrAlias.addEventListener("click", () => {
         if (inputAlias.value === "off") {
-            inputAlias.value = ".5"
+            inputAlias.value = ".125"
         } else {
             let alias = parseFloat(inputAlias.value)
             alias = Math.min(alias + .125, 1)
@@ -1501,6 +1567,15 @@
         currPins = JSON.parse(inputPins.value)
         currPins[name] = coord
         inputPins.value = JSON.stringify(currPins)
+        requestAnimationFrame(redraw)
+    })
+
+    swapCanvasColorButton1.addEventListener("click", () => {
+        [inputCanvasColor1.value, inputCanvasColor2.value] = [inputCanvasColor2.value, inputCanvasColor1.value]
+        requestAnimationFrame(redraw)
+    })
+    swapCanvasColorButton2.addEventListener("click", () => {
+        [inputCanvasColor1.value, inputCanvasColor2.value] = [inputCanvasColor2.value, inputCanvasColor1.value]
         requestAnimationFrame(redraw)
     })
 
