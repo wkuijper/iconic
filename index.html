@@ -169,7 +169,7 @@
             <h2>Select Icon</h2>
             <p><a id="browseLink" target="_blank">Browse</a> the font icons.</p>
             <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" size="10" value="" data-q="u"><br>
-            <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="number" size="10" value="" step="16"><br>
+            <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="text" size="10" value="" step="16"><br>
             <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" size="10" value=""><br>
             <img class="glyph-pg" id="pageUp" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAD30lEQVRoQ+2aW8iOWRTHfySSRimmaXIxI5NpkpkyymGKSFKUHAopRZPI6WKQJIcLNE1uRAo1EU1cUFIoh5xqMOR4QVFD0bgg0ghF/9oPX5/v2XuvvZ+H19e76u17v961116/vfZx7d2Bdi4d2jkfTcDPPcLNCDYjWN4CXwM/AP2APkBvoCvQEXgOPARuAzfdR/9XLlV3UUGNB5Y6KIvDl4BNwCHgkaWgT7cqwG+B34B5FTkm0D+Af3Pt5QL2AFYDC3MdKSm/BtgIPE21nwM4DDiTWrGh3DNgBKAubJZUwCnAXnNteQXGufFpspICOAHYb6qlOuUxwFGLOSvgx+qWPoafgX9iIS2AWsfuxRquUe8/oH/sUhIL2Ak4CSiCjSAHgYnA65AzsYBzgS0hYxG/TwK6AHsidEMqM4GdIaUYwG+AuyFDEb8PBv52epr2T0SU8amoq/7otnylejGAG4Blmc60hCtMVQG5Aljn8y0E2BO4AXyZAdgWXFWQ94EBwOMy/0KAk4F9NcFVBTkWOJwCKHjBaWJIEV/kWtvL6a47gF+BN2056YtgzuRigcuNpCab78u6qQ9Qi+m1hNClwOVCDgIuWiM4HdhtBMyBy4H8CbhiBbROMDFwnd1YeRVoOOuYnAb8ZQWcAeyKjGAMXDe3uGvMqPFeVAg5H9hsBdwOzI4AtMBprEiUd6kSMimCvwNLAoApcIXJKiG1TCggH4hvFvWNQaURRrfYW5a1Q9Eti8i11qsKMqmL+gA1oNUtfBKCs0RSudRTnuPaKOC4NYK+1IQiqLNh2ToZCxcLqR5w3tOaSevgd8Atj9EySCtcCDIEp/LalOhQYBqDvYDrgZOEIH8BrjrLqXBlkDFwdxzg/1ZA6cecBYsJR/maA0DZhBKx4rxbQmY5p49FFFoLrCrTCx2XhgJnIyr5lCoDfUnhEKC6nAa3bokaUTRHaPyVbv1CgIKaA2xtRDq3VLW5By38jQHsDlxOuA6ru028k4sFULrDXV60bqct9mO2iaZXFpqtVlo8qFF3uZvhg1XEdNHCiBK2pytYBoJOBRS0f9UuK5jVlh0LoPS/cifnnDRiDmAwTdjauBVQ5fu6xwM5jqaU1UFZN0umC6AUwAJSG4CPFUlFbgigvyZJBVQlup/XhcxUU4125T+BRan39DmAhasjgW01rJMXgMXAOXubvC9RBaCs6f5Qh069iMjd1h0B1rsDbpvZagtwVYAt69TLJt0XLDBEVS8o1BV1x6DXT5VJHYAtndM41esnfb4AlBeVvASeAA/cR99rkboBa3HaYrQJaGmtRtRtRrARo2Lxqd1H8C1rnL05qQvpvgAAAABJRU5ErkJggg==">
             <span id="glyphSpan"></span>
@@ -1003,8 +1003,8 @@
                 ctx.arc(x, y, 2, 0, 2 * Math.PI)
                 ctx.stroke()
                 pinnedLocs.push([x, y])
-                const xx = Math.round((halfWidth + (parseFloat(parts[0]) * param.size)) * 2) / 2
-                const yy = Math.round((halfHeight + (parseFloat(parts[1]) * param.size)) * 2) / 2
+                const xx = Math.round((halfWidth + (parseFloat(parts[0]) * param.size)) * 2) / (2*width)
+                const yy = Math.round((halfHeight + (parseFloat(parts[1]) * param.size)) * 2) / (2*height)
                 finalPins[name] = [xx, yy]
             }
         } catch {
@@ -1138,11 +1138,13 @@
     height: ${height},
     radius: ${radius},
     pins: ${JSON.stringify(finalPins)},
+    glyphRectangle: [${left}, ${top}, ${right-left}, ${bot-top}],
     generatorLink: "${link()}", 
     data: "${dataURL}"
 }`
 
-        document.getElementById("htmlResult").innerHTML = `&lt;img width="${halfWidth}" height="${halfHeight}" src="${dataURL}"&gt;`
+        document.getElementById("htmlResult").innerHTML = `&lt;!-- Source: ${fontInfo.fullname} by ${fontInfo.attribution}, ${fontInfo.homepage}, License: ${fontInfo.license} (${licenseMeta[fontInfo.license].url}), Generator: ${link()} --&gt;
+&lt;img width="${halfWidth}" height="${halfHeight}" src="${dataURL}"&gt;`
 
         preview1.src = dataURL
         preview1.style = `background-color: white;`
