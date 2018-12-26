@@ -186,92 +186,103 @@
             <span id="glyphSpan"></span>
             <img class="glyph-pg" id="pageDown" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAEB0lEQVRoQ+2ab8iOdxTHP7QmaUqNlrzYRCQho7AXEy0pav4VUl5Iy3/Jn1hrpjZa4oUsZSsspe2FF1Iokn9hWDO82IraFPHCMKlN6FvXlbvbff1+5/yu636ex9N96u65n+7zO+d8fudcv79XFzq5dOnkfLQA3/QMtzLYymBxD/QFhgCDgP5AP6A70BV4AtwF/gRuZB/9X7lUXaKCmgqszaA8AV8BdgCHgfuehiHdqgA/AFYDiysKTKBbgb/K2isL2AvYCCwvG0hB+6+AbcCjVPtlAD8CzqQ6drR7DIwHVMJuSQWcBfzk9lauwZTs+XRZSQH8FDjo8lKd8iTgmMecF7CtyjLEMAq4bIX0AGoe+9tquIl694Ch1qnECvgWcBJQBjuCHAKmA89iwVgBFwHfxYy18e/zgX0xnxbA94FbMUPt8LtKdXi25Ct0bwHcAqxrBwCLy8+Bb0KKMcB3getAH4u3dtC5DQwDHhT5jgHOBH42BK7VhnYGIw26FpWrWeAW3cnAkRRAwQtuRsTLeUBOHgLrga8tUQV0lgI7AVXPcQPoD8BC4EUjm6EMWgYXwX0C/FtjfEMJyBwuN6fFvKYnlWGRaLAZXFSmIUBNpr8HDDeCy9VTIOvhPJCjgUveDM4F9hcA3gRGAHr2isQDWQSX21a5XghsohXLb17A0ACjlYQW3c8jz5sFMgYnFzrmUMUoU41kDnDACzgP+DEAsMS4uglBWuAUggav0HxXaCf0DH4PLIhkaBWw3TBqNoK0wlmqICmD3wJrDMGnQFYJpxA1TSghr0kog9ZJXkatkCo1zZeWhbslczlQUol6AD2QhqLAAyd7E4ET3gymHE1YMxmC9MLJVtI8OBD4w9LddTplIFPg5F6LEm0KXM9gb+Ba4k4iBTIVTosOAT71Akq/zF7QA5kKpxg3AV8WVVpsuzQOOJtQpnkTC2QZOPn5MHQoHAPsAVzMbolSOUOQZeE0Rqg8/0/NoNp9BuxKpcvaNYIsCyfThSuYPN5YBqXXE/g14Tqsvk9qIauACw4uHkDpfpxtPEsmkr1Zh00rawgYk22hgqYsGcwNaLT6ooLAqjChJZ9G+Kh4ALsBpwN7sqizihR0A6xVVvRUW/48gNJ/L9s5t9cxYvSYsL4TvYBqPyA7IqwoIWYzOlzSzZLrAigFMIfUAqCtMqnMjQX01yWpgHKiIz3t62a7PPqV9wArUu/pywDmoU4AdlcwT9aj/wKsBM75++RViyoAZU33h9p06o0IvfxTRo4Cm4FTRafVHuNVAdb61JtNOspf5siq3qBQKeqOQXcclUkzAGuD03Oqt5/0eQd4O/vxP+Af4E720femSLMBmxK0x2gL0NNbHVG3lcGOmBVPTJ0+gy8BeP+2OWn8C7oAAAAASUVORK5CYII="><br>
             <h2>Style Icon</h2>
-            <p>Set the glyph color using a color-name, #hex, rgb(...) or rgba(...) Set the desired glyph size in pixels. All other dimensions will be ratios 
-                relative to the glyph size so that the end-result can always be resized by adjusting this value.</p>
-            <label for="color">Color:&nbsp;</label><input id="color" type="text" value="black" data-q="c"><br>
-            <label for="size">Size:&nbsp;</label><input id="size" type="text" value="128" size="8" data-q="s">&nbsp;
-            <button id="decrSize" type="button">-</button><button id="incrSize" type="button">+</button><br>
-            <img id="previewSize"></img><br>
-            <br>
+            <button type="button" id="glyphButton">Glyph</button><button type="button" id="borderButton">Border</button><button
+                type="button" id="alignButton">Align</button><br>
+            <hr>
+            <div id="glyphDiv" style="display:block;">
+                <!--<p>Set the glyph color using a color-name, #hex, rgb(...) or rgba(...) Set the desired glyph size in pixels. All other dimensions will be ratios 
+                relative to the glyph size so that the end-result can always be resized by adjusting this value.</p>-->
+                <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
+                    data-q="cC1"><br>
+                <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
+                    data-q="cC2"><br>
+                <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" value="black" data-q="c"><br>
+                <label for="size">Glyph Size:&nbsp;</label><input id="size" type="text" value="128" size="8" data-q="s">&nbsp;
+                <button id="decrSize" type="button">-</button><button id="incrSize" type="button">+</button>
+                <!--<img id="previewSize"></img><br>-->
+                <!--<br>
             <p>Style the background. This determines the final size of the resulting icon bitmap. 
                 For flexibility it is recommended to use Canvas or WebGL primitives to draw the 
                 background instead of rendering it here.
-            </p>
-            </p>
-            <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text"
-                value="off" data-q="b" size="8">&nbsp;<button id="toggleBackground" type="button">Toggle</button><br>
-            <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text" value="rgba(0,0,255,0.4)"
-                data-q="bC"><br>
-            <label for="backgroundWidth">Width:&nbsp;</label><input id="backgroundWidth" type="text" value="1" size="8"
-                data-q="bW">&nbsp;
+            </p>-->
+            </div>
+            <div id="borderDiv" style="display:none;">
+                <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text"
+                    value="off" data-q="b" size="8">&nbsp;<button id="toggleBackground" type="button">Toggle</button><br>
+                <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text"
+                    value="rgba(0,0,255,0.4)" data-q="bC"><br>
+                <label for="backgroundWidth">Width:&nbsp;</label><input id="backgroundWidth" type="text" value="1" size="8"
+                    data-q="bW">&nbsp;
                 <button id="decrBackgroundWidth" type="button">-</button><button id="incrBackgroundWidth" type="button">+</button><br>
-            <label for="backgroundHeight">Height:&nbsp;</label><input id="backgroundHeight" type="text"
-                value="1" size="8" data-q="bH">&nbsp;
+                <label for="backgroundHeight">Height:&nbsp;</label><input id="backgroundHeight" type="text" value="1"
+                    size="8" data-q="bH">&nbsp;
                 <button type="button" id="decrBackgroundHeight">-</button><button id="incrBackgroundHeight" type="button">+</button><br>
-            <label for="backgroundRoundness">Roundness:&nbsp;</label><input id="backgroundRoundness" type="text"
-                value="0" size="8" data-q="bR">&nbsp;
+                <label for="backgroundRoundness">Roundness:&nbsp;</label><input id="backgroundRoundness" type="text"
+                    value="0" size="8" data-q="bR">&nbsp;
                 <button id="decrBackgroundRoundness" type="button">-</button><button id="incrBackgroundRoundness" type="button">+</button><br>
+            </div>
+            <div id="alignDiv" style="display:none;">
+                <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="text" value="0" size="8" data-q="tX">&nbsp;
+                <button type="button" id="decrTweakX">-</button><button id="incrTweakX" type="button">+</button><br>
+                <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
+                <button type="button" id="decrTweakY">-</button><button id="incrTweakY" type="button">+</button><br>
+                <button id="autoCenter" type="button">Auto-Center Glyph on Background</button><br>
+                <label for="pixelX">Pixel X:&nbsp;</label><input id="pixelX" type="text" value="0" size="8" data-q="pX">&nbsp;
+                <button type="button" id="decrPixelX">-</button><button id="incrPixelX" type="button">+</button><br>
+                <!--label for="pixelY">Pixel Y:&nbsp;</label><input id="pixelY" type="number" value="0" step=".5" data-q="pY"><br>-->
+            </div>
+            <div id="settingsDiv" style="display:none">
+                
+            </div>
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
-            <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="text" value="0" size="8" data-q="tX">&nbsp;
-            <button type="button" id="decrTweakX">-</button><button id="incrTweakX" type="button">+</button><br>
-            <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
-            <button type="button" id="decrTweakY">-</button><button id="incrTweakY" type="button">+</button><br>
-            <button id="autoCenter" type="button">Auto-Center Glyph on Background</button><br>
-            <label for="pixelX">Pixel X:&nbsp;</label><input id="pixelX" type="text" value="0" size="8" data-q="pX">&nbsp;
-            <button type="button" id="decrPixelX">-</button><button id="incrPixelX" type="button">+</button><br>
-            <!--label for="pixelY">Pixel Y:&nbsp;</label><input id="pixelY" type="number" value="0" step=".5" data-q="pY"><br>-->
+            <button type="button" id="generateSingletonButton">Generate Singleton</button><br>
+            <!--<button type="button" id="addToSetButton">Add to Set</button>-->
         </form>
     </section>
-    <section>
-        <h1>Preview Result</h1>
-        <form>
-            <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" type="text" value="lightgray"
-                data-q="cC1"><br>
-            <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" type="text" value="gray"
-                data-q="cC2"><br>
-        </form>
+    <section id="generatedSingletonSection" style="display:none;">
+        <h1>Generated Singleton</h1>
 
-        <h2>Device Pixel Matched Size</h2>
+        <h2>Preview</h2>
 
+        <p>Device Pixel Matched Size:<br>
         <img id="previewMatchedsize1">
         <img id="previewMatchedsize2">
         <img id="previewMatchedsize3">
-        <img id="previewMatchedsize4">
+        <img id="previewMatchedsize4"></p>
 
-        <h2>Full Size</h2>
-
+        <p>Full Size:<br>
         <img id="preview1">
         <img id="preview2">
         <img id="preview3">
-        <img id="preview4"><br>
+        <img id="preview4"></p>
 
-        <h2>Half Size (Recommended)</h2>
-
+        <p>Half Size (Recommended):<br>
         <img id="previewHalfsize1">
         <img id="previewHalfsize2">
         <img id="previewHalfsize3">
-        <img id="previewHalfsize4">
+        <img id="previewHalfsize4"></p>
 
-        <h2>Quarter Size</h2>
 
+        <p>Quarter Size:<br>
         <img id="previewQuartersize1">
         <img id="previewQuartersize2">
         <img id="previewQuartersize3">
-        <img id="previewQuartersize4">
-    </section>
-    <section>
-        <h1>Generated Singleton</h1>
-        <p>JavaScript:</p>
+        <img id="previewQuartersize4"></p>
+
+        <h2>Javascript</h2>
+
         <pre id="jsResult">
             <!-- will be populated by script -->
         </pre>
-        <p>HTML:</p>
+        
+        <h2>HTML</h2>
+
         <pre id="htmlResult">
             <!-- will be populated by script -->
          </pre>
     </section>
-    <section>
+    <!--<section>
         <h1>Add To Set</h1>
         <p>Optionally add the icon to an icon-set to be able to quickly (re)create as a sprite-sheet.</p>
         <img id="previewAddToSet"></img><br>
@@ -280,7 +291,7 @@
             <button type="button">Add Icon to Setspec</button><br>
             <textarea rows="16" cols="64" style="font-family: monospace;"></textarea>
         </form>
-    </section>
+    </section>-->
 </body>
 <script>
     const cc = `<img width="33" height="33" src="data:image/png;base64,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">`
@@ -382,7 +393,6 @@
     const preview3 = document.getElementById("preview3");
     const preview4 = document.getElementById("preview4");
 
-
     const previewMatchedsize1 = document.getElementById("previewMatchedsize1");
     const previewMatchedsize2 = document.getElementById("previewMatchedsize2");
     const previewMatchedsize3 = document.getElementById("previewMatchedsize3");
@@ -398,8 +408,8 @@
     const previewQuartersize3 = document.getElementById("previewQuartersize3");
     const previewQuartersize4 = document.getElementById("previewQuartersize4");
 
-    const previewAddToSet = document.getElementById("previewAddToSet");
-    const previewSize = document.getElementById("previewSize");
+    //const previewAddToSet = document.getElementById("previewAddToSet");
+    //const previewSize = document.getElementById("previewSize");
 
     const pageUpImg = document.getElementById("pageUp");
     const pageDownImg = document.getElementById("pageDown");
@@ -417,6 +427,35 @@
     const dockEastImg = document.getElementById("dock_e");
     const dockSouthImg = document.getElementById("dock_s");
     const dockWestImg = document.getElementById("dock_w");
+
+    const glyphButton = document.getElementById("glyphButton")
+    const borderButton = document.getElementById("borderButton")
+    const alignButton = document.getElementById("alignButton")
+
+    const glyphDiv = document.getElementById("glyphDiv")
+    const borderDiv = document.getElementById("borderDiv")
+    const alignDiv = document.getElementById("alignDiv")
+
+    let generateSingletonFlag = false
+    const generateSingletonButton = document.getElementById("generateSingletonButton")
+    //const addToSetButton = document.getElementById("addToSetButton")
+    const generatedSingletonSection = document.getElementById("generatedSingletonSection")
+
+    glyphButton.addEventListener("click", () => {
+        glyphDiv.style.display = "block"
+        borderDiv.style.display = "none"
+        alignDiv.style.display = "none"
+    })
+    borderButton.addEventListener("click", () => {
+        glyphDiv.style.display = "none"
+        borderDiv.style.display = "block"
+        alignDiv.style.display = "none"
+    })
+    alignButton.addEventListener("click", () => {
+        glyphDiv.style.display = "none"
+        borderDiv.style.display = "none"
+        alignDiv.style.display = "block"
+    })
 
     const inputs = [selectFont, inputUnicode, inputSize, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputPixelX, /*inputPixelY,*/ inputCanvasColor1, inputCanvasColor2];
 
@@ -465,7 +504,7 @@
         const backgroundHeight = backgroundHalfHeight * 2
 
         const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
-        const quarterRadius = Math.round(roundness * (Math.min(backgroundQuarterHeight, backgroundQuarterWidth)/2))
+        const quarterRadius = Math.round(roundness * (Math.min(backgroundQuarterHeight, backgroundQuarterWidth) / 2))
         const halfRadius = quarterRadius * 2
         const radius = halfRadius * 2
 
@@ -490,7 +529,7 @@
         }
 
         ctx.fillStyle = param.color
-        ctx.fillText(icon, Math.round(x + (param.tweakX * param.size)) + param.pixelX, Math.round(y + (param.tweakY * param.size)) /*+ param.pixelY*/ );
+        ctx.fillText(icon, Math.round(x + (param.tweakX * param.size)) + param.pixelX, Math.round(y + (param.tweakY * param.size)) /*+ param.pixelY*/);
 
         return [backgroundQuarterWidth, backgroundQuarterHeight, quarterRadius]
     }
@@ -700,9 +739,9 @@
         drawIcon(b_ctx, halfWidth, halfHeight, param, false, true)
         let [left, top, right, bot] = determineBounds(b_canvas, true)
 
-        autoCenterX = Math.round((param.tweakX * param.size) + ((Math.abs(left) - right)/2)) / param.size
-        autoCenterY = Math.round((param.tweakY * param.size) + ((Math.abs(top) - bot)/2)) / param.size
-        
+        autoCenterX = Math.round((param.tweakX * param.size) + ((Math.abs(left) - right) / 2)) / param.size
+        autoCenterY = Math.round((param.tweakY * param.size) + ((Math.abs(top) - bot) / 2)) / param.size
+
         ctx.strokeStyle = "green"
         ctx.strokeRect(200 + left, 200 + top, right - left, bot - top)
 
@@ -803,6 +842,10 @@
             ctx.strokeRect(detailLocX - 8, detailLocY - 8, 17, 17)
         }
 
+        if (!generateSingletonFlag) {
+            return 
+        }
+
         var m_canvas = document.createElement('canvas');
         m_canvas.width = width
         m_canvas.height = height
@@ -876,13 +919,13 @@
         previewQuartersize4.width = quarterWidth
         previewQuartersize4.height = quarterHeight
 
-        previewAddToSet.src = dataURL
-        previewAddToSet.width = halfWidth
-        previewAddToSet.height = halfHeight
+        //previewAddToSet.src = dataURL
+        //previewAddToSet.width = halfWidth
+        //previewAddToSet.height = halfHeight
 
-        previewSize.src = dataURL
-        previewSize.width = halfWidth
-        previewSize.height = halfHeight
+        //previewSize.src = dataURL
+        //previewSize.width = halfWidth
+        //previewSize.height = halfHeight
 
         const matchedWidth = width / window.devicePixelRatio
         const matchedHeight = height / window.devicePixelRatio
@@ -906,6 +949,10 @@
         previewMatchedsize4.style = `background-color: black;`
         previewMatchedsize4.width = matchedWidth
         previewMatchedsize4.height = matchedHeight
+
+        generatedSingletonSection.style.display="block"
+
+        generateSingletonFlag = false
     }
 
     const url = window.location.href;
@@ -1042,6 +1089,11 @@
 
     // attach event listener for buttons
 
+    generateSingletonButton.addEventListener("click", () => {
+        generateSingletonFlag = true
+        requestAnimationFrame(redraw)
+    })
+
     toggleBackgroundButton.addEventListener("click", () => {
         inputRenderBackground.value = ["off", "no", "false", "0"].indexOf(inputRenderBackground.value.toLowerCase().trim()) == -1 ? "off" : "on"
         requestAnimationFrame(redraw)
@@ -1056,7 +1108,7 @@
     incrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         if (size === 8 || size === 16 || size === 32 || size === 64 || size === 128) {
-            size = size*2
+            size = size * 2
         } else if (size < 300) {
             size = (Math.floor(size / 4) * 4) + 4
         }
@@ -1066,7 +1118,7 @@
     decrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         if (size === 16 || size === 32 || size === 64 || size === 128 || size === 256) {
-            size = size/2
+            size = size / 2
         } else if (size > 8) {
             size = (Math.ceil(size / 4) * 4) - 4
         }
@@ -1077,18 +1129,18 @@
     incrBackgroundWidth.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let widthRatio = parseFloat(inputBackgroundWidth.value)
-        let width = size*widthRatio
+        let width = size * widthRatio
         width = Math.min((Math.floor(width / 4) * 4) + 4, 340)
-        widthRatio = width/size
+        widthRatio = width / size
         inputBackgroundWidth.value = widthRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrBackgroundWidth.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let widthRatio = parseFloat(inputBackgroundWidth.value)
-        let width = size*widthRatio
+        let width = size * widthRatio
         width = Math.max((Math.ceil(width / 4) * 4) - 4, 8)
-        widthRatio = width/size
+        widthRatio = width / size
         inputBackgroundWidth.value = widthRatio.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1096,18 +1148,18 @@
     incrBackgroundHeight.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let heightRatio = parseFloat(inputBackgroundHeight.value)
-        let height = size*heightRatio
+        let height = size * heightRatio
         height = Math.min((Math.floor(height / 4) * 4) + 4, 340)
-        heightRatio = height/size
+        heightRatio = height / size
         inputBackgroundHeight.value = heightRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrBackgroundHeight.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let heightRatio = parseFloat(inputBackgroundHeight.value)
-        let height = size*heightRatio
+        let height = size * heightRatio
         height = Math.max((Math.ceil(height / 4) * 4) - 4, 8)
-        heightRatio = height/size
+        heightRatio = height / size
         inputBackgroundHeight.value = heightRatio.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1118,9 +1170,9 @@
         let halfHeight = Math.floor((parseFloat(inputBackgroundHeight.value) * size) / 2)
         let minHalf = Math.min(halfWidth, halfHeight)
         let roundnessRatio = parseFloat(inputBackgroundRoundness.value)
-        let radius = minHalf*roundnessRatio
+        let radius = minHalf * roundnessRatio
         radius = Math.min((Math.floor(radius / 4) * 4) + 4, minHalf)
-        roundnessRatio = radius/minHalf
+        roundnessRatio = radius / minHalf
         inputBackgroundRoundness.value = roundnessRatio.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1130,9 +1182,9 @@
         let halfHeight = Math.floor((parseFloat(inputBackgroundHeight.value) * size) / 2)
         let minHalf = Math.min(halfWidth, halfHeight)
         let roundnessRatio = parseFloat(inputBackgroundRoundness.value)
-        let radius = minHalf*roundnessRatio
+        let radius = minHalf * roundnessRatio
         radius = Math.max((Math.ceil(radius / 4) * 4) - 4, 0)
-        roundnessRatio = radius/minHalf
+        roundnessRatio = radius / minHalf
         inputBackgroundRoundness.value = roundnessRatio.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1140,18 +1192,18 @@
     incrTweakX.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let tweakXRatio = parseFloat(inputTweakX.value)
-        let tweakX = size*tweakXRatio
+        let tweakX = size * tweakXRatio
         tweakX = Math.min(Math.floor(tweakX) + 1, 128)
-        tweakXRatio = tweakX/size
+        tweakXRatio = tweakX / size
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrTweakX.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let tweakXRatio = parseFloat(inputTweakX.value)
-        let tweakX = size*tweakXRatio
+        let tweakX = size * tweakXRatio
         tweakX = Math.max(Math.ceil(tweakX) - 1, -128)
-        tweakXRatio = tweakX/size
+        tweakXRatio = tweakX / size
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1159,22 +1211,22 @@
     incrTweakY.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let tweakYRatio = parseFloat(inputTweakY.value)
-        let tweakY = size*tweakYRatio
+        let tweakY = size * tweakYRatio
         tweakY = Math.min(Math.floor(tweakY) + 1, 128)
-        tweakYRatio = tweakY/size
+        tweakYRatio = tweakY / size
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrTweakY.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let tweakYRatio = parseFloat(inputTweakY.value)
-        let tweakY = size*tweakYRatio
+        let tweakY = size * tweakYRatio
         tweakY = Math.max(Math.ceil(tweakY) - 1, -128)
-        tweakYRatio = tweakY/size
+        tweakYRatio = tweakY / size
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
     })
-    
+
     incrPixelX.addEventListener("click", () => {
         let pixelX = parseFloat(inputPixelX.value)
         if (pixelX < -.5) {
