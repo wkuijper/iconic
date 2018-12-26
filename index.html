@@ -175,10 +175,10 @@
             <span id="glyphSpan"></span>
             <img class="glyph-pg" id="pageDown" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAEB0lEQVRoQ+2ab8iOdxTHP7QmaUqNlrzYRCQho7AXEy0pav4VUl5Iy3/Jn1hrpjZa4oUsZSsspe2FF1Iokn9hWDO82IraFPHCMKlN6FvXlbvbff1+5/yu636ex9N96u65n+7zO+d8fudcv79XFzq5dOnkfLQA3/QMtzLYymBxD/QFhgCDgP5AP6A70BV4AtwF/gRuZB/9X7lUXaKCmgqszaA8AV8BdgCHgfuehiHdqgA/AFYDiysKTKBbgb/K2isL2AvYCCwvG0hB+6+AbcCjVPtlAD8CzqQ6drR7DIwHVMJuSQWcBfzk9lauwZTs+XRZSQH8FDjo8lKd8iTgmMecF7CtyjLEMAq4bIX0AGoe+9tquIl694Ch1qnECvgWcBJQBjuCHAKmA89iwVgBFwHfxYy18e/zgX0xnxbA94FbMUPt8LtKdXi25Ct0bwHcAqxrBwCLy8+Bb0KKMcB3getAH4u3dtC5DQwDHhT5jgHOBH42BK7VhnYGIw26FpWrWeAW3cnAkRRAwQtuRsTLeUBOHgLrga8tUQV0lgI7AVXPcQPoD8BC4EUjm6EMWgYXwX0C/FtjfEMJyBwuN6fFvKYnlWGRaLAZXFSmIUBNpr8HDDeCy9VTIOvhPJCjgUveDM4F9hcA3gRGAHr2isQDWQSX21a5XghsohXLb17A0ACjlYQW3c8jz5sFMgYnFzrmUMUoU41kDnDACzgP+DEAsMS4uglBWuAUggav0HxXaCf0DH4PLIhkaBWw3TBqNoK0wlmqICmD3wJrDMGnQFYJpxA1TSghr0kog9ZJXkatkCo1zZeWhbslczlQUol6AD2QhqLAAyd7E4ET3gymHE1YMxmC9MLJVtI8OBD4w9LddTplIFPg5F6LEm0KXM9gb+Ba4k4iBTIVTosOAT71Akq/zF7QA5kKpxg3AV8WVVpsuzQOOJtQpnkTC2QZOPn5MHQoHAPsAVzMbolSOUOQZeE0Rqg8/0/NoNp9BuxKpcvaNYIsCyfThSuYPN5YBqXXE/g14Tqsvk9qIauACw4uHkDpfpxtPEsmkr1Zh00rawgYk22hgqYsGcwNaLT6ooLAqjChJZ9G+Kh4ALsBpwN7sqizihR0A6xVVvRUW/48gNJ/L9s5t9cxYvSYsL4TvYBqPyA7IqwoIWYzOlzSzZLrAigFMIfUAqCtMqnMjQX01yWpgHKiIz3t62a7PPqV9wArUu/pywDmoU4AdlcwT9aj/wKsBM75++RViyoAZU33h9p06o0IvfxTRo4Cm4FTRafVHuNVAdb61JtNOspf5siq3qBQKeqOQXcclUkzAGuD03Oqt5/0eQd4O/vxP+Af4E720femSLMBmxK0x2gL0NNbHVG3lcGOmBVPTJ0+gy8BeP+2OWn8C7oAAAAASUVORK5CYII="><br>
             <h2>Style Icon</h2>
-            <button type="button" id="glyphButton">Glyph</button>
-            <button type="button" id="borderButton">Border</button>
-            <button type="button" id="alignButton">Align</button>
-            <button type="button" id="pinsButton">Pins</button><br>
+            <button type="button" id="glyphButton">Front</button>
+            <button type="button" id="borderButton">Back</button>
+            <button type="button" id="alignButton">Pos</button>
+            <button type="button" id="pinsButton">Pin</button><br>
             <hr>
             <div id="glyphDiv" style="display:block;">
                 <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" size="12" type="text"
@@ -193,7 +193,7 @@
                     data-q="a">&nbsp;<button id="decrAlias" type="button">-</button><button id="incrAlias" type="button">+</button><br>
             </div>
             <div id="borderDiv" style="display:none;">
-                <label for="renderBackground">Render Background:&nbsp;</label><input id="renderBackground" type="text"
+                <label for="renderBackground">Draw Background:&nbsp;</label><input id="renderBackground" type="text"
                     value="off" data-q="b" size="8">&nbsp;<button id="toggleBackground" type="button">Toggle</button><br>
                 <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text"
                     value="rgba(0,0,255,0.4)" size="12" data-q="bC"><br>
@@ -212,7 +212,7 @@
                 <button type="button" id="decrTweakX">-</button><button id="incrTweakX" type="button">+</button><br>
                 <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
                 <button type="button" id="decrTweakY">-</button><button id="incrTweakY" type="button">+</button><br>
-                <button id="autoCenter" type="button">Auto-Center Glyph in Border</button><br>
+                <button id="autoCenter" type="button">Auto-Center Glyph on Background</button><br>
                 <label for="pixelX">Pixel X:&nbsp;</label><input id="pixelX" type="text" value="0" size="8" data-q="pX">&nbsp;
                 <button type="button" id="decrPixelX">-</button><button id="incrPixelX" type="button">+</button><br>
             </div>
@@ -226,11 +226,10 @@
             </div>
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
-            <button type="button" id="generateSingletonButton">Generate Singleton</button><br>
+            <button type="button" id="generateSingletonButton">Generate</button><br>
         </form>
     </section>
     <section id="generatedSingletonSection" style="display:none;">
-        <h1>Generated Singleton</h1>
 
         <h2>Preview</h2>
 
@@ -926,6 +925,7 @@
         }
 
         let pinnedLocs = []
+        let finalPins = {}
         try {
             const pins = JSON.parse(inputPins.value)
             for (name in pins) {
@@ -937,6 +937,9 @@
                 ctx.arc(x, y, 2, 0, 2*Math.PI)
                 ctx.stroke()
                 pinnedLocs.push([x, y])
+                const xx = Math.round((halfWidth + (parseFloat(parts[0]) * param.size)) * 2) / 2
+                const yy = Math.round((halfHeight + (parseFloat(parts[1]) * param.size)) * 2) / 2
+                finalPins[name] = [xx, yy]
             }
         } catch {
             // NOOP
@@ -1065,9 +1068,10 @@
     fontCreator: "${fontInfo.attribution}",
     fontHomepage: "${fontInfo.homepage}", 
     license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
-    quarterWidth: ${quarterWidth},
-    quarterHeight: ${quarterHeight},
-    quarterRadius: ${quarterRadius},
+    width: ${width},
+    height: ${height},
+    radius: ${radius},
+    pins: ${JSON.stringify(finalPins)},
     generatorLink: "${link()}", 
     data: "${dataURL}"
 }`
