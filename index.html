@@ -116,7 +116,7 @@
 
         #main {}
 
-        canvas {
+        canvas {    
             font-family: FontAwesome;
             border: 1px solid #CCC;
         }
@@ -144,18 +144,6 @@
 <body>
     <section>
         <h1>Rasterize Vector Icons</h1>
-        <img id="dock_w" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACiklEQVRoQ+2Yz8tPQRTGP8ePotgKWUhSLCRZiI0ddlKsFEu//gGSKMVSkZQF2b6vBRvKRvmd8mOj2CgbCzuSbDw6NXS9vvc7M1/v3O57m9nd7nOfM8955pyZucbAhw1cH1XgXHe4Olgd7HkG6hLtuUHR6VUHoynqOaA62HODotOrDkZT1HNAdbDNIEk7zOxBzw2c7Lok6Q6wC9hkZm/7LDJ7iUp6CmwFvgGbzez9IARKWgo8B9YHQd+Dg3NfoKRlwBtgecOtYQiUtBOYBpbMWIpzX6Ckw8AlYMGIOksWKOkmsLuRpB/AfTPbV7p+W5uMpHPACWBeyySiAsPS9rpd3cLx2buxmb0sJXSkQEk3gIORoCkC3wHrIjyfzGxlZwIl3QO87mJjrEBJp4GzMZLw/oqZHUvEZsH+clDSC2BLIkNM4HXgUCLXbTPbk4jNgv0RKOkxsC3j65jAV75PJvJ9MLM1idgsWFPgUeAisDCRISbwbjjOpdA9MbPtKcBczMwl6rU3BfipJTZiAn17OR4jCe+nzGx/IjYL9k8XDa39NbDif7qopFWAH+MWR3h+An4zeZg180Rw2zbhDj4DNozhSdkmfC89CWNvLcU6qM997G1C0iOgrTaiAj2ApCPAGcDPs83xBThvZhcSzZgIFr0uSboF7B3BniTw93eS/OCwNjx/NLNrE80486OowODCZcC7bBOfJTBzXrMGTxIYRJ4KS21+iD4sgUGkL7OrwKLB3egbteS/K3wT9067cXD/ZIKT3hG9SRwws6+zVjAFiJJrsEDsTiirwE7SXDBIdbBgcjuhrg52kuaCQaqDBZPbCXV1sJM0FwxSHSyY3E6oq4OdpLlgkOpgweR2Qv0LQnDFOUJrp+4AAAAASUVORK5CYII=">
-        <img id="dock_sw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACCUlEQVRYR+2YvWsVQRTFfydWghG0sBALEbFNmoAgQkrFJo1pY4oUEv0HUoQEBK1Vgmghip1VqhR2BgJaGJA02phIwELzQQiCIl4Z2Pgx5L135+1uNsGZbuHcO789c2Z3dsUBGzpgvGTgulcsO5wdjhzIkciRyJGoOwPZ4exwewf+7+ewmT0FLgNHCp++AS8kXa0qOZU4bGYngFfA6RZgn4FLkt6UBa8K+B1wrgPMJ0knGwc2s0lg2gkyI2ncqd1VVtphM3sMXHNCzEoacmprA14E+p0QHySdcWprA54LG8oJsSDpglNbG/A94IYT4rmkYae2M7CZhWZPgDFJzzyNzewU8B443EH/ExiUNO/p20rzz6YzsyvALGDAaAL0LWAC2v42KP2ECDfRCvgQ8CMR+jowBYSXyN9jC7gt6U4ZZ3dqY+Aw6X2gpxAkQYcaMxsBzhb1HyU9qgK0FfDDkN9ogmToKgHjXrHDwd3d3kT7BtoLHG50X0DHwHeBm22WtHHoGPglcLFDBhuFjoFfAwOOTdMYdLfAjWW6DHAj0DFwylFxJzl7Go/fwGbWC6wAxxwZjiV7Bh0DLwPHuwAOJeE0Ni7pQZf1rrIYeBU46qr8Iwrufi9OeEuSzifWJ8njDIf/Cn1AOGF9BbaBdWAT2CiuvwBrQPgKfps0WwXi0h+hFTAktcjASXZ1If4FpVGvLWXVutEAAAAASUVORK5CYII=">
-        <img id="pan_w" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC9ElEQVR4Xu2azatOURSHn5+PjEwUMwPFxICEGCgGZmZCmclASZlIIZSJJAPFRJSRkVz5E5DyWQxQhvIPICMfS/t2bl3Xe/be7znv2Xvf95wz3V/r9+y1P87aS/T8U8/1MwAYPKDnBIYl0HMHiN8EzWwlcB3YDPHtMgD+AJyV9CVm7KglYGYXgXPAiphOC6jzC7gi6ULIliAAM3OdXCp81kfpNOCypPM+CF4AZrYG+AisCpEstPwbsF3Spzr7QgD2AY+ApYUKDJnlvOCkpJtNAVwDToVGKbz8rqSjTQE4cicKFxgy776kQwOAGgKhPWDwgA6XwG9gSYLjtcgl8APYC2wBbnR8yhQHYFa8pOduWZrZ8Y4hFAXgH/Fz+5KZnQauhrbzhuXFAKgT736y3gAbGgoMNSsCQC7xDk52ACPFV+v/PbAxNIUty7MCyC0+qweUID4bAJ/4d8Cmlm49TvPkS8An/m0VUhtHQNu6SQH4xL8GtrZV06B9MgClzfwcqyQAasVXx50LrKx2N98GM1jX5GflUe5/wvd1DsArfoKC/+vKzGIiVp0CcDO6W9LTLoXW9W1mMfGKTgE4255J2tVnAE77C0k7U0Mws1vAsdx7wNz4tRDM7DOwFnAvNpP8lkV01vkSmG/DSAhmdhC4ByyPMHjSVZICqF0OGSEkB+CD4OLzzhNiXHdSnpAFQEkQsgHwQTgC3E7kCVkBhCDc6Tgk7sbPDiA3hCIA+CD06l2g7p7Qi3eBkTfGKvlq6t8FFp7ps55QiXcxwnWTOvRH9FPMHrDQtpdV7tH6DsUXcwp0rNHbfbEekArKAKBNjlBMwCHVTDYdp5UHuDt7iutqU3Ghdi5meUZSbe5BKEnKhbmeZApkhMTFlP8BDkh6WFc5Jlf4AbA/ZrQC6zyWtMdnVxCAa2xmr4BtBQr0meRynHdI+t4aQAXBxeAPL4LE6a/AjC89dj6QKA9YZDM/lrkDgLFwTWHlwQOmcFLHkjR4wFi4prBy7z3gL+Ltn1DQCxcZAAAAAElFTkSuQmCC">
-        <img id="pan_n" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADKElEQVR4Xu2aO4sUQRSFv+MDTHxgYCSIgoorrIkvNtrAzExEMRMDA0UDTUQw08REQQ0EwR+wrOJPUBBEEXygC+6CgqKmIr5QLLnSAzO90901Pf2o3akJZ+pxz1enbnXdaTHiH424fiKA6IARJxC3wIgbwD8JOudWAleBHeDfr2HA5uhZ4IKkNz5ze20B59xZ4CKwwmfQANo44IakU0WxFAJwzp0ArgFLigYL8Pcrks7kxZULILH9HLAuQHE+IX0Ddkt6ndW4CMB+4B6w1Ge2ANvYVjgt6XpZAJeA8wEKGySk25KOlQVg5E4OMluAbackHYoAMggU5YC6HfAD+APYM0Zdn2AdYBl6H/ABeAmsqYlAkAD+i5f0yEQ759bXCCE4AD3iO6teI4SgAPQVXzOEYADkiq8RQhAAvMTXBKF1AAOJrwFCqwBKia8YQmsAMsU758Ylveg+951zY/1ubRWcDq0AyBP/DFgtaWMKgH2/StKm9APRkBAaB1Ak3kpqs5K2pAA8BnYBc5I2VwihUQB54p8D44mwPADW5K3VHiV9TUEq88TYGABf8aapCECVEBoBkCf+FTCWsrQPAOvyzlwzpBNqB2Blp8OSpvrs237ifR3QGe49sL0PBINqJ0lRua52ABboJ2CyU4tPiqlPgK0ZV1xfB3RDmJBkV2e7PVr9wHJKz0mSMVcjAGzuz0kW/wI8BeZl8q4ABwVgXT8CewAb31e89WsMQAfCd2DeWV4yB6QX1SD/AjZkrHa/rxsF4BtXGQf4jp1uFwGEWBWODsh5FC5r9ax+cQvELRDgP0MxB8QckF0PiEmwYgLxFIinQICnwIykniKJc+4hMFGx/Ru/DfrG/zMpZixLOvwGtllV2HeAAdoFmQMGiH/ophHAMEnwJnB86DVod4ChHHAUuOVReGxXYvbsVrA9J+lyVpOil6T2Ag+A5aEqLIjrL3BQ0t1SAKyTc24aOLBAAdyXNJkXe+HL0gkEK3HvXGAQZqyKnP4/Ia3BC0ACwd4ZPAKsDRyElc3v5L0e2x2/N4DARZcOLwIojW6RdIwOWCQLWVpGdEBpdIuk48g74B8PEAVfYEJyxgAAAABJRU5ErkJggg==">
-        <img id="dock_nw" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACBUlEQVRYR+3YMUhVURzH8e+PpqCGlgZJiIhGCTEIXJzCaGkxmtKhRWxobogERfeixSFoaGmSQIfGQLGg5iSIdHCwqUgL0r8cvEqdrvee27n33SecC48Hj/8553P+/O+5//vEMbt0zLz8BTazPuAqsA58lfSu2zZ0CDaz08An4KyH/A24zw7wE/gFbANbf3z/AL4DnyU9aHKTPvgLcCZiwdeSrkWMLx1aJ3hB0o3SFSMD/BpeA3r/Y86OYJ3LBy9nN10Vc8eweeC3wJUK2o5iY8Edx+aB3bk7EJDhVrB54Dngbgm4NWwe+AkwUQBuFVsV3Dq2CrgrsHngacDvBboGmwe+DrwCTmR1XAlrZs8BN8epbLxrlFx/MRJw8gSF+E861wvMZ+BgrJm5Dm8FOH/EqpvAsKT3QaqCIB98G3gBLFZpZMzsI3CpBLMhqaducD9wR9L90InN7CEwGRj/VFLRsVk6TfQrkpk9A8ZKV9oPmJd0MzA2N6wO8AfgciDCvZFcCIxtDLzobqhAxJKkwcDYxsCPgXuBiJeSbgXGNgY+B6wCJ0sgu8CQpDetgt3iZjaVPSGL7onoE+KfJ13Mzs1sHHiU8zfBN2BG0mzM/Adjo08JH2Fmo8DF7Pc1Sa7Hru2qHVyb7IiJEjhl2MtAKolUEqkkmq6BlOGU4eIMpHO46QpJGW46w3sj/6Utcrpx4QAAAABJRU5ErkJggg==">
-        <img id="dock_n" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACXUlEQVRoQ+2YMahOYRjHf/8siMGiyCDJQEmmK5JMDOqmMDIpsVoUUYrFJEqUMpIBwx1u3EFuWdxBhEVZDIoig8VfJ4e+Lvd+7/nO+5xTX+/Zvnre5/n//v/O+XofMeaPxpyPTgFtvwGWA1skfevC3M4Abc8CO2qol5K2jg2g7fvAwXlAM5L2RkOGJ2j7BnB8AZC7ko5EQoYC2j4LXIBF3/Vrkk5FQYYB2j4G3AKWDBFv4LSkKxGQIYC2J4AZYGmi6J/ApKRHifXJZdkBba8Gqr+DVckqfhd+B3ZLetHw3KLlWQFtrwReA+tGFPkFmJD0bsTz/xzLDfgK2NxS3HtJG1r2+Hs8G6Dtx0Cu/7U5SdtzQGYBtP0QOJBD0ECPZ5J2te2ZC/AJsKatmHnnP0va2bZnFsC2IiLPF8BId7voXRLswuXIGSXBSHe76N1JgrbvAPuBFTXUD2Ba0qFoyFDA+mbxHFi/AMgnYF/uG8TgrGjAt8CmISl9lLQ2KskwQNvn6nVFivbrkk6mFDatiQS8DVRri5TngaTJlMKmNZGAc8C2REFZ74CdvIO2p6oPSCLgbI6bw/9mRSZ4FUhdB96TdDjRjEZlkYDVXqbarSwboqjaqO2R9LSR8sTiMMBqvu2LwJkhi9+wL2ilIRSwhjwBnAeqdeLg8xW4JOlyYhgjlYUD/lFl+yiwsf79QdLNkRQ3PNQZYENd2coLYDYre2pUEuzJ+GxjS4LZrOypUUmwJ+OzjS0JZrOyp0YlwZ6Mzza2JJjNyp4alQR7Mj7b2JJgNit7alQS7Mn4bGPHPsFfLISFOWN84tAAAAAASUVORK5CYII=">
-        <img id="dock_s" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACfElEQVRoQ+2Zz6tNURiGnzcZKEopSZTkx8DEkBiQAQaKAdNrSNdfYHCjFDMDJUUpmZm4DAwM5deEgbrFRN3JHSgDBkj5tLRunYFz9rf2XmvffU9rz269a5/n+d7b2WvtI6b80pT7UQVXe8O1wdrgwCdQ/0UHXlAjXm2wcUQDD9QGB15QI15tsHFEAw/UBgdeUCNebbBxRAMP1AYHXlAjXm2wcUSOgJk9AE4C62P8F/Bc0lnH8k6Rog2a2WbgLbBjDOUX4ISkd50sJiwuLfgR2NMAvyRp66oTNLM54KoT/LakWWc2KVasQTO7D5x30sxLOu3MJsVKCr4H9jtpPkva6cwmxUoKPgtfIE6aV5IOObNJsZKCt4BLTppHks45s0mxkoLbgE/AugaiP8ARSS+SyJ3hYoLh883sGnAZJv7IU+wbNDAUFYySF4ErQHjoj17fgOuSbjjLaBUrLrhMZWYzwK7496Kku62IExf1JpjIlS1eBbONcoVuVBtcocFn+9jaoGeUZha2WVs82YTMjxyPkiwNmtkisD0B3hP9KmmTJzgpk0sw7Ds/ABu7AsX1P4Gjkt50vV8WwbglOw48BdZ2hAqb7xlJDzve59/ybIJRMpzg7wFrWsIZMCcpbNKzXFkFo6TnBDEOPvvJIrtglEx5H7Ms+1jSmSy1jdykiGCUfAKccgK/lHTYmU2KFROMkq+BAw1EC5L2JVEnhIsKRsnw2mL3GKYlYK+k7wnMSdE+BMNJPjwj/3eiPyhpIYk4MVxcMLYYNgJBZEPk+w0cK/WiaXQGvQhGyfDr0nx8Rs5KupNYRqt4b4JR8kJ4jSjpZivaFot6FWzB13nJ1Av+BbKtiznMvWWeAAAAAElFTkSuQmCC">
-        <img id="dock_ne" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAACC0lEQVRYR+2XsWsUQRTGfx8mqDGtFiIiIYhYSUiXxlI7LRJiZUgXov+ARVSImN6ghUXEQgsbrQykFELSaBFIiBaBIFjYCSI2vjCwJ5sll7zbmdvbwA5sccf3dn733TfzZsQxGzpmvNQS2MxGgLPARWBD0lrL2K4Dm9lD4ApwBhgEBrLnNBCek8Ap4ATQD/QV/vXfwIikr+H7KoDfApMR0fsDjErarAQ4TGJmb4A7JaGrB46E/plF4ntlDrecLen0lqSrlS26YgxKQH+TdLlnwCXi0XvgDqHrAdwB9HtJt3saiXyuHZl+J2miNsAOp+sHfAR0PYEPgV6SNN2VSJjZa+BmdsgJc/wFViSNe9tyIdMGTEt6lRTYzM4B68ClNmChvd6Q9NkDnoMOwLOSXqQG3gb+d6M2UD8knfcAF+JxX9JiMmAzmwMeO0GeS5p1asMp7wmwLOlTSuAlYMoJ8UHSLaf2QFn0Ad7MvgDXnBA7koac2q4BfwwLygmxKmnMqe0a8DPgnhNiXxNw1uyTpYjEBSBcEMOF8rDxD7ieX0A9Ac62oHngwRGX2o52iHY/Jtrh1ovNbAZ4BIQmkh+/gKeSFso4WqxJBpwDvwsMZ593Jb1MAZpsH04J43lXcoc9k8ZoGuAY9zy1jcMel2I0jcMx7nlqG4c9LsVoGodj3PPUNg57XIrRNA7HuOep3QM2naAtafgZ1AAAAABJRU5ErkJggg==">
-        <img id="pan_s" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC+klEQVR4Xu2aOagTURSGv98FbCxs7C20EEQbURDhdYraubQuhbhho4i7hSuCKCq4gpWVoIiFdiKIqI1WCvpKtXZpxSPnkUASkpk7mZnMDblpc++Z839z7vbPFRP+04TrJwFIFTDhBNIQmPACCJ8EzWw+cA1YDuH9GgD8CTgm6VvIs4OGgJkdAs4B80KCRtDmL3BJ0qm8XHIBmNk+4AYwKy9YZP8bcEHSyay8MgG0yn4aWBiZuNB0fgMrJX0Z1CEPwEbgKTA79ImRtfMqOCjp5rAAzgPHIxNVNJ0HknYNC8DJ7S/6xMjaP5K0LQEYQCBvDkgVUNMQmJa0uPOlmNkHYEUNwyfKIfBV0pIeAO99yUoAqieQKiDGVSANgTQHpEkwrQJpGUz7gA4CZpY2QmknmLbC430WcPvpNOB29P0cG22YnWA7/g/gbgGbbiRngS4H1sz2AO4lDPISiwKYES/JrXnMbG/LqQ7xKmsH4MmdkXS2Z1nbAdwD5vQ54BUB0CW+HcvM3Ofz+Hl2fe0APKfXktb2CjWzQRBCAbj4E5Iu9on9DNgUcHoeCQDP452k1YEQQgD8A45IutIn5gtgXYB4bzIyAFkQ3JV92DEc8gC4+MOSrpYUP3IAWRC2tiDMBbIAuPgDkm5VIL4RACEQvkta1DNpfgSWuQkr6XZF4hsDkAVhOzAlaWcPAP8A65VxvULxjQIYCCFw8pppZmZFJrx+oUc6CfZLoO/qEAKhAvGNV0BbZ2EIFYmPBkCh4VCh+KgABEGoWHx0ADIh1CA+SgB9IdQkPloAXRBqFB81AE/uDfAT2BCyLA7ZpvF9wJB5V9YtASjzdfgOsLuyd9FMoFIV4I5OnsHZjKywp7qjdFTS5UHN8y5JrQFeAn6GH8efewtbJD0ZCkDrNPYcWD+O6oFXkqaycg+5LO3X5N8CS8cMwmdglaQ/pQC0O5uZW9CbgQWRg/gFPM66HtuZf24FRC62dHoJQGmEYx4gVcCYv8DS6acKKI1wzANMfAX8Bz47+FCa5tNiAAAAAElFTkSuQmCC">
-        <img id="pan_e" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC6ElEQVR4Xu2aOYhUQRCGv98DTAQxMDISjAQF8cJAxcTAzEAQFMXAwAtEUTw38ERYFBVEEEw2EwPBwFTTDQVRWVBQ1MBENxVbSmZhj5n3ema6xu6d99LXr7r+r6v6eiWG/NGQ66cB0ETAkBNoUmDIAyB+EgwhLAXuAusg/rv/APgtcF7Sl5i+o1IghHAauAYsiTGaQZvfwC1Jl+t8qQUQQjgK3AcW1BnL7H0Abki6VOVXJYBW2E8AKzITF+vOL2CjpA+dPqgDsBt4DiyM7TGzdhYFJyU96BXAdeBCZqK6deeJpMO9AjByx7rtMbP2TyXtbQB0IFA3BzQRMKAUsHV7kVPqZJ0CNkuPAI+A98AyBwjZApixUQkhrATeOEDIFsBtSeemj7gThGwBfAa2zj60OEDIFoAN/ldgszOErAEYBO9IyB7AFIQ1kiYd5oQiAJjuT8BaBwjFADAIH+3GKTGEogAYhAlJq2dviPpYHYoDkBpCkQD+pYOkVQkiwR3AO+CVw4XppKQT7c4GXaaDO4AxSQccDjGVJruA4A6gsgNPMCEESxE7RVYdpec1gJfArhrI8xNACCFGvLFxB2Cd2I1Oyseu4X8A69v94upC/MAApBRvtv4ApyTda7MMxo781KcDiYCUAEz8cUkPE4gvLgJM/BlJdxKJLwqAh/hiAJj4s5JGE458MXOA3Q5flHTTQXz2EWDir0iy4osZT5dLXdUknO0qMAjxWUfAnP8C5m3Ckc9+DvgG7JheveEgPusIMOe+A9sNgpP47AGYg1bOZjU8O1NuJ6fZynYSdNI7x2wDoCmR6aNGyAoXjgwqVp366SsFDgGPC68THJF0tRPcuiKpLcBrYLHT6HibtUPWQUljPQFo7cyeAXu8PXWyPy5pU5Xt2mLpFoRxYIOTk15m7Ufrtrqy+SgALQhWM7gPWO7lcSK7P4EXkvbH2IsGEGOsxDYNgBJHLaXPTQSkpFmirSYCShy1lD4PfQT8BaXNpVAlrZJjAAAAAElFTkSuQmCC">
-        <img id="dock_se" width="22" height="22" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAB+klEQVRYR+3YMUhVURzH8e8PB1OUCqQhDETEoaWIJl3ays2CnAJbRWcHBy0Kak90cAiCpgZxcnAUhBYFh0CDAheHNkFEBP/xh/vivYe+d+67976rdO50L/zve5/3u/9z3jlXXLND18xLBBf9xGLCMeG6BGJLxJaILVF0D8SEY8KNE/i/52Ez+wKMAT1JTqfAhqSXeXVOLgmb2R3gOzBwCewP8EzSdlZ4XuA9YLgJ5lDS3dLBZjYPvA2ELEmaDqy9sCxzwmb2GXgdiFiTNB5YWxh4B3gYiPgtaTCwtjDwug+oQMSWpNHA2sLAn4CZQMQ3SROBtYWB+4F9oKsJ5Bx4ImkzBGxmT4FVYFbSYuWezIPOP8jM3gNz0PC1QfAMUYW9AUxLWs4VnKCngDeA/4lUH0fAB0kfUybrT8wKA1cwZjYJDCXXB5JWQqDJj660QaW9HLwg6V3uCYeiLquraoP6sbAq6cWVAjfAurNmZsll0GVJtwn2aoEDsA7+KulV6S0RiHXnrqQHpYJTYN35U9K/pWvbezgltlxwC9jywC1iHVyzJG1LS2TAOvgEeCzph18UDjYz3zH7btoXMq0cx8AjSb4ibAt4AxhJFjKdQEfK7z3zHU3bEr4oUjO7D9wDbgN9QG9yfqvqvBu4CfyS9LzUebiVvojgLKmlufcvH/ybLVF4VNgAAAAASUVORK5CYII=">
-        <img id="dock_e" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAACZElEQVRoQ+2YMahOYRjHf/9RsRgMuoMkg4VNuQbJwCYhGwZKbExClFxZ7qAslJKBFJkMBkrEgixiIdQdDIqFxaPndk7dvr5z3vc433t7z+092+l7nuc8v+f/vO/zvp9Y4o+WOB8FcOgKFwWLgplXoLRo5gIF0ysKBkuUuUFRMHOBgukVBYMlytygKJiDQGa2TdLT/8klewXNbAUwB7yVtLUr5FAAPwMrgXeSNnaBHBqgs30Ftkj6FgM6REDn+gHskPQ6BDlUQOf6DRyRdLsNclEAzewWsAtYXiXzB3gsaV9IgWqTqdfgqPlf4IykmaY4SQHNbBXwCljTkMB3YGdbqwUAPawBNyQdHfeN1IAfgPUBleYkrW6yiQCsXR9I2jMaJxmgmZ0DLoRasPr9mqTj42w7ALr789FZmRLwJnAoEvChpN0TAPQQ74HNkn75S0rAN8CmSMBPktZOCHAeUtKG1ICPfAOJBHwhaXpCgL6znpV0KTXgVeBEJOA9SfsnAOiz8bCkO3WslC06BXwElgUgveJ+W3jWE3Ds6SYZ4PyAMrsInA6s9cYdtIrht4mmQV/XpPF8mhSwSvAYcB7wob/w+QnMSLrcpnDEmGi9YSQHrJM3s4PAuur9i6TrMeszAPhE0va2OIsGGAPTcQ3elXQgFHeIgH72nJV0MgSXdEzEfDzGZqRFfcc9JWk2xndIgP6fjHfbXkl+gIh+sm/Raie+D1yR9DKarDIcBGBXqIX2BbBP9XLwLQrmoEKfHIqCfaqXg29RMAcV+uRQFOxTvRx8i4I5qNAnh6Jgn+rl4FsUzEGFPjn8A9mWvjnHzumKAAAAAElFTkSuQmCC">
         <p>Pick an open icon font:</p>
         <form>
             <select id="font" data-q="f">
@@ -171,37 +159,30 @@
             <label for="unicode">Unicode:&nbsp;</label><input id="unicode" type="text" size="10" value="" data-q="u"><br>
             <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="text" size="10" value="" step="16"><br>
             <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" size="10" value=""><br>
-            <img class="glyph-pg" id="pageUp" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAD30lEQVRoQ+2aW8iOWRTHfySSRimmaXIxI5NpkpkyymGKSFKUHAopRZPI6WKQJIcLNE1uRAo1EU1cUFIoh5xqMOR4QVFD0bgg0ghF/9oPX5/v2XuvvZ+H19e76u17v961116/vfZx7d2Bdi4d2jkfTcDPPcLNCDYjWN4CXwM/AP2APkBvoCvQEXgOPARuAzfdR/9XLlV3UUGNB5Y6KIvDl4BNwCHgkaWgT7cqwG+B34B5FTkm0D+Af3Pt5QL2AFYDC3MdKSm/BtgIPE21nwM4DDiTWrGh3DNgBKAubJZUwCnAXnNteQXGufFpspICOAHYb6qlOuUxwFGLOSvgx+qWPoafgX9iIS2AWsfuxRquUe8/oH/sUhIL2Ak4CSiCjSAHgYnA65AzsYBzgS0hYxG/TwK6AHsidEMqM4GdIaUYwG+AuyFDEb8PBv52epr2T0SU8amoq/7otnylejGAG4Blmc60hCtMVQG5Aljn8y0E2BO4AXyZAdgWXFWQ94EBwOMy/0KAk4F9NcFVBTkWOJwCKHjBaWJIEV/kWtvL6a47gF+BN2056YtgzuRigcuNpCab78u6qQ9Qi+m1hNClwOVCDgIuWiM4HdhtBMyBy4H8CbhiBbROMDFwnd1YeRVoOOuYnAb8ZQWcAeyKjGAMXDe3uGvMqPFeVAg5H9hsBdwOzI4AtMBprEiUd6kSMimCvwNLAoApcIXJKiG1TCggH4hvFvWNQaURRrfYW5a1Q9Eti8i11qsKMqmL+gA1oNUtfBKCs0RSudRTnuPaKOC4NYK+1IQiqLNh2ToZCxcLqR5w3tOaSevgd8Atj9EySCtcCDIEp/LalOhQYBqDvYDrgZOEIH8BrjrLqXBlkDFwdxzg/1ZA6cecBYsJR/maA0DZhBKx4rxbQmY5p49FFFoLrCrTCx2XhgJnIyr5lCoDfUnhEKC6nAa3bokaUTRHaPyVbv1CgIKaA2xtRDq3VLW5By38jQHsDlxOuA6ru028k4sFULrDXV60bqct9mO2iaZXFpqtVlo8qFF3uZvhg1XEdNHCiBK2pytYBoJOBRS0f9UuK5jVlh0LoPS/cifnnDRiDmAwTdjauBVQ5fu6xwM5jqaU1UFZN0umC6AUwAJSG4CPFUlFbgigvyZJBVQlup/XhcxUU4125T+BRan39DmAhasjgW01rJMXgMXAOXubvC9RBaCs6f5Qh069iMjd1h0B1rsDbpvZagtwVYAt69TLJt0XLDBEVS8o1BV1x6DXT5VJHYAtndM41esnfb4AlBeVvASeAA/cR99rkboBa3HaYrQJaGmtRtRtRrARo2Lxqd1H8C1rnL05qQvpvgAAAABJRU5ErkJggg==">
+            <br>
+            <button  id="pageUpButton" type="button">Prev Page
+                <img class="glyph-pg" width="14" height="14" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAD30lEQVRoQ+2aW8iOWRTHfySSRimmaXIxI5NpkpkyymGKSFKUHAopRZPI6WKQJIcLNE1uRAo1EU1cUFIoh5xqMOR4QVFD0bgg0ghF/9oPX5/v2XuvvZ+H19e76u17v961116/vfZx7d2Bdi4d2jkfTcDPPcLNCDYjWN4CXwM/AP2APkBvoCvQEXgOPARuAzfdR/9XLlV3UUGNB5Y6KIvDl4BNwCHgkaWgT7cqwG+B34B5FTkm0D+Af3Pt5QL2AFYDC3MdKSm/BtgIPE21nwM4DDiTWrGh3DNgBKAubJZUwCnAXnNteQXGufFpspICOAHYb6qlOuUxwFGLOSvgx+qWPoafgX9iIS2AWsfuxRquUe8/oH/sUhIL2Ak4CSiCjSAHgYnA65AzsYBzgS0hYxG/TwK6AHsidEMqM4GdIaUYwG+AuyFDEb8PBv52epr2T0SU8amoq/7otnylejGAG4Blmc60hCtMVQG5Aljn8y0E2BO4AXyZAdgWXFWQ94EBwOMy/0KAk4F9NcFVBTkWOJwCKHjBaWJIEV/kWtvL6a47gF+BN2056YtgzuRigcuNpCab78u6qQ9Qi+m1hNClwOVCDgIuWiM4HdhtBMyBy4H8CbhiBbROMDFwnd1YeRVoOOuYnAb8ZQWcAeyKjGAMXDe3uGvMqPFeVAg5H9hsBdwOzI4AtMBprEiUd6kSMimCvwNLAoApcIXJKiG1TCggH4hvFvWNQaURRrfYW5a1Q9Eti8i11qsKMqmL+gA1oNUtfBKCs0RSudRTnuPaKOC4NYK+1IQiqLNh2ToZCxcLqR5w3tOaSevgd8Atj9EySCtcCDIEp/LalOhQYBqDvYDrgZOEIH8BrjrLqXBlkDFwdxzg/1ZA6cecBYsJR/maA0DZhBKx4rxbQmY5p49FFFoLrCrTCx2XhgJnIyr5lCoDfUnhEKC6nAa3bokaUTRHaPyVbv1CgIKaA2xtRDq3VLW5By38jQHsDlxOuA6ru028k4sFULrDXV60bqct9mO2iaZXFpqtVlo8qFF3uZvhg1XEdNHCiBK2pytYBoJOBRS0f9UuK5jVlh0LoPS/cifnnDRiDmAwTdjauBVQ5fu6xwM5jqaU1UFZN0umC6AUwAJSG4CPFUlFbgigvyZJBVQlup/XhcxUU4125T+BRan39DmAhasjgW01rJMXgMXAOXubvC9RBaCs6f5Qh069iMjd1h0B1rsDbpvZagtwVYAt69TLJt0XLDBEVS8o1BV1x6DXT5VJHYAtndM41esnfb4AlBeVvASeAA/cR99rkboBa3HaYrQJaGmtRtRtRrARo2Lxqd1H8C1rnL05qQvpvgAAAABJRU5ErkJggg==">
+            </button>
             <span id="glyphSpan"></span>
-            <img class="glyph-pg" id="pageDown" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAEB0lEQVRoQ+2ab8iOdxTHP7QmaUqNlrzYRCQho7AXEy0pav4VUl5Iy3/Jn1hrpjZa4oUsZSsspe2FF1Iokn9hWDO82IraFPHCMKlN6FvXlbvbff1+5/yu636ex9N96u65n+7zO+d8fudcv79XFzq5dOnkfLQA3/QMtzLYymBxD/QFhgCDgP5AP6A70BV4AtwF/gRuZB/9X7lUXaKCmgqszaA8AV8BdgCHgfuehiHdqgA/AFYDiysKTKBbgb/K2isL2AvYCCwvG0hB+6+AbcCjVPtlAD8CzqQ6drR7DIwHVMJuSQWcBfzk9lauwZTs+XRZSQH8FDjo8lKd8iTgmMecF7CtyjLEMAq4bIX0AGoe+9tquIl694Ch1qnECvgWcBJQBjuCHAKmA89iwVgBFwHfxYy18e/zgX0xnxbA94FbMUPt8LtKdXi25Ct0bwHcAqxrBwCLy8+Bb0KKMcB3getAH4u3dtC5DQwDHhT5jgHOBH42BK7VhnYGIw26FpWrWeAW3cnAkRRAwQtuRsTLeUBOHgLrga8tUQV0lgI7AVXPcQPoD8BC4EUjm6EMWgYXwX0C/FtjfEMJyBwuN6fFvKYnlWGRaLAZXFSmIUBNpr8HDDeCy9VTIOvhPJCjgUveDM4F9hcA3gRGAHr2isQDWQSX21a5XghsohXLb17A0ACjlYQW3c8jz5sFMgYnFzrmUMUoU41kDnDACzgP+DEAsMS4uglBWuAUggav0HxXaCf0DH4PLIhkaBWw3TBqNoK0wlmqICmD3wJrDMGnQFYJpxA1TSghr0kog9ZJXkatkCo1zZeWhbslczlQUol6AD2QhqLAAyd7E4ET3gymHE1YMxmC9MLJVtI8OBD4w9LddTplIFPg5F6LEm0KXM9gb+Ba4k4iBTIVTosOAT71Akq/zF7QA5kKpxg3AV8WVVpsuzQOOJtQpnkTC2QZOPn5MHQoHAPsAVzMbolSOUOQZeE0Rqg8/0/NoNp9BuxKpcvaNYIsCyfThSuYPN5YBqXXE/g14Tqsvk9qIauACw4uHkDpfpxtPEsmkr1Zh00rawgYk22hgqYsGcwNaLT6ooLAqjChJZ9G+Kh4ALsBpwN7sqizihR0A6xVVvRUW/48gNJ/L9s5t9cxYvSYsL4TvYBqPyA7IqwoIWYzOlzSzZLrAigFMIfUAqCtMqnMjQX01yWpgHKiIz3t62a7PPqV9wArUu/pywDmoU4AdlcwT9aj/wKsBM75++RViyoAZU33h9p06o0IvfxTRo4Cm4FTRafVHuNVAdb61JtNOspf5siq3qBQKeqOQXcclUkzAGuD03Oqt5/0eQd4O/vxP+Af4E720femSLMBmxK0x2gL0NNbHVG3lcGOmBVPTJ0+gy8BeP+2OWn8C7oAAAAASUVORK5CYII="><br>
+            <button id="pageDownButton" type="button">Next Page
+                <img class="glyph-pg" width="14" height="14" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAEB0lEQVRoQ+2ab8iOdxTHP7QmaUqNlrzYRCQho7AXEy0pav4VUl5Iy3/Jn1hrpjZa4oUsZSsspe2FF1Iokn9hWDO82IraFPHCMKlN6FvXlbvbff1+5/yu636ex9N96u65n+7zO+d8fudcv79XFzq5dOnkfLQA3/QMtzLYymBxD/QFhgCDgP5AP6A70BV4AtwF/gRuZB/9X7lUXaKCmgqszaA8AV8BdgCHgfuehiHdqgA/AFYDiysKTKBbgb/K2isL2AvYCCwvG0hB+6+AbcCjVPtlAD8CzqQ6drR7DIwHVMJuSQWcBfzk9lauwZTs+XRZSQH8FDjo8lKd8iTgmMecF7CtyjLEMAq4bIX0AGoe+9tquIl694Ch1qnECvgWcBJQBjuCHAKmA89iwVgBFwHfxYy18e/zgX0xnxbA94FbMUPt8LtKdXi25Ct0bwHcAqxrBwCLy8+Bb0KKMcB3getAH4u3dtC5DQwDHhT5jgHOBH42BK7VhnYGIw26FpWrWeAW3cnAkRRAwQtuRsTLeUBOHgLrga8tUQV0lgI7AVXPcQPoD8BC4EUjm6EMWgYXwX0C/FtjfEMJyBwuN6fFvKYnlWGRaLAZXFSmIUBNpr8HDDeCy9VTIOvhPJCjgUveDM4F9hcA3gRGAHr2isQDWQSX21a5XghsohXLb17A0ACjlYQW3c8jz5sFMgYnFzrmUMUoU41kDnDACzgP+DEAsMS4uglBWuAUggav0HxXaCf0DH4PLIhkaBWw3TBqNoK0wlmqICmD3wJrDMGnQFYJpxA1TSghr0kog9ZJXkatkCo1zZeWhbslczlQUol6AD2QhqLAAyd7E4ET3gymHE1YMxmC9MLJVtI8OBD4w9LddTplIFPg5F6LEm0KXM9gb+Ba4k4iBTIVTosOAT71Akq/zF7QA5kKpxg3AV8WVVpsuzQOOJtQpnkTC2QZOPn5MHQoHAPsAVzMbolSOUOQZeE0Rqg8/0/NoNp9BuxKpcvaNYIsCyfThSuYPN5YBqXXE/g14Tqsvk9qIauACw4uHkDpfpxtPEsmkr1Zh00rawgYk22hgqYsGcwNaLT6ooLAqjChJZ9G+Kh4ALsBpwN7sqizihR0A6xVVvRUW/48gNJ/L9s5t9cxYvSYsL4TvYBqPyA7IqwoIWYzOlzSzZLrAigFMIfUAqCtMqnMjQX01yWpgHKiIz3t62a7PPqV9wArUu/pywDmoU4AdlcwT9aj/wKsBM75++RViyoAZU33h9p06o0IvfxTRo4Cm4FTRafVHuNVAdb61JtNOspf5siq3qBQKeqOQXcclUkzAGuD03Oqt5/0eQd4O/vxP+Af4E720femSLMBmxK0x2gL0NNbHVG3lcGOmBVPTJ0+gy8BeP+2OWn8C7oAAAAASUVORK5CYII="><br>
+            </button>
+            <br>
             <h2>Style Icon</h2>
-            <button type="button" id="glyphButton">Front</button>
-            <button type="button" id="borderButton">Back</button>
-            <button type="button" id="alignButton">Pos</button>
-            <button type="button" id="pinsButton">Pin</button><br>
+            <button type="button" id="glyphButton">Glyph</button>
+            <button type="button" id="alignButton">Align</button>
             <hr>
             <div id="glyphDiv" style="display:block;">
-                <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" size="12" value="black"
+                <label for="color">Glyph Color:&nbsp;</label><input id="color" type="text" size="12" value="white"
                     data-q="c"><br>
-                <label for="size">Glyph Size:&nbsp;</label><input id="size" type="text" value="128" size="8" data-q="s">&nbsp;
+                <label for="size">Glyph Size:&nbsp;</label><input id="size" type="text" value="64" size="8" data-q="s">&nbsp;
                 <button id="decrSize" type="button">-</button><button id="incrSize" type="button">+</button><br>
-                <label for="alias">Anti-antialias:&nbsp;</label><input id="alias" size="6" type="text" value="off"
-                    data-q="a">&nbsp;<button id="decrAlias" type="button">-</button><button id="incrAlias" type="button">+</button><br>
-            </div>
-            <div id="borderDiv" style="display:none;">
-                <label for="renderBackground">Draw Background:&nbsp;</label><input id="renderBackground" type="text"
-                    value="off" data-q="b" size="8">&nbsp;<button id="toggleBackground" type="button">Toggle</button><br>
-                <label for="backgroundColor">Background Color:&nbsp;</label><input id="backgroundColor" type="text"
-                    value="rgba(0,0,255,0.4)" size="12" data-q="bC"><br>
                 <label for="backgroundWidth">Width:&nbsp;</label><input id="backgroundWidth" type="text" value="1" size="8"
                     data-q="bW">&nbsp;
                 <button id="decrBackgroundWidth" type="button">-</button><button id="incrBackgroundWidth" type="button">+</button><br>
                 <label for="backgroundHeight">Height:&nbsp;</label><input id="backgroundHeight" type="text" value="1"
                     size="8" data-q="bH">&nbsp;
                 <button type="button" id="decrBackgroundHeight">-</button><button id="incrBackgroundHeight" type="button">+</button><br>
-                <label for="backgroundRoundness">Roundness:&nbsp;</label><input id="backgroundRoundness" type="text"
-                    value="0" size="8" data-q="bR">&nbsp;
-                <button id="decrBackgroundRoundness" type="button">-</button><button id="incrBackgroundRoundness" type="button">+</button><br>
             </div>
             <div id="alignDiv" style="display:none;">
                 <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="text" value="0" size="8" data-q="tX">&nbsp;
@@ -209,19 +190,11 @@
                 <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
                 <button type="button" id="decrTweakY">-</button><button id="incrTweakY" type="button">+</button><br>
                 <button id="autoCenter" type="button">Auto-Center Glyph on Background</button><br>
-                <label for="pixelX">Pixel X:&nbsp;</label><input id="pixelX" type="text" value="0" size="8" data-q="pX">&nbsp;
-                <button type="button" id="decrPixelX">-</button><button id="incrPixelX" type="button">+</button><br>
-            </div>
-            <div id="pinsDiv" style="display:none">
-                <label for="pinCoord">Coord:&nbsp;</label>
-                <input id="pinCoord" type="text" value="0,0" size="24"><br>
-                <label for="pinName">Name:&nbsp;</label>
-                <input id="pinName" type="text" value="" size="14">&nbsp;
-                <button type="button" id="pinButton">Pin</button><br>
-                <textarea id="pins" cols="32" rows="4" data-q="pins">{}</textarea>
             </div>
             <canvas width="400" height="400" id="canvas"></canvas><br>
             <br>
+            <label for="resolution">Resolution:&nbsp;</label><input id="resolution" size="6" type="text" value="2x"
+                data-q="at">&nbsp;<button id="decrResolution" type="button">-</button><button id="incrResolution" type="button">+</button><br>
             <label for="canvasColor1">Canvas Color 1:&nbsp;</label><input id="canvasColor1" size="10" type="text" value="lightgray"
                 data-q="cC1">&nbsp;<button type="button" id="swapCanvasColorButton1">Swap</button><br>
             <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="10" type="text" value="gray"
@@ -231,32 +204,25 @@
     </section>
     <section id="generatedSingletonSection" style="display:none;">
 
-        <h2>Preview</h2>
+        <h2>Images</h2>
 
-        <p>Device Pixel Matched Size:<br>
-            <img id="previewMatchedsize1">
-            <img id="previewMatchedsize2">
-            <img id="previewMatchedsize3">
-            <img id="previewMatchedsize4"></p>
-
-        <p>Full Size:<br>
+        <p>Save: icon.png<br>
             <img id="preview1">
             <img id="preview2">
             <img id="preview3">
             <img id="preview4"></p>
 
-        <p>Half Size (Recommended):<br>
-            <img id="previewHalfsize1">
-            <img id="previewHalfsize2">
-            <img id="previewHalfsize3">
-            <img id="previewHalfsize4"></p>
+        <p>Save: icon@2x.png<br>
+            <img id="preview2x1">
+            <img id="preview2x2">
+            <img id="preview2x3">
+            <img id="preview2x4"></p>
 
-
-        <p>Quarter Size:<br>
-            <img id="previewQuartersize1">
-            <img id="previewQuartersize2">
-            <img id="previewQuartersize3">
-            <img id="previewQuartersize4"></p>
+        <p>Save: icon@4x.png<br>
+            <img id="preview4x1">
+            <img id="preview4x2">
+            <img id="preview4x3">
+            <img id="preview4x4"></p>
 
         <h2>Javascript</h2>
 
@@ -264,11 +230,6 @@
             <!-- will be populated by script -->
         </pre>
 
-        <h2>HTML</h2>
-
-        <pre id="htmlResult">
-            <!-- will be populated by script -->
-         </pre>
     </section>
 </body>
 <script>
@@ -324,39 +285,24 @@
 
     const inputColor = document.getElementById("color");
 
-    const inputAlias = document.getElementById("alias");
-    const incrAlias = document.getElementById("incrAlias");
-    const decrAlias = document.getElementById("decrAlias");
-
-    const inputRenderBackground = document.getElementById("renderBackground");
-    const toggleBackgroundButton = document.getElementById("toggleBackground");
     const inputBackgroundWidth = document.getElementById("backgroundWidth");
     const inputBackgroundHeight = document.getElementById("backgroundHeight");
-    const inputBackgroundRoundness = document.getElementById("backgroundRoundness");
 
     const incrBackgroundWidth = document.getElementById("incrBackgroundWidth");
     const incrBackgroundHeight = document.getElementById("incrBackgroundHeight");
-    const incrBackgroundRoundness = document.getElementById("incrBackgroundRoundness");
 
     const decrBackgroundWidth = document.getElementById("decrBackgroundWidth");
     const decrBackgroundHeight = document.getElementById("decrBackgroundHeight");
-    const decrBackgroundRoundness = document.getElementById("decrBackgroundRoundness");
-
-    const inputBackgroundColor = document.getElementById("backgroundColor");
 
     const inputTweakX = document.getElementById("tweakX");
     const inputTweakY = document.getElementById("tweakY");
-    const inputPixelX = document.getElementById("pixelX");
 
     const incrTweakX = document.getElementById("incrTweakX");
     const incrTweakY = document.getElementById("incrTweakY");
-    const incrPixelX = document.getElementById("incrPixelX");
 
     const decrTweakX = document.getElementById("decrTweakX");
     const decrTweakY = document.getElementById("decrTweakY");
-    const decrPixelX = document.getElementById("decrPixelX");
 
-    //const inputPixelY = document.getElementById("pixelY");
     const autoCenterButton = document.getElementById("autoCenter");
     let autoCenterX = 0
     let autoCenterY = 0
@@ -366,10 +312,9 @@
     const swapCanvasColorButton1 = document.getElementById("swapCanvasColorButton1");
     const swapCanvasColorButton2 = document.getElementById("swapCanvasColorButton2");
 
-    const inputPinCoord = document.getElementById("pinCoord")
-    const inputPinName = document.getElementById("pinName")
-    const pinButton = document.getElementById("pinButton")
-    const inputPins = document.getElementById("pins")
+    const inputResolution = document.getElementById("resolution");
+    const incrResolution = document.getElementById("incrResolution");
+    const decrResolution = document.getElementById("decrResolution");
 
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
@@ -382,50 +327,27 @@
     const preview3 = document.getElementById("preview3");
     const preview4 = document.getElementById("preview4");
 
-    const previewMatchedsize1 = document.getElementById("previewMatchedsize1");
-    const previewMatchedsize2 = document.getElementById("previewMatchedsize2");
-    const previewMatchedsize3 = document.getElementById("previewMatchedsize3");
-    const previewMatchedsize4 = document.getElementById("previewMatchedsize4");
+    const preview2x1 = document.getElementById("preview2x1");
+    const preview2x2 = document.getElementById("preview2x2");
+    const preview2x3 = document.getElementById("preview2x3");
+    const preview2x4 = document.getElementById("preview2x4");
 
-    const previewHalfsize1 = document.getElementById("previewHalfsize1");
-    const previewHalfsize2 = document.getElementById("previewHalfsize2");
-    const previewHalfsize3 = document.getElementById("previewHalfsize3");
-    const previewHalfsize4 = document.getElementById("previewHalfsize4");
-
-    const previewQuartersize1 = document.getElementById("previewQuartersize1");
-    const previewQuartersize2 = document.getElementById("previewQuartersize2");
-    const previewQuartersize3 = document.getElementById("previewQuartersize3");
-    const previewQuartersize4 = document.getElementById("previewQuartersize4");
+    const preview4x1 = document.getElementById("preview4x1");
+    const preview4x2 = document.getElementById("preview4x2");
+    const preview4x3 = document.getElementById("preview4x3");
+    const preview4x4 = document.getElementById("preview4x4");
 
     //const previewAddToSet = document.getElementById("previewAddToSet");
     //const previewSize = document.getElementById("previewSize");
 
-    const pageUpImg = document.getElementById("pageUp");
-    const pageDownImg = document.getElementById("pageDown");
-
-    const panNorthImg = document.getElementById("pan_n");
-    const panEastImg = document.getElementById("pan_e");
-    const panSouthImg = document.getElementById("pan_s");
-    const panWestImg = document.getElementById("pan_w");
-
-    const dockNorthEastImg = document.getElementById("dock_ne");
-    const dockNorthWestImg = document.getElementById("dock_nw");
-    const dockSouthWestImg = document.getElementById("dock_sw");
-    const dockSouthEastImg = document.getElementById("dock_se");
-    const dockNorthImg = document.getElementById("dock_n");
-    const dockEastImg = document.getElementById("dock_e");
-    const dockSouthImg = document.getElementById("dock_s");
-    const dockWestImg = document.getElementById("dock_w");
+    const pageUpButton = document.getElementById("pageUpButton");
+    const pageDownButton = document.getElementById("pageDownButton");
 
     const glyphButton = document.getElementById("glyphButton")
-    const borderButton = document.getElementById("borderButton")
     const alignButton = document.getElementById("alignButton")
-    const pinsButton = document.getElementById("pinsButton")
 
     const glyphDiv = document.getElementById("glyphDiv")
-    const borderDiv = document.getElementById("borderDiv")
     const alignDiv = document.getElementById("alignDiv")
-    const pinsDiv = document.getElementById("pinsDiv")
 
     let generateSingletonFlag = false
     const generateSingletonButton = document.getElementById("generateSingletonButton")
@@ -434,30 +356,14 @@
 
     glyphButton.addEventListener("click", () => {
         glyphDiv.style.display = "block"
-        borderDiv.style.display = "none"
         alignDiv.style.display = "none"
-        pinsDiv.style.display = "none"
-    })
-    borderButton.addEventListener("click", () => {
-        glyphDiv.style.display = "none"
-        borderDiv.style.display = "block"
-        alignDiv.style.display = "none"
-        pinsDiv.style.display = "none"
     })
     alignButton.addEventListener("click", () => {
         glyphDiv.style.display = "none"
-        borderDiv.style.display = "none"
         alignDiv.style.display = "block"
-        pinsDiv.style.display = "none"
-    })
-    pinsButton.addEventListener("click", () => {
-        glyphDiv.style.display = "none"
-        borderDiv.style.display = "none"
-        alignDiv.style.display = "none"
-        pinsDiv.style.display = "block"
     })
 
-    const inputs = [inputPins, selectFont, inputUnicode, inputSize, inputAlias, inputColor, inputRenderBackground, inputBackgroundWidth, backgroundHeight, inputBackgroundRoundness, inputBackgroundColor, inputTweakX, inputTweakY, inputPixelX, /*inputPixelY,*/ inputCanvasColor1, inputCanvasColor2];
+    const inputs = [inputResolution, selectFont, inputUnicode, inputSize, inputColor, inputBackgroundWidth, backgroundHeight, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2];
 
     function link() {
         return [
@@ -468,86 +374,16 @@
         ].join('?')
     }
 
-    function drawRoundedRect(ctx, sx, sy, ex, ey, r) {
-        var r2d = Math.PI / 180;
-        if ((ex - sx) - (2 * r) < 0) { r = ((ex - sx) / 2); } //ensure that the radius isn't too large for x
-        if ((ey - sy) - (2 * r) < 0) { r = ((ey - sy) / 2); } //ensure that the radius isn't too large for y
-        ctx.beginPath();
-        ctx.moveTo(sx + r, sy);
-        ctx.lineTo(ex - r, sy);
-        ctx.arc(ex - r, sy + r, r, r2d * 270, r2d * 360, false);
-        ctx.lineTo(ex, ey - r);
-        ctx.arc(ex - r, ey - r, r, r2d * 0, r2d * 90, false);
-        ctx.lineTo(sx + r, ey);
-        ctx.arc(sx + r, ey - r, r, r2d * 90, r2d * 180, false);
-        ctx.lineTo(sx, sy + r);
-        ctx.arc(sx + r, sy + r, r, r2d * 180, r2d * 270, false);
-        ctx.closePath();
-    }
+    function determineBounds(imgData) {
+        
+        const cols = imgData.width
+        const rows = imgData.height
 
-    function drawIcon(ctx, x, y, param, drawBounds = false, suppressBackground = false) {
-
-        const icon = String.fromCharCode(param.unicode)
-
-        ctx.font = `${param.size}px ${param.font}`
-        ctx.textAlign = "center"
-        ctx.textBaseline = "middle"
-        //var metrics = ctx.measureText(icon);
-
-        const backgroundQuarterWidth = Math.round((param.size / 4) * param.backgroundWidth)
-        const backgroundQuarterHeight = Math.round((param.size / 4) * param.backgroundHeight)
-
-        const backgroundHalfWidth = backgroundQuarterWidth * 2
-        const backgroundHalfHeight = backgroundQuarterHeight * 2
-
-        const backgroundWidth = backgroundHalfWidth * 2
-        const backgroundHeight = backgroundHalfHeight * 2
-
-        const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
-        const quarterRadius = Math.round(roundness * (Math.min(backgroundQuarterHeight, backgroundQuarterWidth) / 2))
-        const halfRadius = quarterRadius * 2
-        const radius = halfRadius * 2
-
-        if (param.renderBackground && !suppressBackground) {
-            ctx.fillStyle = param.backgroundColor
-            if (backgroundHalfWidth === backgroundHalfHeight && roundness === 1) { // circle
-                ctx.beginPath();
-                ctx.arc(x, y, backgroundHalfWidth, 0, 2 * Math.PI);
-                ctx.fill();
-            } else if (roundness === 0) { // rectangle
-                ctx.fillRect(x - backgroundHalfWidth, y - backgroundHalfHeight, backgroundWidth, backgroundHeight)
-            } else {
-                drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
-                ctx.fill()
-            }
-        }
-
-        if (drawBounds && !param.renderBackground) {
-            ctx.strokeStyle = "red"
-            drawRoundedRect(ctx, x - backgroundHalfWidth, y - backgroundHalfHeight, x + backgroundHalfWidth, y + backgroundHalfHeight, radius)
-            ctx.stroke()
-        }
-
-        ctx.fillStyle = param.color
-        ctx.fillText(icon, Math.round(x + (param.tweakX * param.size)) + param.pixelX, Math.round(y + (param.tweakY * param.size)) /*+ param.pixelY*/);
-
-        return [backgroundQuarterWidth, backgroundQuarterHeight, quarterRadius]
-    }
-
-    function determineBounds(canvas) {
-        let cols = canvas.width
-        let rows = canvas.height
-
-        let halfWidth = cols / 2
-        let halfHeight = rows / 2
-
-        let ctx = canvas.getContext("2d")
-
-        let imgData = ctx.getImageData(0, 0, cols, rows).data
+        const img = imgData.data
 
         function p(x, y) {
             let s = ((y * cols) + x) * 4
-            if (imgData[s] !== 0 || imgData[s + 1] !== 0 || imgData[s + 2] !== 0 || imgData[s + 3] !== 0) {
+            if (img[s] !== 0 || img[s + 1] !== 0 || img[s + 2] !== 0 || img[s + 3] !== 0) {
                 return true
             }
             return false
@@ -571,8 +407,8 @@
         }
         // is the sprite empty?
         if (top < 0) {
-            top = bot = halfHeight
-            left = right = halfWidth
+            top = bot = rows/2
+            left = right = cols/2
         } else {
             // determine bottom
             for (let y = rows - 1; y >= 0; y--) {
@@ -611,520 +447,131 @@
                 }
             }
         }
-        return [left - halfWidth, top - halfHeight, right - halfWidth, bot - halfHeight]
+        return [left, top, right+1, bot+1]
     }
 
-    const canvas = document.getElementById("canvas")
-    const ctx = canvas.getContext("2d")
+    function createIconCanvas(param, at) {
 
-    let detailPosX = 200 - 111
-    let detailPosY = 200 - 111
-    let detailLocX = -1
-    let detailLocY = -1
-    let dragging = false
-
-    inputPinCoord.addEventListener("input", () => {
-        const size = parseFloat(inputSize.value)
-        const parts = inputPinCoord.value.split(",")
-        if (parts.length != 2) {
-            return
-        }
-        detailLocX = 200 + (parts[0] * size)
-        detailLocY = 200 + (parts[1] * size)
-        requestAnimationFrame(redraw)
-    })
-
-    function updatePinCoordValue() {
-        if (detailLocX < 0 || detailLocY < 0) {
-            inputPinCoord.value = ""
-            return
-        }
-        const size = parseFloat(inputSize.value)
-        const x = (detailLocX - 200) / size
-        const y = (detailLocY - 200) / size
-        inputPinCoord.value = `${x},${y}`
-    }
-
-    canvas.addEventListener("mousemove", (event) => {
-        if (dragging) {
-            detailLocX = event.offsetX
-            detailLocY = event.offsetY
-            updatePinCoordValue()
-            requestAnimationFrame(redraw)
-        }
-    })
-
-    canvas.addEventListener("mousedown", (event) => {
-        if (event.button === 0) {
-            if (detailLocX > 0 && detailLocY > 0 &&
-                (Math.abs(detailLocX - event.offsetX) > 8 ||
-                    Math.abs(detailLocY - event.offsetY) > 8)) {
-                if (event.offsetX > detailPosX - 80 && event.offsetX < detailPosX + 80 &&
-                    event.offsetY > detailPosY - 80 && event.offsetY < detailPosY + 80) {
-                    if (event.offsetX < detailPosX - 48) {
-                        if (event.offsetY < detailPosY - 48) {
-                            detailPosX = 200 - 111
-                            detailPosY = 200 - 111
-                        } else if (event.offsetY > detailPosY + 49) {
-                            detailPosX = 200 - 111
-                            detailPosY = 200 + 111
-                        } else {
-                            detailLocX = Math.max(detailLocX - .5, 8)
-                        }
-                    } else if (event.offsetX > detailPosX + 49) {
-                        if (event.offsetY < detailPosY - 48) {
-                            detailPosX = 200 + 111
-                            detailPosY = 200 - 111
-                        } else if (event.offsetY > detailPosY + 49) {
-                            detailPosX = 200 + 111
-                            detailPosY = 200 + 111
-                        } else {
-                            detailLocX = Math.min(detailLocX + .5, 392)
-                        }
-                    } else if (event.offsetY < detailPosY - 48) {
-                        detailLocY = Math.max(detailLocY - .5, 8)
-                    } else if (event.offsetY > detailPosY + 49) {
-                        detailLocY = Math.min(detailLocY + .5, 392)
-                    }
-                } else {
-                    detailLocX = -1
-                    detailLocY = -1
-                }
-            } else {
-                detailLocX = event.offsetX
-                detailLocY = event.offsetY
-                dragging = true
-            }
-            updatePinCoordValue()
-            requestAnimationFrame(redraw)
-        }
-    })
-
-    canvas.addEventListener("mouseup", (event) => {
-        if (event.button === 0) {
-            dragging = false
-            requestAnimationFrame(redraw)
-        }
-    })
-
-    function createGlyphCanvas(param, width, height, glyphX, glyphY) {
-        const canvas = document.createElement('canvas')
-
-        canvas.width = width
-        canvas.height = height
-
-        const ctx = canvas.getContext("2d")
-
-        ctx.font = `${param.size}px ${param.font}`
-        ctx.textAlign = "center"
-        ctx.textBaseline = "middle"
-
-        ctx.fillStyle = param.color
-
-        const char = String.fromCharCode(param.unicode)
-        ctx.fillText(char, glyphX, glyphY);
-
-        let imgData = ctx.getImageData(0, 0, width, height)
-        const img = imgData.data
-
-        function p(x, y) {
-            return (img[(((y * width) + x) * 4) + 3] > 0)
-        }
-
-        let top = -1
-        let bot = -1
-        let left = -1
-        let right = -1
-
-        // determine top
-        for (let y = 0; y < height; y++) {
-            for (let x = 0; x < width; x++) {
-                if (p(x, y)) {
-                    top = y
-                    break
-                }
-            }
-            if (top > 0) {
-                break
-            }
-        }
-        // is the sprite empty?
-        if (top < 0) {
-            top = bot = glyphY
-            left = right = glyphX
-            return [left, top, right, bot, canvas]
-        } else {
-            // determine bottom
-            for (let y = height - 1; y >= 0; y--) {
-                for (let x = 0; x < width; x++) {
-                    if (p(x, y)) {
-                        bot = y
-                        break
-                    }
-                }
-                if (bot > 0) {
-                    break
-                }
-            }
-            // determine left
-            for (let x = 0; x < width; x++) {
-                for (let y = 0; y < height; y++) {
-                    if (p(x, y)) {
-                        left = x
-                        break
-                    }
-                }
-                if (left > 0) {
-                    break
-                }
-            }
-            // determine right
-            for (let x = width - 1; x >= 0; x--) {
-                for (let y = 0; y < height; y++) {
-                    if (p(x, y)) {
-                        right = x
-                        break
-                    }
-                }
-                if (right > 0) {
-                    break
-                }
-            }
-        }
-
-        if (param.alias === "off") {
-            return [left, top, right, bot, canvas]
-        }
-
-        const aliasTreshold = Math.round(param.alias * 255)
-
-        for (let y = top; y <= bot; y++) {
-            const offset = (y * width * 4) + 3
-            for (let x = left; x <= right; x++) {
-                const alpha = offset + (x * 4)
-                if (img[alpha] > aliasTreshold) {
-                    img[alpha] = 255
-                } else {
-                    img[alpha] = 0
-                }
-            }
-        }
-
-        // adjust top
-        let adjustedTop = -1
-        for (let y = top; y < height; y++) {
-            for (let x = 0; x < width; x++) {
-                if (p(x, y)) {
-                    adjustedTop = y
-                    break
-                }
-            }
-            if (adjustedTop > 0) {
-                break
-            }
-        }
-        if (adjustedTop >= 0) {
-            top = adjustedTop
-        }
-        // adjust bottom
-        let adjustedBottom = -1
-        for (let y = bot; y >= 0; y--) {
-            for (let x = 0; x < width; x++) {
-                if (p(x, y)) {
-                    adjustedBottom = y
-                    break
-                }
-            }
-            if (adjustedBottom > 0) {
-                break
-            }
-        }
-        if (adjustedBottom >= 0) {
-            bot = adjustedBottom
-        }
-        // adjust left
-        let adjustedLeft = -1
-        for (let x = left; x < width; x++) {
-            for (let y = 0; y < height; y++) {
-                if (p(x, y)) {
-                    adjustedLeft = x
-                    break
-                }
-            }
-            if (adjustedLeft > 0) {
-                break
-            }
-        }
-        if (adjustedLeft >= 0) {
-            left = adjustedLeft
-        }
-        // adjust right
-        let adjustedRight = -1
-        for (let x = right; x >= 0; x--) {
-            for (let y = 0; y < height; y++) {
-                if (p(x, y)) {
-                    adjustedRight = x
-                    break
-                }
-            }
-            if (adjustedRight > 0) {
-                break
-            }
-        }
-        if (adjustedRight >= 0) {
-            right = adjustedRight
-        }
-
-        ctx.putImageData(imgData, 0, 0)
-
-        return [left, top, right, bot, canvas]
-    }
-
-    function createIconCanvas(param) {
-
-        const quarterWidth = Math.round((param.size / 4) * param.backgroundWidth)
-        const quarterHeight = Math.round((param.size / 4) * param.backgroundHeight)
-
-        const halfWidth = quarterWidth * 2
-        const halfHeight = quarterHeight * 2
+        const halfWidth = Math.round(((param.size*at) / 2) * param.backgroundWidth)
+        const halfHeight = Math.round(((param.size*at) / 2) * param.backgroundHeight)
 
         const width = halfWidth * 2
         const height = halfHeight * 2
 
-        const roundness = Math.min(Math.max(param.backgroundRoundness, 0), 1)
-        const quarterRadius = Math.round(roundness * (Math.min(quarterHeight, quarterWidth) / 2))
-        const halfRadius = quarterRadius * 2
-        const radius = halfRadius * 2
-
-        const glyphX = Math.round(halfWidth + (param.tweakX * param.size)) + param.pixelX
-        const glyphY = Math.round(halfHeight + (param.tweakY * param.size))
+        const glyphX = Math.round(halfWidth + (param.tweakX * param.size * at))
+        const glyphY = Math.round(halfHeight + (param.tweakY * param.size * at))
 
         const canvas = document.createElement('canvas')
 
         canvas.width = width
         canvas.height = height
 
-        const ctx = canvas.getContext("2d")
+        const glyphCtx = canvas.getContext("2d")
 
-        if (param.renderBackground) {
-            ctx.fillStyle = param.backgroundColor
-            if (halfWidth === halfHeight && roundness === 1) { // circle
-                ctx.beginPath();
-                ctx.arc(halfWidth, halfHeight, halfWidth, 0, 2 * Math.PI);
-                ctx.fill();
-            } else if (roundness === 0) { // rectangle
-                ctx.fillRect(0, 0, width, height)
-            } else {
-                drawRoundedRect(ctx, 0, 0, width, height, radius)
-                ctx.fill()
-            }
-        }
+        glyphCtx.font = `${param.size*at}px ${param.font}`
+        glyphCtx.textAlign = "center"
+        glyphCtx.textBaseline = "middle"
 
-        let [left, top, right, bot, glyphCanvas] = createGlyphCanvas(param, width, height, glyphX, glyphY)
-        ctx.drawImage(glyphCanvas, 0, 0)
+        glyphCtx.fillStyle = param.color
 
-        return [quarterWidth, quarterHeight, quarterRadius, left, top, right, bot, canvas]
+        const char = String.fromCharCode(param.unicode)
+        glyphCtx.fillText(char, glyphX, glyphY);
+
+        return [halfWidth, halfHeight, canvas]
     }
 
+    const backdropCanvas = document.createElement("canvas")
+    backdropCanvas.width = 400
+    backdropCanvas.height = 400
+
+    function redrawBackdrop() {
+        const canvasColor1 = inputCanvasColor1.value
+        const canvasColor2 = inputCanvasColor2.value
+        const backdropCtx = backdropCanvas.getContext("2d")
+
+        backdropCtx.clearRect(0, 0, 400, 600)
+
+        for (let x = 0; x < 200; x++) {
+            for (let y = 0; y < 200; y++) {
+                if (x % 2 == y % 2) {
+                    backdropCtx.fillStyle = canvasColor1
+                } else {
+                    backdropCtx.fillStyle = canvasColor2
+                }
+                backdropCtx.fillRect(x * 2, y * 2, 2, 2)
+            }
+        }
+    }
+    redrawBackdrop()
+
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+
     function redraw() {
+
+        const at = inputResolution.value === "4x" ? 4 : inputResolution.value === "2x" ? 2 : 1
 
         const canvasColor1 = inputCanvasColor1.value
         const canvasColor2 = inputCanvasColor2.value
 
-        ctx.clearRect(0, 0, 400, 400)
-
-        for (let x = 0; x < 40; x++) {
-            for (let y = 0; y < 40; y++) {
-                if (x % 2 == y % 2) {
-                    ctx.fillStyle = canvasColor1
-                } else {
-                    ctx.fillStyle = canvasColor2
-                }
-                ctx.fillRect(x * 10, y * 10, 10, 10)
-            }
-        }
+        ctx.clearRect(0, 0, 400, 600)
+        ctx.drawImage(backdropCanvas, 0, 0)
 
         const param = {
             size: parseInt(inputSize.value),
             font: selectFont.value,
             unicode: parseInt(`0x${inputUnicode.value}`),
             color: inputColor.value,
-            renderBackground: ["off", "no", "false", "0"].indexOf(inputRenderBackground.value.toLowerCase().trim()) == -1,
             backgroundWidth: parseFloat(inputBackgroundWidth.value),
             backgroundHeight: parseFloat(inputBackgroundHeight.value),
-            backgroundRoundness: parseFloat(inputBackgroundRoundness.value),
-            backgroundColor: inputBackgroundColor.value,
             tweakX: parseFloat(inputTweakX.value),
-            tweakY: parseFloat(inputTweakY.value),
-            pixelX: parseFloat(inputPixelX.value),
-            alias: inputAlias.value === "off" ? "off" : parseFloat(inputAlias.value)
+            tweakY: parseFloat(inputTweakY.value)
         }
 
         //
 
-        let [quarterWidth, quarterHeight, quarterRadius, left, top, right, bot, iconCanvas] = createIconCanvas(param)
-
-        const halfWidth = 2 * quarterWidth
-        const halfHeight = 2 * quarterHeight
+        let [halfWidth, halfHeight, iconCanvas] = createIconCanvas(param, at)
 
         const width = 2 * halfWidth
         const height = 2 * halfHeight
 
-        const halfRadius = 2 * quarterRadius
-        const radius = 2 * halfRadius
+        const maxTile = 4
+        const tile = maxTile / at
+        const imgData = iconCanvas.getContext("2d").getImageData(0, 0, width, height)
+        const img = imgData.data
 
-        autoCenterX = Math.round((param.tweakX * param.size) + ((Math.abs(left - (halfWidth)) - (right - (halfWidth))) / 2)) / param.size
-        autoCenterY = Math.round((param.tweakY * param.size) + ((Math.abs(top - (halfHeight)) - (bot - (halfHeight))) / 2)) / param.size
+        const x0 = 200 - (halfWidth*tile)
+        const y0 = 200 - (halfHeight*tile)
 
-        ctx.drawImage(iconCanvas, 200 - halfWidth, 200 - halfHeight)
-
-        ctx.strokeStyle = "green"
-        ctx.strokeRect(200 - halfWidth + left - .5, 200 - halfHeight + top - .5, right - left + 1, bot - top + 1)
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const o = (y * width + x) * 4
+                const [r, g, b, a] = [ img[o], img[o+1], img[o+2], img[o+3] ]
+                ctx.fillStyle = `rgba(${r},${g},${b},${a/255})`
+                ctx.fillRect(x0 + x*tile, y0+y*tile, tile, tile)
+            }
+        }
 
         ctx.strokeStyle = "red"
-        drawRoundedRect(ctx, 200 - halfWidth - .5, 200 - halfHeight - .5, 200 + halfWidth + .5, 200 + halfHeight + .5, radius)
+        ctx.strokeRect(x0 - .5, y0 - .5, width*tile + 1, height*tile + 1)
         ctx.stroke()
 
-        let detailImg = undefined
-        if (detailLocX >= 8 && detailLocY >= 8 && detailLocX < 392 && detailLocY < 392) {
-            detailImg = ctx.getImageData(Math.round(detailLocX) - 8, Math.round(detailLocY) - 8, 17, 17).data
-        }
+        const [left1, top1, right1, bot1] = determineBounds(imgData)
 
-        let pinnedLocs = []
-        let finalPins = {}
-        try {
-            const pins = JSON.parse(inputPins.value)
-            for (name in pins) {
-                const parts = pins[name].split(",")
-                const x = Math.round((200 + (parseFloat(parts[0]) * param.size)) * 2) / 2
-                const y = Math.round((200 + (parseFloat(parts[1]) * param.size)) * 2) / 2
-                ctx.strokeStyle = "gold"
-                ctx.beginPath()
-                ctx.arc(x, y, 2, 0, 2 * Math.PI)
-                ctx.stroke()
-                pinnedLocs.push([x, y])
-                const xx = Math.round((halfWidth + (parseFloat(parts[0]) * param.size)) * 2) / (2*width)
-                const yy = Math.round((halfHeight + (parseFloat(parts[1]) * param.size)) * 2) / (2*height)
-                finalPins[name] = [xx, yy]
-            }
-        } catch {
-            // NOOP
-        }
+        autoCenterX = Math.round((param.tweakX * param.size * at) + ((Math.abs(left1 - halfWidth) - (right1 - halfWidth)) / 2)) / (param.size * at)
+        autoCenterY = Math.round((param.tweakY * param.size * at) + ((Math.abs(top1 - halfHeight) - (bot1 - halfHeight)) / 2)) / (param.size * at)
 
-        if (detailImg) {
-            const px = detailPosX
-            const py = detailPosY
-            ctx.fillStyle = "rgb(30,30,30)"
-            ctx.fillRect(px - 80, py - 80, 161, 161)
-            let ppx = px - 3
-            let ppy = py - 3
-            if (detailLocX % 1 > 0) {
-                ppx += 3
-            }
-            if (detailLocY % 1 > 0) {
-                ppy += 3
-            }
-            for (let dx = -8; dx <= 8; dx++) {
-                const x = 8 + dx
-                for (let dy = -8; dy <= 8; dy++) {
-                    const y = 8 + dy
-                    if (x >= 0 && x < 400 && y >= 0 && y < 400) {
-                        const offset = (y * 17 * 4) + (x * 4)
-                        const r = detailImg[offset]
-                        const g = detailImg[offset + 1]
-                        const b = detailImg[offset + 2]
-                        const a = detailImg[offset + 3]
-                        const xx = ppx + (6 * dx)
-                        const yy = ppy + (6 * dy)
-                        ctx.fillStyle = `rgb(${r},${g},${b})`
-                        ctx.fillRect(xx + 1, yy + 1, 5, 5)
-                    }
-                }
-            }
-            ctx.fillStyle = "black"
-            ctx.strokeStyle = "white"
-            ctx.fillRect(px - 80, py - 80, 161, 32)
-            ctx.fillRect(px - 80, py + 49, 161, 32)
-            ctx.fillRect(px - 80, py - 80, 32, 161)
-            ctx.fillRect(px + 49, py - 80, 32, 161)
-            ctx.strokeRect(px - 80, py - 80, 161, 161)
-            ctx.beginPath()
-            ctx.moveTo(px - 48, py - 80)
-            ctx.lineTo(px - 48, py + 80)
-            ctx.moveTo(px + 49, py - 80)
-            ctx.lineTo(px + 49, py + 80)
-            ctx.moveTo(px - 80, py - 48)
-            ctx.lineTo(px + 80, py - 48)
-            ctx.moveTo(px - 80, py + 49)
-            ctx.lineTo(px + 80, py + 49)
-            ctx.stroke()
-            ctx.drawImage(panNorthImg, px - 8, py - 64 - 8, 16, 16)
-            ctx.drawImage(panEastImg, px + 64 - 8, py - 8, 16, 16)
-            ctx.drawImage(panSouthImg, px - 8, py + 64 - 8, 16, 16)
-            ctx.drawImage(panWestImg, px - 64 - 8, py - 8, 16, 16)
-            if (px > 200 || py > 200) {
-                if (px < 200) {
-                    ctx.drawImage(dockNorthImg, px - 65 - 14, py - 65 - 14, 28, 28)
-                } else if (py < 200) {
-                    ctx.drawImage(dockWestImg, px - 65 - 14, py - 65 - 14, 28, 28)
-                } else {
-                    ctx.drawImage(dockNorthWestImg, px - 66 - 11, py - 66 - 11, 22, 22)
-                }
-            }
-            if (px < 200 || py > 200) {
-                if (px > 200) {
-                    ctx.drawImage(dockNorthImg, px + 65 - 14, py - 65 - 14, 28, 28)
-                } else if (py < 200) {
-                    ctx.drawImage(dockEastImg, px + 65 - 14, py - 65 - 14, 28, 28)
-                } else {
-                    ctx.drawImage(dockNorthEastImg, px + 66 - 11, py - 66 - 11, 22, 22)
-                }
-            }
-            if (px < 200 || py < 200) {
-                if (px > 200) {
-                    ctx.drawImage(dockSouthImg, px + 65 - 14, py + 65 - 14, 28, 28)
-                } else if (py > 200) {
-                    ctx.drawImage(dockEastImg, px + 65 - 14, py + 65 - 14, 28, 28)
-                } else {
-                    ctx.drawImage(dockSouthEastImg, px + 66 - 11, py + 66 - 11, 22, 22)
-                }
-            }
-            if (px > 200 || py < 200) {
-                if (px < 200) {
-                    ctx.drawImage(dockSouthImg, px - 65 - 14, py + 65 - 14, 28, 28)
-                } else if (py > 200) {
-                    ctx.drawImage(dockWestImg, px - 65 - 14, py + 65 - 14, 28, 28)
-                } else {
-                    ctx.drawImage(dockSouthWestImg, px - 66 - 11, py + 66 - 11, 22, 22)
-                }
-            }
-            ctx.strokeStyle = "gold"
-            ctx.beginPath()
-            ctx.moveTo(px - 6.5, py + .5)
-            ctx.lineTo(px + 7.5, py + .5)
-            ctx.moveTo(px + .5, py - 6.5)
-            ctx.lineTo(px + .5, py + 7.5)
-            ctx.stroke()
-            ctx.strokeRect(detailLocX - 8, detailLocY - 8, 17, 17)
-            for (pinnedLoc of pinnedLocs) {
-                ctx.strokeStyle = "gold"
-                const x = (pinnedLoc[0] - detailLocX)
-                const y = (pinnedLoc[1] - detailLocY)
-                if (x > -8 && x < 8 && y > -8 && y < 8) {
-                    const xx = px + (6 * x) + .5
-                    const yy = py + (6 * y) + .5
-                    ctx.beginPath()
-                    ctx.arc(xx, yy, 4, 0, Math.PI * 2)
-                    ctx.stroke()
-                }
-            }
-        }
+        ctx.strokeStyle = "green"
+        ctx.strokeRect(x0 + left1*tile - .5, y0 + top1*tile - .5, (right1 - left1)*tile, (bot1 - top1)*tile + 1)
+
+        const [hw1, hh1, ic1] = createIconCanvas(param, 1)
+        const [hw2, hh2, ic2] = createIconCanvas(param, 2)
+        const [hw4, hh4, ic4] = createIconCanvas(param, 4)
 
         if (!generateSingletonFlag) {
             return
         }
 
-        const dataURL = iconCanvas.toDataURL()
         const font = selectFont.value
         const fontInfo = meta[font]
 
@@ -1134,18 +581,15 @@
     fontCreator: "${fontInfo.attribution}",
     fontHomepage: "${fontInfo.homepage}", 
     license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
-    width: ${width},
-    height: ${height},
-    radius: ${radius},
-    pins: ${JSON.stringify(finalPins)},
-    glyphRectangle: [${left}, ${top}, ${right-left}, ${bot-top}],
+    width: ${ic1.width},
+    height: ${ic1.height},
     generatorLink: "${link()}", 
-    data: "${dataURL}"
+    image: "icon.png",
+    image2x: "icon@2x.png",
+    image4x: "icon@4x.png"
 }`
 
-        document.getElementById("htmlResult").innerHTML = `&lt;!-- Source: ${fontInfo.fullname} by ${fontInfo.attribution}, ${fontInfo.homepage}, License: ${fontInfo.license} (${licenseMeta[fontInfo.license].url}), Generator: ${link()} --&gt;
-&lt;img width="${halfWidth}" height="${halfHeight}" src="${dataURL}"&gt;`
-
+        const dataURL = ic1.toDataURL()
         preview1.src = dataURL
         preview1.style = `background-color: white;`
         preview2.src = dataURL
@@ -1155,76 +599,47 @@
         preview4.src = dataURL
         preview4.style = `background-color: black;`
 
-        previewHalfsize1.src = dataURL
-        previewHalfsize1.style = `background-color: white;`
-        previewHalfsize1.width = halfWidth
-        previewHalfsize1.height = halfHeight
+        const dataURL2 = ic2.toDataURL()
+        preview2x1.src = dataURL2
+        preview2x1.style = `background-color: white;`
+        preview2x1.width = ic1.width
+        preview2x1.height = ic1.height
 
-        previewHalfsize2.src = dataURL
-        previewHalfsize2.style = `background-color: ${canvasColor1};`
-        previewHalfsize2.width = halfWidth
-        previewHalfsize2.height = halfHeight
+        preview2x2.src = dataURL2
+        preview2x2.style = `background-color: ${canvasColor1};`
+        preview2x2.width = ic1.width
+        preview2x2.height = ic1.height
 
-        previewHalfsize3.src = dataURL
-        previewHalfsize3.style = `background-color: ${canvasColor2};`
-        previewHalfsize3.width = halfWidth
-        previewHalfsize3.height = halfHeight
+        preview2x3.src = dataURL2
+        preview2x3.style = `background-color: ${canvasColor2};`
+        preview2x3.width = ic1.width
+        preview2x3.height = ic1.height
 
-        previewHalfsize4.src = dataURL
-        previewHalfsize4.style = `background-color: black;`
-        previewHalfsize4.width = halfWidth
-        previewHalfsize4.height = halfHeight
+        preview2x4.src = dataURL2
+        preview2x4.style = `background-color: black;`
+        preview2x4.width = ic1.width
+        preview2x4.height = ic1.height
 
-        previewQuartersize1.src = dataURL
-        previewQuartersize1.style = `background-color: white;`
-        previewQuartersize1.width = quarterWidth
-        previewQuartersize1.height = quarterHeight
+        const dataURL4 = ic4.toDataURL()
+        preview4x1.src = dataURL4
+        preview4x1.style = `background-color: white;`
+        preview4x1.width = ic1.width
+        preview4x1.height = ic1.height
 
-        previewQuartersize2.src = dataURL
-        previewQuartersize2.style = `background-color: ${canvasColor1};`
-        previewQuartersize2.width = quarterWidth
-        previewQuartersize2.height = quarterHeight
+        preview4x2.src = dataURL4
+        preview4x2.style = `background-color: ${canvasColor1};`
+        preview4x2.width = ic1.width
+        preview4x2.height = ic1.height
 
-        previewQuartersize3.src = dataURL
-        previewQuartersize3.style = `background-color: ${canvasColor2};`
-        previewQuartersize3.width = quarterWidth
-        previewQuartersize3.height = quarterHeight
+        preview4x3.src = dataURL4
+        preview4x3.style = `background-color: ${canvasColor2};`
+        preview4x3.width = ic1.width
+        preview4x3.height = ic1.height
 
-        previewQuartersize4.src = dataURL
-        previewQuartersize4.style = `background-color: black;`
-        previewQuartersize4.width = quarterWidth
-        previewQuartersize4.height = quarterHeight
-
-        //previewAddToSet.src = dataURL
-        //previewAddToSet.width = halfWidth
-        //previewAddToSet.height = halfHeight
-
-        //previewSize.src = dataURL
-        //previewSize.width = halfWidth
-        //previewSize.height = halfHeight
-
-        const matchedWidth = width / window.devicePixelRatio
-        const matchedHeight = height / window.devicePixelRatio
-
-        previewMatchedsize1.src = dataURL
-        previewMatchedsize1.style = `background-color: white;`
-        previewMatchedsize1.width = matchedWidth
-        previewMatchedsize1.height = matchedHeight
-
-        previewMatchedsize2.src = dataURL
-        previewMatchedsize2.style = `background-color: ${canvasColor1};`
-        previewMatchedsize2.width = matchedWidth
-        previewMatchedsize2.height = matchedHeight
-
-        previewMatchedsize3.src = dataURL
-        previewMatchedsize3.style = `background-color: ${canvasColor2};`
-        previewMatchedsize3.width = matchedWidth
-        previewMatchedsize3.height = matchedHeight
-
-        previewMatchedsize4.src = dataURL
-        previewMatchedsize4.style = `background-color: black;`
-        previewMatchedsize4.width = matchedWidth
-        previewMatchedsize4.height = matchedHeight
+        preview4x4.src = dataURL4
+        preview4x4.style = `background-color: black;`
+        preview4x4.width = ic1.width
+        preview4x4.height = ic1.height
 
         generatedSingletonSection.style.display = "block"
 
@@ -1355,11 +770,11 @@
         setUnicode(inputUnicode.value)
     })
 
-    pageUpImg.addEventListener('click', () => {
+    pageUpButton.addEventListener('click', () => {
         setUnicode((parseInt(inputUnicode.value, 16) - 16).toString(16))
     })
 
-    pageDownImg.addEventListener('click', () => {
+    pageDownButton.addEventListener('click', () => {
         setUnicode((parseInt(inputUnicode.value, 16) + 16).toString(16))
     })
 
@@ -1367,11 +782,6 @@
 
     generateSingletonButton.addEventListener("click", () => {
         generateSingletonFlag = true
-        requestAnimationFrame(redraw)
-    })
-
-    toggleBackgroundButton.addEventListener("click", () => {
-        inputRenderBackground.value = ["off", "no", "false", "0"].indexOf(inputRenderBackground.value.toLowerCase().trim()) == -1 ? "off" : "on"
         requestAnimationFrame(redraw)
     })
 
@@ -1383,21 +793,13 @@
 
     incrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
-        if (size === 8 || size === 16 || size === 32 || size === 64 || size === 128) {
-            size = size * 2
-        } else if (size < 300) {
-            size = (Math.floor(size / 4) * 4) + 4
-        }
+        size = Math.min(Math.floor(size/2 + 1)*2, 128)
         inputSize.value = size.toString(10)
         requestAnimationFrame(redraw)
     })
     decrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
-        if (size === 16 || size === 32 || size === 64 || size === 128 || size === 256) {
-            size = size / 2
-        } else if (size > 8) {
-            size = (Math.ceil(size / 4) * 4) - 4
-        }
+        size = Math.max(Math.ceil(size/2 - 1)*2, 8)
         inputSize.value = size.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -1406,7 +808,7 @@
         let size = parseFloat(inputSize.value)
         let widthRatio = parseFloat(inputBackgroundWidth.value)
         let width = size * widthRatio
-        width = Math.min((Math.floor(width / 4) * 4) + 4, 340)
+        width = Math.min((Math.floor(width / 2) * 2) + 2, 128)
         widthRatio = width / size
         inputBackgroundWidth.value = widthRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -1415,7 +817,7 @@
         let size = parseFloat(inputSize.value)
         let widthRatio = parseFloat(inputBackgroundWidth.value)
         let width = size * widthRatio
-        width = Math.max((Math.ceil(width / 4) * 4) - 4, 8)
+        width = Math.max((Math.ceil(width / 2) * 2) - 2, 8)
         widthRatio = width / size
         inputBackgroundWidth.value = widthRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -1425,7 +827,7 @@
         let size = parseFloat(inputSize.value)
         let heightRatio = parseFloat(inputBackgroundHeight.value)
         let height = size * heightRatio
-        height = Math.min((Math.floor(height / 4) * 4) + 4, 340)
+        height = Math.min((Math.floor(height / 2) * 2) + 2, 128)
         heightRatio = height / size
         inputBackgroundHeight.value = heightRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -1434,97 +836,79 @@
         let size = parseFloat(inputSize.value)
         let heightRatio = parseFloat(inputBackgroundHeight.value)
         let height = size * heightRatio
-        height = Math.max((Math.ceil(height / 4) * 4) - 4, 8)
+        height = Math.max((Math.ceil(height / 2) * 2) - 2, 8)
         heightRatio = height / size
         inputBackgroundHeight.value = heightRatio.toString(10)
         requestAnimationFrame(redraw)
     })
 
-    incrBackgroundRoundness.addEventListener("click", () => {
-        let size = parseFloat(inputSize.value)
-        let halfWidth = Math.floor((parseFloat(inputBackgroundWidth.value) * size) / 2)
-        let halfHeight = Math.floor((parseFloat(inputBackgroundHeight.value) * size) / 2)
-        let minHalf = Math.min(halfWidth, halfHeight)
-        let roundnessRatio = parseFloat(inputBackgroundRoundness.value)
-        let radius = minHalf * roundnessRatio
-        radius = Math.min((Math.floor(radius / 4) * 4) + 4, minHalf)
-        roundnessRatio = radius / minHalf
-        inputBackgroundRoundness.value = roundnessRatio.toString(10)
-        requestAnimationFrame(redraw)
-    })
-    decrBackgroundRoundness.addEventListener("click", () => {
-        let size = parseFloat(inputSize.value)
-        let halfWidth = Math.floor((parseFloat(inputBackgroundWidth.value) * size) / 2)
-        let halfHeight = Math.floor((parseFloat(inputBackgroundHeight.value) * size) / 2)
-        let minHalf = Math.min(halfWidth, halfHeight)
-        let roundnessRatio = parseFloat(inputBackgroundRoundness.value)
-        let radius = minHalf * roundnessRatio
-        radius = Math.max((Math.ceil(radius / 4) * 4) - 4, 0)
-        roundnessRatio = radius / minHalf
-        inputBackgroundRoundness.value = roundnessRatio.toString(10)
-        requestAnimationFrame(redraw)
-    })
-
     incrTweakX.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
+        let at = getResolution()
         let tweakXRatio = parseFloat(inputTweakX.value)
-        let tweakX = size * tweakXRatio
-        tweakX = Math.min(Math.floor(tweakX) + 1, 128)
-        tweakXRatio = tweakX / size
+        let tweakX = size * at * tweakXRatio
+        tweakX = Math.min(Math.floor(tweakX) + 1, at*32)
+        tweakXRatio = tweakX / (size * at)
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrTweakX.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
+        let at = getResolution()
         let tweakXRatio = parseFloat(inputTweakX.value)
-        let tweakX = size * tweakXRatio
-        tweakX = Math.max(Math.ceil(tweakX) - 1, -128)
-        tweakXRatio = tweakX / size
+        let tweakX = size * at * tweakXRatio
+        tweakX = Math.max(Math.ceil(tweakX) - 1, -at*32)
+        tweakXRatio = tweakX / (size * at)
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
     })
 
     incrTweakY.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
+        let at = getResolution()
         let tweakYRatio = parseFloat(inputTweakY.value)
-        let tweakY = size * tweakYRatio
-        tweakY = Math.min(Math.floor(tweakY) + 1, 128)
-        tweakYRatio = tweakY / size
+        let tweakY = size * at * tweakYRatio
+        tweakY = Math.min(Math.floor(tweakY) + 1, at*32)
+        tweakYRatio = tweakY / (size * at)
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
     })
     decrTweakY.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
+        let at = getResolution()
         let tweakYRatio = parseFloat(inputTweakY.value)
-        let tweakY = size * tweakYRatio
-        tweakY = Math.max(Math.ceil(tweakY) - 1, -128)
-        tweakYRatio = tweakY / size
+        let tweakY = size * at * tweakYRatio
+        tweakY = Math.max(Math.ceil(tweakY) - 1, -at*32)
+        tweakYRatio = tweakY / (size * at)
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
     })
 
-    incrPixelX.addEventListener("click", () => {
-        let pixelX = parseFloat(inputPixelX.value)
-        if (pixelX < -.5) {
-            pixelX = -.5
-        } else if (pixelX < 0) {
-            pixelX = 0
+    function getResolution() {
+        if (inputResolution.value === "1x") {
+            return 1
+        } else if (inputResolution.value === "2x") {
+            return 2
         } else {
-            pixelX = .5
+            return 4
         }
-        inputPixelX.value = pixelX.toString(10)
+    }
+
+    incrResolution.addEventListener("click", () => {
+        if (inputResolution.value === "1x") {
+            inputResolution.value = "2x"
+        } else {
+            inputResolution.value = "4x"
+        }
         requestAnimationFrame(redraw)
     })
-    decrPixelX.addEventListener("click", () => {
-        let pixelX = parseFloat(inputPixelX.value)
-        if (pixelX > .5) {
-            pixelX = .5
-        } else if (pixelX > 0) {
-            pixelX = 0
+
+    decrResolution.addEventListener("click", () => {
+        if (inputResolution.value === "4x") {
+            inputResolution.value = "2x"
         } else {
-            pixelX = -.5
+            inputResolution.value = "1x"
         }
-        inputPixelX.value = pixelX.toString(10)
         requestAnimationFrame(redraw)
     })
 
@@ -1537,47 +921,14 @@
         }
     )
 
-    incrAlias.addEventListener("click", () => {
-        if (inputAlias.value === "off") {
-            inputAlias.value = ".125"
-        } else {
-            let alias = parseFloat(inputAlias.value)
-            alias = Math.min(alias + .125, 1)
-            inputAlias.value = alias.toString(10)
-        }
-        requestAnimationFrame(redraw)
-    })
-    decrAlias.addEventListener("click", () => {
-        if (inputAlias.value === "off" || inputAlias.value === "0") {
-            inputAlias.value = "off"
-        } else {
-            let alias = parseFloat(inputAlias.value)
-            alias = Math.max(alias - .125, 0)
-            inputAlias.value = alias.toString(10)
-        }
-        requestAnimationFrame(redraw)
-    })
-
-    // attach event listener for pinning
-
-    pinButton.addEventListener("click", () => {
-        const coord = inputPinCoord.value
-        if (coord == "" || coord.split(",").length != 2) {
-            return
-        }
-        const name = inputPinName.value
-        currPins = JSON.parse(inputPins.value)
-        currPins[name] = coord
-        inputPins.value = JSON.stringify(currPins)
-        requestAnimationFrame(redraw)
-    })
-
     swapCanvasColorButton1.addEventListener("click", () => {
         [inputCanvasColor1.value, inputCanvasColor2.value] = [inputCanvasColor2.value, inputCanvasColor1.value]
+        redrawBackdrop()
         requestAnimationFrame(redraw)
     })
     swapCanvasColorButton2.addEventListener("click", () => {
         [inputCanvasColor1.value, inputCanvasColor2.value] = [inputCanvasColor2.value, inputCanvasColor1.value]
+        redrawBackdrop()
         requestAnimationFrame(redraw)
     })
 
