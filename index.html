@@ -199,36 +199,15 @@
                 data-q="cC1">&nbsp;<button type="button" id="swapCanvasColorButton1">Swap</button><br>
             <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="10" type="text" value="gray"
                 data-q="cC2">&nbsp;<button type="button" id="swapCanvasColorButton2">Swap</button><br>
+                <hr>    
+                <label for="name">Name:&nbsp;</label><input id="name" size="20" type="text" value="pencil"
+                data-q="n"><br>
             <button type="button" id="generateSingletonButton">Generate</button><br>
         </form>
     </section>
     <section id="generatedSingletonSection" style="display:none;">
 
-        <h2>Images</h2>
-
-        <p>Save: icon.png<br>
-            <img id="preview1">
-            <img id="preview2">
-            <img id="preview3">
-            <img id="preview4"></p>
-
-        <p>Save: icon@2x.png<br>
-            <img id="preview2x1">
-            <img id="preview2x2">
-            <img id="preview2x3">
-            <img id="preview2x4"></p>
-
-        <p>Save: icon@4x.png<br>
-            <img id="preview4x1">
-            <img id="preview4x2">
-            <img id="preview4x3">
-            <img id="preview4x4"></p>
-
-        <h2>Javascript</h2>
-
-        <pre id="jsResult">
-            <!-- will be populated by script -->
-        </pre>
+        <!-- will be populated by script -->
 
     </section>
 </body>
@@ -284,6 +263,7 @@
     const decrSize = document.getElementById("decrSize");
 
     const inputColor = document.getElementById("color");
+    const inputName = document.getElementById("name");
 
     const inputBackgroundWidth = document.getElementById("backgroundWidth");
     const inputBackgroundHeight = document.getElementById("backgroundHeight");
@@ -572,11 +552,40 @@
             return
         }
 
+        const name = inputName.value
         const font = selectFont.value
         const fontInfo = meta[font]
+        
+        const dataURL = ic1.toDataURL()
+        const dataURL2 = ic2.toDataURL()
+        const dataURL4 = ic4.toDataURL()
 
-        document.getElementById("jsResult").innerHTML = `{
-    id: "${font}_${inputUnicode.value}", 
+        generatedSingletonSection.innerHTML =
+`<h2>Images</h2>
+
+<p>Save: ${name}.png<br>
+    <img src="${dataURL}" width="${ic1.width}" height="${ic1.height}" style="background-color: white;">
+    <img src="${dataURL}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor1};">
+    <img src="${dataURL}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor2};">
+    <img src="${dataURL}" width="${ic1.width}" height="${ic1.height}" style="background-color: black;"></p>
+
+<p>Save: ${name}@2x.png<br>
+    <img src="${dataURL2}" width="${ic1.width}" height="${ic1.height}" style="background-color: white;">
+    <img src="${dataURL2}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor1};">
+    <img src="${dataURL2}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor2};">
+    <img src="${dataURL2}" width="${ic1.width}" height="${ic1.height}" style="background-color: black;"></p>
+
+<p>Save: ${name}@4x.png<br>
+    <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: white;">
+    <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor1};">
+    <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor2};">
+    <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: black;"></p>
+
+<h2>Javascript</h2>
+
+<pre id="jsResult">
+{
+    name: "${name}",
     font: "${fontInfo.fullname}",
     fontCreator: "${fontInfo.attribution}",
     fontHomepage: "${fontInfo.homepage}", 
@@ -584,62 +593,11 @@
     width: ${ic1.width},
     height: ${ic1.height},
     generatorLink: "${link()}", 
-    image: "icon.png",
-    image2x: "icon@2x.png",
-    image4x: "icon@4x.png"
-}`
-
-        const dataURL = ic1.toDataURL()
-        preview1.src = dataURL
-        preview1.style = `background-color: white;`
-        preview2.src = dataURL
-        preview2.style = `background-color: ${canvasColor1};`
-        preview3.src = dataURL
-        preview3.style = `background-color: ${canvasColor2};`
-        preview4.src = dataURL
-        preview4.style = `background-color: black;`
-
-        const dataURL2 = ic2.toDataURL()
-        preview2x1.src = dataURL2
-        preview2x1.style = `background-color: white;`
-        preview2x1.width = ic1.width
-        preview2x1.height = ic1.height
-
-        preview2x2.src = dataURL2
-        preview2x2.style = `background-color: ${canvasColor1};`
-        preview2x2.width = ic1.width
-        preview2x2.height = ic1.height
-
-        preview2x3.src = dataURL2
-        preview2x3.style = `background-color: ${canvasColor2};`
-        preview2x3.width = ic1.width
-        preview2x3.height = ic1.height
-
-        preview2x4.src = dataURL2
-        preview2x4.style = `background-color: black;`
-        preview2x4.width = ic1.width
-        preview2x4.height = ic1.height
-
-        const dataURL4 = ic4.toDataURL()
-        preview4x1.src = dataURL4
-        preview4x1.style = `background-color: white;`
-        preview4x1.width = ic1.width
-        preview4x1.height = ic1.height
-
-        preview4x2.src = dataURL4
-        preview4x2.style = `background-color: ${canvasColor1};`
-        preview4x2.width = ic1.width
-        preview4x2.height = ic1.height
-
-        preview4x3.src = dataURL4
-        preview4x3.style = `background-color: ${canvasColor2};`
-        preview4x3.width = ic1.width
-        preview4x3.height = ic1.height
-
-        preview4x4.src = dataURL4
-        preview4x4.style = `background-color: black;`
-        preview4x4.width = ic1.width
-        preview4x4.height = ic1.height
+    image: "${name}.png",
+    image2x: "${name}@2x.png",
+    image4x: "${name}@4x.png"
+}
+</pre>`
 
         generatedSingletonSection.style.display = "block"
 
