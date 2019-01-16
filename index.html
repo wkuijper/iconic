@@ -116,7 +116,7 @@
 
         #main {}
 
-        canvas {    
+        canvas {
             font-family: FontAwesome;
             border: 1px solid #CCC;
         }
@@ -160,7 +160,7 @@
             <label for="decimal">Decimal:&nbsp;</label><input id="decimal" type="text" size="10" value="" step="16"><br>
             <label for="literal">Literal:&nbsp;</label><input id="literal" type="text" size="10" value=""><br>
             <br>
-            <button  id="pageUpButton" type="button">Prev Page
+            <button id="pageUpButton" type="button">Prev Page
                 <img class="glyph-pg" width="14" height="14" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAD30lEQVRoQ+2aW8iOWRTHfySSRimmaXIxI5NpkpkyymGKSFKUHAopRZPI6WKQJIcLNE1uRAo1EU1cUFIoh5xqMOR4QVFD0bgg0ghF/9oPX5/v2XuvvZ+H19e76u17v961116/vfZx7d2Bdi4d2jkfTcDPPcLNCDYjWN4CXwM/AP2APkBvoCvQEXgOPARuAzfdR/9XLlV3UUGNB5Y6KIvDl4BNwCHgkaWgT7cqwG+B34B5FTkm0D+Af3Pt5QL2AFYDC3MdKSm/BtgIPE21nwM4DDiTWrGh3DNgBKAubJZUwCnAXnNteQXGufFpspICOAHYb6qlOuUxwFGLOSvgx+qWPoafgX9iIS2AWsfuxRquUe8/oH/sUhIL2Ak4CSiCjSAHgYnA65AzsYBzgS0hYxG/TwK6AHsidEMqM4GdIaUYwG+AuyFDEb8PBv52epr2T0SU8amoq/7otnylejGAG4Blmc60hCtMVQG5Aljn8y0E2BO4AXyZAdgWXFWQ94EBwOMy/0KAk4F9NcFVBTkWOJwCKHjBaWJIEV/kWtvL6a47gF+BN2056YtgzuRigcuNpCab78u6qQ9Qi+m1hNClwOVCDgIuWiM4HdhtBMyBy4H8CbhiBbROMDFwnd1YeRVoOOuYnAb8ZQWcAeyKjGAMXDe3uGvMqPFeVAg5H9hsBdwOzI4AtMBprEiUd6kSMimCvwNLAoApcIXJKiG1TCggH4hvFvWNQaURRrfYW5a1Q9Eti8i11qsKMqmL+gA1oNUtfBKCs0RSudRTnuPaKOC4NYK+1IQiqLNh2ToZCxcLqR5w3tOaSevgd8Atj9EySCtcCDIEp/LalOhQYBqDvYDrgZOEIH8BrjrLqXBlkDFwdxzg/1ZA6cecBYsJR/maA0DZhBKx4rxbQmY5p49FFFoLrCrTCx2XhgJnIyr5lCoDfUnhEKC6nAa3bokaUTRHaPyVbv1CgIKaA2xtRDq3VLW5By38jQHsDlxOuA6ru028k4sFULrDXV60bqct9mO2iaZXFpqtVlo8qFF3uZvhg1XEdNHCiBK2pytYBoJOBRS0f9UuK5jVlh0LoPS/cifnnDRiDmAwTdjauBVQ5fu6xwM5jqaU1UFZN0umC6AUwAJSG4CPFUlFbgigvyZJBVQlup/XhcxUU4125T+BRan39DmAhasjgW01rJMXgMXAOXubvC9RBaCs6f5Qh069iMjd1h0B1rsDbpvZagtwVYAt69TLJt0XLDBEVS8o1BV1x6DXT5VJHYAtndM41esnfb4AlBeVvASeAA/cR99rkboBa3HaYrQJaGmtRtRtRrARo2Lxqd1H8C1rnL05qQvpvgAAAABJRU5ErkJggg==">
             </button>
             <span id="glyphSpan"></span>
@@ -199,16 +199,32 @@
                 data-q="cC1">&nbsp;<button type="button" id="swapCanvasColorButton1">Swap</button><br>
             <label for="canvasColor2">Canvas Color 2:&nbsp;</label><input id="canvasColor2" size="10" type="text" value="gray"
                 data-q="cC2">&nbsp;<button type="button" id="swapCanvasColorButton2">Swap</button><br>
-                <hr>    
-                <label for="name">Name:&nbsp;</label><input id="name" size="20" type="text" value="pencil"
-                data-q="n"><br>
-            <button type="button" id="generateSingletonButton">Generate</button><br>
+            <hr>
+            <label for="name">Name:&nbsp;</label><input id="name" size="20" type="text" value="pencil" data-q="n"><br>
+            <button type="button" id="generateSingletonButton">Generate Single Icon</button><br>
         </form>
     </section>
     <section id="generatedSingletonSection" style="display:none;">
-
         <!-- will be populated by script -->
-
+    </section>
+    <section id="setSection">
+        <hr>
+        <p>
+            Icon-Set Definition:<br>
+            <textarea id="iconSetSpecTextArea" rows="8" cols="32" style="white-space: nowrap;  overflow: auto;">
+[]
+        </textarea><br>
+            <label for="textureWidth">Texture Width:&nbsp;</label><input id="textureWidth" size="6" type="text" value="512">&nbsp;
+            <button id="decrTextureWidth" type="button">-</button><button id="incrTextureWidth" type="button">+</button><br>
+            <label for="spriteMargin">Sprite Margin:&nbsp;</label><input id="spriteMargin" size="6" type="text" value="0">&nbsp;
+            <button id="decrSpriteMargin" type="button">-</button><button id="incrSpriteMargin" type="button">+</button><br>
+            <label for="previewBackdropColor">Preview Backdrop:&nbsp;</label><input id="previewBackdropColor" type="text"
+                size="12" value="black"><br>
+            <button type="button" id="generateIconSetButton">Generate Icon-Set Texture</button><br>
+        </p>
+    </section>
+    <section id="generatedIconSetSection" style="display:none;">
+        <!-- will be populated by script -->
     </section>
 </body>
 <script>
@@ -296,6 +312,16 @@
     const incrResolution = document.getElementById("incrResolution");
     const decrResolution = document.getElementById("decrResolution");
 
+    const inputTextureWidth = document.getElementById("textureWidth");
+    const incrTextureWidth = document.getElementById("incrTextureWidth");
+    const decrTextureWidth = document.getElementById("decrTextureWidth");
+
+    const inputSpriteMargin = document.getElementById("spriteMargin");
+    const incrSpriteMargin = document.getElementById("incrSpriteMargin");
+    const decrSpriteMargin = document.getElementById("decrSpriteMargin");
+
+    const inputPreviewBackdropColor = document.getElementById("previewBackdropColor");
+
     const attributionParagraph = document.getElementById("attributionParagraph");
     const courtesyParagraph = document.getElementById("courtesyParagraph");
     const homepageLink = document.getElementById("homepageLink");
@@ -317,6 +343,7 @@
     const preview4x3 = document.getElementById("preview4x3");
     const preview4x4 = document.getElementById("preview4x4");
 
+    const iconSetSpecTextArea = document.getElementById("iconSetSpecTextArea")
     //const previewAddToSet = document.getElementById("previewAddToSet");
     //const previewSize = document.getElementById("previewSize");
 
@@ -331,8 +358,10 @@
 
     let generateSingletonFlag = false
     const generateSingletonButton = document.getElementById("generateSingletonButton")
-    //const addToSetButton = document.getElementById("addToSetButton")
     const generatedSingletonSection = document.getElementById("generatedSingletonSection")
+
+    const generateIconSetButton = document.getElementById("generateIconSetButton")
+    const generatedIconSetSection = document.getElementById("generatedIconSetSection")
 
     glyphButton.addEventListener("click", () => {
         glyphDiv.style.display = "block"
@@ -355,7 +384,7 @@
     }
 
     function determineBounds(imgData) {
-        
+
         const cols = imgData.width
         const rows = imgData.height
 
@@ -387,8 +416,8 @@
         }
         // is the sprite empty?
         if (top < 0) {
-            top = bot = rows/2
-            left = right = cols/2
+            top = bot = rows / 2
+            left = right = cols / 2
         } else {
             // determine bottom
             for (let y = rows - 1; y >= 0; y--) {
@@ -427,13 +456,13 @@
                 }
             }
         }
-        return [left, top, right+1, bot+1]
+        return [left, top, right + 1, bot + 1]
     }
 
     function createIconCanvas(param, at) {
 
-        const halfWidth = Math.round(((param.size*at) / 2) * param.backgroundWidth)
-        const halfHeight = Math.round(((param.size*at) / 2) * param.backgroundHeight)
+        const halfWidth = Math.round(((param.size * at) / 2) * param.backgroundWidth)
+        const halfHeight = Math.round(((param.size * at) / 2) * param.backgroundHeight)
 
         const width = halfWidth * 2
         const height = halfHeight * 2
@@ -448,7 +477,7 @@
 
         const glyphCtx = canvas.getContext("2d")
 
-        glyphCtx.font = `${param.size*at}px ${param.font}`
+        glyphCtx.font = `${param.size * at}px ${param.font}`
         glyphCtx.textAlign = "center"
         glyphCtx.textBaseline = "middle"
 
@@ -520,20 +549,20 @@
         const imgData = iconCanvas.getContext("2d").getImageData(0, 0, width, height)
         const img = imgData.data
 
-        const x0 = 200 - (halfWidth*tile)
-        const y0 = 200 - (halfHeight*tile)
+        const x0 = 200 - (halfWidth * tile)
+        const y0 = 200 - (halfHeight * tile)
 
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
                 const o = (y * width + x) * 4
-                const [r, g, b, a] = [ img[o], img[o+1], img[o+2], img[o+3] ]
-                ctx.fillStyle = `rgba(${r},${g},${b},${a/255})`
-                ctx.fillRect(x0 + x*tile, y0+y*tile, tile, tile)
+                const [r, g, b, a] = [img[o], img[o + 1], img[o + 2], img[o + 3]]
+                ctx.fillStyle = `rgba(${r},${g},${b},${a / 255})`
+                ctx.fillRect(x0 + x * tile, y0 + y * tile, tile, tile)
             }
         }
 
         ctx.strokeStyle = "red"
-        ctx.strokeRect(x0 - .5, y0 - .5, width*tile + 1, height*tile + 1)
+        ctx.strokeRect(x0 - .5, y0 - .5, width * tile + 1, height * tile + 1)
         ctx.stroke()
 
         const [left1, top1, right1, bot1] = determineBounds(imgData)
@@ -542,7 +571,7 @@
         autoCenterY = Math.round((param.tweakY * param.size * at) + ((Math.abs(top1 - halfHeight) - (bot1 - halfHeight)) / 2)) / (param.size * at)
 
         ctx.strokeStyle = "green"
-        ctx.strokeRect(x0 + left1*tile - .5, y0 + top1*tile - .5, (right1 - left1)*tile, (bot1 - top1)*tile + 1)
+        ctx.strokeRect(x0 + left1 * tile - .5, y0 + top1 * tile - .5, (right1 - left1) * tile, (bot1 - top1) * tile + 1)
 
         const [hw1, hh1, ic1] = createIconCanvas(param, 1)
         const [hw2, hh2, ic2] = createIconCanvas(param, 2)
@@ -555,13 +584,13 @@
         const name = inputName.value
         const font = selectFont.value
         const fontInfo = meta[font]
-        
+
         const dataURL = ic1.toDataURL()
         const dataURL2 = ic2.toDataURL()
         const dataURL4 = ic4.toDataURL()
 
         generatedSingletonSection.innerHTML =
-`<h2>Images</h2>
+            `<h2>Images</h2>
 
 <p>Save: ${name}.png<br>
     <img src="${dataURL}" width="${ic1.width}" height="${ic1.height}" style="background-color: white;">
@@ -581,27 +610,167 @@
     <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: ${canvasColor2};">
     <img src="${dataURL4}" width="${ic1.width}" height="${ic1.height}" style="background-color: black;"></p>
 
-<h2>Javascript</h2>
+<h2>JSON</h2>
 
 <pre id="jsResult">
 {
-    name: "${name}",
-    font: "${fontInfo.fullname}",
-    fontCreator: "${fontInfo.attribution}",
-    fontHomepage: "${fontInfo.homepage}", 
-    license: "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
-    width: ${ic1.width},
-    height: ${ic1.height},
-    generatorLink: "${link()}", 
-    image: "${name}.png",
-    image2x: "${name}@2x.png",
-    image4x: "${name}@4x.png"
+    "name": "${name}",
+    "font": "${fontInfo.fullname}",
+    "fontCreator": "${fontInfo.attribution}",
+    "fontHomepage": "${fontInfo.homepage}", 
+    "license": "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
+    "width": ${ic1.width},
+    "height": ${ic1.height},
+    "generatorLink": "${link()}", 
+    "image": "${name}.png",
+    "image2x": "${name}@2x.png",
+    "image4x": "${name}@4x.png"
 }
-</pre>`
+</pre>
+
+<button type="button" onclick="addCurrentIconToIconSet()">Add To Icon-Set</button><button type="button" onclick="addCurrentIconToIconSetWithRowBreak()">Add With Row-Break</button>`
+
+        currentIconName = name
+        currentIconParam = param
 
         generatedSingletonSection.style.display = "block"
 
         generateSingletonFlag = false
+    }
+
+    let currentIconName
+    let currentIconParam
+
+    function addCurrentIconToIconSetWithRowBreak() {
+        addCurrentIconToIconSet(true)
+    }
+
+    function addCurrentIconToIconSet(rowBreak = false) {
+        if (!currentIconName || !currentIconParam) {
+            return
+        }
+        currSpec = JSON.parse(iconSetSpecTextArea.value)
+        const newItem = { "br": rowBreak, "name": currentIconName, "param": currentIconParam }
+        const lines = []
+        let emited = false
+        for (item of currSpec) {
+            if (!emited && item.name === newItem.name) {
+                lines.push(`    ${JSON.stringify(newItem)}`)
+                emited = true
+            } else {
+                lines.push(`    ${JSON.stringify(item)}`)
+            }
+        }
+        if (!emited) {
+            if (lines.length > 0) {
+                iconSetSpecTextArea.value = `[\n    ${JSON.stringify(newItem)},\n${lines.join(",\n")}\n]`
+            } else {
+                iconSetSpecTextArea.value = `[ ${JSON.stringify(newItem)} ]`
+            }
+        } else {
+            iconSetSpecTextArea.value = `[\n${lines.join(",\n")}\n]`
+        }
+    }
+
+    function generateIconSetTexture() {
+        const iconSetSpec = JSON.parse(iconSetSpecTextArea.value)
+        const textureWidth = parseInt(inputTextureWidth.value)
+        const spriteMargin = parseInt(inputSpriteMargin.value)
+        let x = spriteMargin
+        let y = spriteMargin
+        let rowHeight = 0
+        let rowCount = 0
+        const atlas = {}
+        for (spec of iconSetSpec) {
+            const param = spec.param
+            const iconWidth = Math.round(((param.size * 1) / 2) * param.backgroundWidth) * 2 
+            const iconHeight = Math.round(((param.size * 1) / 2) * param.backgroundHeight) * 2 
+            if (x + iconWidth + spriteMargin > textureWidth) {
+                if (rowCount === 0) {
+                    throw (`icon too wide for texture: ${spec.name}: ${width} > ${textureWidth}`)
+                }
+                x = spriteMargin
+                y += rowHeight
+                rowHeight = 0
+                rowCount = 0
+            }
+            if (iconHeight + spriteMargin > rowHeight) {
+                rowHeight = iconHeight + spriteMargin
+            }
+            atlas[spec.name] = { frame: { x: x, y: y, w: iconWidth, h: iconHeight }}
+            if (spec.br) {
+                x = spriteMargin
+                y += rowHeight
+                rowHeight = 0
+                rowCount = 0
+            } else {
+                x += iconWidth + spriteMargin
+                rowCount++
+            }
+        }
+        const textureHeight = y + rowHeight
+        generatedIconSetSection.innerHTML = "<h2>Images</h2>";
+        [1, 2, 4].forEach((at) => {
+            const textureCanvas = document.createElement("canvas")
+            textureCanvas.width = textureWidth*at
+            textureCanvas.height = textureHeight*at
+            const textureCtx = textureCanvas.getContext("2d")
+            x = spriteMargin
+            y = spriteMargin
+            rowHeight = 0
+            rowCount = 0
+            for (spec of iconSetSpec) {
+                const param = spec.param
+                const iconWidth = Math.round(((param.size * 1) / 2) * param.backgroundWidth) * 2
+                const iconHeight = Math.round(((param.size * 1) / 2) * param.backgroundHeight) * 2
+                if (x + iconWidth + spriteMargin > textureWidth) {
+                    if (rowCount === 0) {
+                        throw (`icon too wide for texture: ${spec.name}: ${width} > ${textureWidth}`)
+                    }
+                    x = spriteMargin
+                    y += rowHeight
+                    rowHeight = 0
+                    rowCount = 0
+                }
+                if (iconHeight + spriteMargin > rowHeight) {
+                    rowHeight = iconHeight + spriteMargin
+                }
+                const [ihw, ihh, iconCanvas] = createIconCanvas(param, at)
+                textureCtx.drawImage(iconCanvas, x*at, y*at)
+                if (spec.br) {
+                    x = spriteMargin
+                    y += rowHeight
+                    rowHeight = 0
+                    rowCount = 0
+                } else {
+                    x += iconWidth + spriteMargin
+                    rowCount++
+                }
+            }
+            const backdropColor = inputPreviewBackdropColor.value
+            const dataURL = textureCanvas.toDataURL()
+            const div = document.createElement("div")
+            div.innerHTML =
+                `<p>Save: icons${at === 1 ? "" : at === 2 ? "@2x" : "@4x"}.png<br>
+    <img src="${dataURL}" width="${textureWidth}" height="${textureHeight}" style="background-color: ${backdropColor};">
+</p>`
+            generatedIconSetSection.appendChild(div)
+        })
+        const jsonDiv = document.createElement("div")
+        const atlasLines = []
+        for (key in atlas) {
+            const entry = atlas[key]
+            atlasLines.push(`    "${key}": ${JSON.stringify(entry)}`)
+        }
+        jsonDiv.innerHTML = `<h2>JSON</h2>
+
+<pre>
+{
+${atlasLines.join(",\n")}
+}
+</pre>`
+        generatedIconSetSection.appendChild(jsonDiv)
+        generatedIconSetSection.style.display = "block"
     }
 
     const url = window.location.href;
@@ -738,6 +907,10 @@
 
     // attach event listener for buttons
 
+    generateIconSetButton.addEventListener("click", () => {
+        generateIconSetTexture()
+    })
+
     generateSingletonButton.addEventListener("click", () => {
         generateSingletonFlag = true
         requestAnimationFrame(redraw)
@@ -751,13 +924,13 @@
 
     incrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
-        size = Math.min(Math.floor(size/2 + 1)*2, 128)
+        size = Math.min(Math.floor(size / 2 + 1) * 2, 128)
         inputSize.value = size.toString(10)
         requestAnimationFrame(redraw)
     })
     decrSize.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
-        size = Math.max(Math.ceil(size/2 - 1)*2, 8)
+        size = Math.max(Math.ceil(size / 2 - 1) * 2, 8)
         inputSize.value = size.toString(10)
         requestAnimationFrame(redraw)
     })
@@ -805,7 +978,7 @@
         let at = getResolution()
         let tweakXRatio = parseFloat(inputTweakX.value)
         let tweakX = size * at * tweakXRatio
-        tweakX = Math.min(Math.floor(tweakX) + 1, at*32)
+        tweakX = Math.min(Math.floor(tweakX) + 1, at * 32)
         tweakXRatio = tweakX / (size * at)
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -815,7 +988,7 @@
         let at = getResolution()
         let tweakXRatio = parseFloat(inputTweakX.value)
         let tweakX = size * at * tweakXRatio
-        tweakX = Math.max(Math.ceil(tweakX) - 1, -at*32)
+        tweakX = Math.max(Math.ceil(tweakX) - 1, -at * 32)
         tweakXRatio = tweakX / (size * at)
         inputTweakX.value = tweakXRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -826,7 +999,7 @@
         let at = getResolution()
         let tweakYRatio = parseFloat(inputTweakY.value)
         let tweakY = size * at * tweakYRatio
-        tweakY = Math.min(Math.floor(tweakY) + 1, at*32)
+        tweakY = Math.min(Math.floor(tweakY) + 1, at * 32)
         tweakYRatio = tweakY / (size * at)
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -836,7 +1009,7 @@
         let at = getResolution()
         let tweakYRatio = parseFloat(inputTweakY.value)
         let tweakY = size * at * tweakYRatio
-        tweakY = Math.max(Math.ceil(tweakY) - 1, -at*32)
+        tweakY = Math.max(Math.ceil(tweakY) - 1, -at * 32)
         tweakYRatio = tweakY / (size * at)
         inputTweakY.value = tweakYRatio.toString(10)
         requestAnimationFrame(redraw)
@@ -868,6 +1041,39 @@
             inputResolution.value = "1x"
         }
         requestAnimationFrame(redraw)
+    })
+
+    incrTextureWidth.addEventListener("click", () => {
+        let width = parseFloat(inputTextureWidth.value)
+        let newWidth = 1
+        while (newWidth <= width) {
+            newWidth *= 2
+        }
+        width = Math.min(newWidth, 4096)
+        inputTextureWidth.value = width.toString(10)
+    })
+    decrTextureWidth.addEventListener("click", () => {
+        let width = parseFloat(inputTextureWidth.value)
+        let newWidth = 1
+        while (newWidth <= width) {
+            newWidth *= 2
+        }
+        while (newWidth > 1 && newWidth >= width) {
+            newWidth /= 2
+        }
+        width = Math.max(newWidth, 16)
+        inputTextureWidth.value = width.toString(10)
+    })
+
+    incrSpriteMargin.addEventListener("click", () => {
+        let margin = parseFloat(inputSpriteMargin.value)
+        margin = Math.min(Math.floor(margin + 1), 1)
+        inputSpriteMargin.value = margin.toString(10)
+    })
+    decrSpriteMargin.addEventListener("click", () => {
+        let margin = parseFloat(inputSpriteMargin.value)
+        margin = Math.max(Math.ceil(margin - 1), 0)
+        inputSpriteMargin.value = margin.toString(10)
     })
 
     // attach generic event listeners
@@ -902,5 +1108,3 @@
 
     updateFont(getParameterByName('u'))
 </script>
-
-</html>
