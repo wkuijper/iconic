@@ -615,16 +615,15 @@
 <pre id="jsResult">
 {
     "name": "${name}",
-    "font": "${fontInfo.fullname}",
-    "fontCreator": "${fontInfo.attribution}",
-    "fontHomepage": "${fontInfo.homepage}", 
-    "license": "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})",  
+    "font": {
+        "name": "${fontInfo.fullname}",
+        "creator": "${fontInfo.attribution}",
+        "homepage": "${fontInfo.homepage}", 
+        "license": "This icon is licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})"
+    }
     "width": ${ic1.width},
     "height": ${ic1.height},
-    "generatorLink": "${link()}", 
-    "image": "${name}.png",
-    "image2x": "${name}@2x.png",
-    "image4x": "${name}@4x.png"
+    "generator": "${link()}"
 }
 </pre>
 
@@ -650,7 +649,7 @@
             return
         }
         currSpec = JSON.parse(iconSetSpecTextArea.value)
-        const newItem = { "br": rowBreak, "name": currentIconName, "param": currentIconParam }
+        const newItem = { "name": currentIconName, "br": rowBreak, "param": currentIconParam }
         const lines = []
         let emited = false
         for (item of currSpec) {
@@ -681,8 +680,13 @@
         let rowHeight = 0
         let rowCount = 0
         const atlas = {}
+        const fontIcons = {}
+        for (font in meta) {
+            fontIcons[font] = []
+        }
         for (spec of iconSetSpec) {
             const param = spec.param
+            fontIcons[param.font].push(spec.name)
             const iconWidth = Math.round(((param.size * 1) / 2) * param.backgroundWidth) * 2 
             const iconHeight = Math.round(((param.size * 1) / 2) * param.backgroundHeight) * 2 
             if (x + iconWidth + spriteMargin > textureWidth) {
@@ -697,7 +701,7 @@
             if (iconHeight + spriteMargin > rowHeight) {
                 rowHeight = iconHeight + spriteMargin
             }
-            atlas[spec.name] = { frame: { x: x, y: y, w: iconWidth, h: iconHeight }}
+            atlas[spec.name] = [x, y, iconWidth, iconHeight]
             if (spec.br) {
                 x = spriteMargin
                 y += rowHeight
@@ -756,20 +760,45 @@
 </p>`
             generatedIconSetSection.appendChild(div)
         })
-        const jsonDiv = document.createElement("div")
-        const atlasLines = []
-        for (key in atlas) {
-            const entry = atlas[key]
-            atlasLines.push(`    "${key}": ${JSON.stringify(entry)}`)
-        }
-        jsonDiv.innerHTML = `<h2>JSON</h2>
 
-<pre>
-{
-${atlasLines.join(",\n")}
-}
-</pre>`
-        generatedIconSetSection.appendChild(jsonDiv)
+        const h2 = document.createElement("h2")
+        h2.innerHTML = `JSON`
+        generatedIconSetSection.appendChild(h2)
+
+        const fontMetaItems = []
+        for(font in fontIcons) {
+            const icons = fontIcons[font]
+            if (icons.length === 0) {
+                continue
+            }
+            const fontInfo = meta[font]
+            fontMetaItems.push(`        "${font}": {
+            "name": "${fontInfo.fullname}",
+            "creator": "${fontInfo.attribution}",
+            "homepage": "${fontInfo.homepage}", 
+            "icons": ${JSON.stringify(icons)},
+            "license": "These icons are licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})"
+        }`)
+        }
+
+        const metaDiv = document.createElement("div")
+        metaDiv.innerHTML = `<p>Save: icons.meta.json<br>
+<pre>{
+    "fonts": {
+${fontMetaItems.join(",\n")}
+    },
+    "generator": {
+        "url": "http://wouterkuijper.com/iconic",
+        "definition": ${JSON.stringify(iconSetSpec)}
+    }
+}</pre>`
+        generatedIconSetSection.appendChild(metaDiv)
+
+        const atlasDiv = document.createElement("div")
+        atlasDiv.innerHTML = `<p>Save: icons.atlas.json<br>
+<pre>${JSON.stringify(atlas)}</pre>`
+        generatedIconSetSection.appendChild(atlasDiv)
+
         generatedIconSetSection.style.display = "block"
     }
 
@@ -1108,3 +1137,4 @@ ${atlasLines.join(",\n")}
 
     updateFont(getParameterByName('u'))
 </script>
+</html>
