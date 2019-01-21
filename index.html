@@ -614,7 +614,6 @@
 
 <pre id="jsResult">
 {
-    "name": "${name}",
     "font": {
         "name": "${fontInfo.fullname}",
         "creator": "${fontInfo.attribution}",
@@ -713,7 +712,7 @@
             }
         }
         const textureHeight = y + rowHeight
-        generatedIconSetSection.innerHTML = "<h2>Images</h2>";
+        generatedIconSetSection.innerHTML = "<h2>Texture Images</h2>";
         [1, 2, 4].forEach((at) => {
             const textureCanvas = document.createElement("canvas")
             textureCanvas.width = textureWidth*at
@@ -762,7 +761,7 @@
         })
 
         const h2 = document.createElement("h2")
-        h2.innerHTML = `JSON`
+        h2.innerHTML = `Texture Meta`
         generatedIconSetSection.appendChild(h2)
 
         const fontMetaItems = []
@@ -772,32 +771,30 @@
                 continue
             }
             const fontInfo = meta[font]
-            fontMetaItems.push(`        "${font}": {
-            "name": "${fontInfo.fullname}",
-            "creator": "${fontInfo.attribution}",
-            "homepage": "${fontInfo.homepage}", 
-            "icons": ${JSON.stringify(icons)},
-            "license": "These icons are licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})"
-        }`)
+            fontMetaItems.push(`            "${font}": {
+                "name": "${fontInfo.fullname}",
+                "creator": "${fontInfo.attribution}",
+                "homepage": "${fontInfo.homepage}", 
+                "icons": ${JSON.stringify(icons)},
+                "license": "These icons are licensed under: ${fontInfo.license} (${licenseMeta[fontInfo.license].url})"
+            }`)
         }
 
         const metaDiv = document.createElement("div")
-        metaDiv.innerHTML = `<p>Save: icons.meta.json<br>
+        metaDiv.innerHTML = `<p>Save: icons.json<br>
 <pre>{
-    "fonts": {
+    "info": {
+        "fonts": {
 ${fontMetaItems.join(",\n")}
+        },
+        "generator": {
+            "url": "http://wouterkuijper.com/iconic",
+            "definition": ${JSON.stringify(iconSetSpec)}
+        }
     },
-    "generator": {
-        "url": "http://wouterkuijper.com/iconic",
-        "definition": ${JSON.stringify(iconSetSpec)}
-    }
+    "atlas": ${JSON.stringify(atlas)}
 }</pre>`
         generatedIconSetSection.appendChild(metaDiv)
-
-        const atlasDiv = document.createElement("div")
-        atlasDiv.innerHTML = `<p>Save: icons.atlas.json<br>
-<pre>${JSON.stringify(atlas)}</pre>`
-        generatedIconSetSection.appendChild(atlasDiv)
 
         generatedIconSetSection.style.display = "block"
     }
