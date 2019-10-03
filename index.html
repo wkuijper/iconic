@@ -216,8 +216,12 @@
         </textarea><br>
             <label for="textureWidth">Texture Width:&nbsp;</label><input id="textureWidth" size="6" type="text" value="512">&nbsp;
             <button id="decrTextureWidth" type="button">-</button><button id="incrTextureWidth" type="button">+</button><br>
-            <label for="spriteMargin">Sprite Margin:&nbsp;</label><input id="spriteMargin" size="6" type="text" value="0">&nbsp;
-            <button id="decrSpriteMargin" type="button">-</button><button id="incrSpriteMargin" type="button">+</button><br>
+            <label for="textureHeight">Texture Height:&nbsp;</label><input id="textureHeight" size="6" type="text" value="0">&nbsp;
+            <button id="toggleTextureHeight" type="button">Toggle</button><br>
+            <label for="spritePadding">Sprite Padding:&nbsp;</label><input id="spritePadding" size="6" type="text" value="0">&nbsp;
+            <button id="decrSpritePadding" type="button">-</button><button id="incrSpritePadding" type="button">+</button><br>
+            <label for="mipmapAbility">Mipmap-ability:&nbsp;</label><input id="mipmapAbility" size="6" type="text" value="0">&nbsp;
+            <button id="toggleMipmapAbility" type="button">Toggle</button><br>
             <label for="previewBackdropColor">Preview Backdrop:&nbsp;</label><input id="previewBackdropColor" type="text"
                 size="12" value="black"><br>
             <button type="button" id="generateIconSetButton">Generate Icon-Set Texture</button><br>
@@ -316,9 +320,15 @@
     const incrTextureWidth = document.getElementById("incrTextureWidth");
     const decrTextureWidth = document.getElementById("decrTextureWidth");
 
-    const inputSpriteMargin = document.getElementById("spriteMargin");
-    const incrSpriteMargin = document.getElementById("incrSpriteMargin");
-    const decrSpriteMargin = document.getElementById("decrSpriteMargin");
+    const inputTextureHeight = document.getElementById("textureHeight");
+    const toggleTextureHeight = document.getElementById("toggleTextureHeight");
+
+    const inputSpritePadding = document.getElementById("spritePadding");
+    const incrSpritePadding = document.getElementById("incrSpritePadding");
+    const decrSpritePadding = document.getElementById("decrSpritePadding");
+
+    const inputMipmapAbility = document.getElementById("mipmapAbility");
+    const toggleMipmapAbility = document.getElementById("toggleMipmapAbility");
 
     const inputPreviewBackdropColor = document.getElementById("previewBackdropColor");
 
@@ -673,9 +683,11 @@
     function generateIconSetTexture() {
         const iconSetSpec = JSON.parse(iconSetSpecTextArea.value)
         const textureWidth = parseInt(inputTextureWidth.value)
-        const spriteMargin = parseInt(inputSpriteMargin.value)
-        let x = spriteMargin
-        let y = spriteMargin
+        let textureHeight = parseInt(inputTextureHeight.value)
+        const spritePadding = parseInt(inputSpritePadding.value)
+        const mipmapAbility = parseInt(inputMipmapAbility.value)
+        let x = spritePadding
+        let y = spritePadding
         let rowHeight = 0
         let rowCount = 0
         const atlas = {}
@@ -683,70 +695,81 @@
         for (font in meta) {
             fontIcons[font] = []
         }
+        function newLine() {
+            x = spritePadding
+            y += rowHeight
+            while(y % mipmapAbility > 0) {
+                y++;
+            }
+            rowHeight = 0
+            rowCount = 0
+        }
         for (spec of iconSetSpec) {
             const param = spec.param
             fontIcons[param.font].push(spec.name)
             const iconWidth = Math.round(((param.size * 1) / 2) * param.backgroundWidth) * 2 
             const iconHeight = Math.round(((param.size * 1) / 2) * param.backgroundHeight) * 2 
-            if (x + iconWidth + spriteMargin > textureWidth) {
+            if (x + iconWidth + spritePadding > textureWidth) {
                 if (rowCount === 0) {
                     throw (`icon too wide for texture: ${spec.name}: ${width} > ${textureWidth}`)
                 }
-                x = spriteMargin
-                y += rowHeight
-                rowHeight = 0
-                rowCount = 0
+                newLine();
             }
-            if (iconHeight + spriteMargin > rowHeight) {
-                rowHeight = iconHeight + spriteMargin
+            if (textureHeight > 0 && y + iconHeight + spritePadding > textureHeight) {
+                throw (`icons too hight for texture`)
+            }
+            if (iconHeight + spritePadding > rowHeight) {
+                rowHeight = iconHeight + spritePadding
             }
             atlas[spec.name] = [x, y, iconWidth, iconHeight]
             if (spec.br) {
-                x = spriteMargin
-                y += rowHeight
-                rowHeight = 0
-                rowCount = 0
+                newLine();
             } else {
-                x += iconWidth + spriteMargin
+                x += iconWidth + spritePadding
+                while (x % mipmapAbility > 0) {
+                    x++;
+                }
                 rowCount++
             }
         }
-        const textureHeight = y + rowHeight
+        if (textureHeight <= 0) {
+            textureHeight = y + rowHeight
+        }
         generatedIconSetSection.innerHTML = "<h2>Texture Images</h2>";
         [1, 2, 4].forEach((at) => {
             const textureCanvas = document.createElement("canvas")
             textureCanvas.width = textureWidth*at
             textureCanvas.height = textureHeight*at
             const textureCtx = textureCanvas.getContext("2d")
-            x = spriteMargin
-            y = spriteMargin
+            x = spritePadding
+            y = spritePadding
             rowHeight = 0
             rowCount = 0
             for (spec of iconSetSpec) {
                 const param = spec.param
                 const iconWidth = Math.round(((param.size * 1) / 2) * param.backgroundWidth) * 2
                 const iconHeight = Math.round(((param.size * 1) / 2) * param.backgroundHeight) * 2
-                if (x + iconWidth + spriteMargin > textureWidth) {
+                if (x + iconWidth + spritePadding > textureWidth) {
                     if (rowCount === 0) {
                         throw (`icon too wide for texture: ${spec.name}: ${width} > ${textureWidth}`)
                     }
-                    x = spriteMargin
+                    x = spritePadding
                     y += rowHeight
                     rowHeight = 0
                     rowCount = 0
                 }
-                if (iconHeight + spriteMargin > rowHeight) {
-                    rowHeight = iconHeight + spriteMargin
+                if (iconHeight + spritePadding > rowHeight) {
+                    rowHeight = iconHeight + spritePadding
                 }
                 const [ihw, ihh, iconCanvas] = createIconCanvas(param, at)
                 textureCtx.drawImage(iconCanvas, x*at, y*at)
                 if (spec.br) {
-                    x = spriteMargin
+                    x = spritePadding
                     y += rowHeight
                     rowHeight = 0
                     rowCount = 0
                 } else {
-                    x += iconWidth + spriteMargin
+                    x += iconWidth + spritePadding
                     rowCount++
                 }
             }
@@ -1069,6 +1092,14 @@ ${fontMetaItems.join(",\n")}
         requestAnimationFrame(redraw)
     })
 
+    function updateTextureHeight(width) {
+        let height = parseFloat(inputTextureHeight.value);
+        if (height <= 0) {
+            width = 0;
+        }
+        inputTextureHeight.value = width.toString(10);
+    }
+
     incrTextureWidth.addEventListener("click", () => {
         let width = parseFloat(inputTextureWidth.value)
         let newWidth = 1
@@ -1077,6 +1108,7 @@ ${fontMetaItems.join(",\n")}
         }
         width = Math.min(newWidth, 4096)
         inputTextureWidth.value = width.toString(10)
+        updateTextureHeight(width);
     })
     decrTextureWidth.addEventListener("click", () => {
         let width = parseFloat(inputTextureWidth.value)
@@ -1089,18 +1121,67 @@ ${fontMetaItems.join(",\n")}
         }
         width = Math.max(newWidth, 16)
         inputTextureWidth.value = width.toString(10)
+        updateTextureHeight(width);
     })
 
-    incrSpriteMargin.addEventListener("click", () => {
-        let margin = parseFloat(inputSpriteMargin.value)
-        margin = Math.min(Math.floor(margin + 1), 1)
-        inputSpriteMargin.value = margin.toString(10)
+    toggleTextureHeight.addEventListener("click", () => {
+        let height = parseFloat(inputTextureHeight.value);
+        if (height <= 0) {
+            height = parseFloat(inputTextureWidth.value);
+        } else {
+            height = 0;
+        }
+        inputTextureHeight.value = height.toString(10);
+    });
+
+    function updateMipmapAbility(padding) {
+        let mipmapAbility = parseFloat(inputMipmapAbility.value);
+        if (mipmapAbility <= 0) {
+            padding = 0;
+        }
+        inputMipmapAbility.value = padding.toString(10);
+    }
+
+    incrSpritePadding.addEventListener("click", () => {
+        let padding = parseFloat(inputSpritePadding.value)
+        let newPadding = 1
+        while (newPadding <= padding) {
+            newPadding *= 2
+        }
+        padding = Math.min(newPadding, 256)
+        inputSpritePadding.value = padding.toString(10)
+        updateMipmapAbility(padding);
     })
-    decrSpriteMargin.addEventListener("click", () => {
-        let margin = parseFloat(inputSpriteMargin.value)
-        margin = Math.max(Math.ceil(margin - 1), 0)
-        inputSpriteMargin.value = margin.toString(10)
+    decrSpritePadding.addEventListener("click", () => {
+        let padding = parseFloat(inputSpritePadding.value)
+        let newPadding = 1
+        while (newPadding <= padding) {
+            newPadding *= 2
+        }
+        while (newPadding >= 1 && newPadding >= padding) {
+            newPadding /= 2
+        }
+        if (newPadding < 1) {
+            newPadding = 0
+        }
+        padding = Math.max(newPadding, 0)
+        inputSpritePadding.value = padding.toString(10)
+        updateMipmapAbility(padding);
     })
+
+    toggleMipmapAbility.addEventListener("click", () => {
+        let mipmapAbility = parseFloat(inputMipmapAbility.value);
+        if (mipmapAbility <= 0) {
+            mipmapAbility = parseFloat(inputSpritePadding.value);
+            if (mipmapAbility <= 0) {
+                inputSpritePadding.value = "8";
+                mipmapAbility = 8;
+            }
+        } else {
+            mipmapAbility = 0;
+        }
+        inputMipmapAbility.value = mipmapAbility.toString(10);
+    });
 
     // attach generic event listeners
     inputs.forEach(
