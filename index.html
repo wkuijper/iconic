@@ -185,6 +185,8 @@
                 <button type="button" id="decrBackgroundHeight">-</button><button id="incrBackgroundHeight" type="button">+</button><br>
             </div>
             <div id="alignDiv" style="display:none;">
+                <label for="tweakSize">Tweak Size:&nbsp;</label><input id="tweakSize" type="text" value="1" size="8" data-q="tS">&nbsp;
+                <button type="button" id="decrTweakSize">-</button><button id="incrTweakSize" type="button">+</button><br>
                 <label for="tweakX">Tweak X:&nbsp;</label><input id="tweakX" type="text" value="0" size="8" data-q="tX">&nbsp;
                 <button type="button" id="decrTweakX">-</button><button id="incrTweakX" type="button">+</button><br>
                 <label for="tweakY">Tweak Y:&nbsp;</label><input id="tweakY" type="text" value="0" size="8" data-q="tY">&nbsp;
@@ -210,10 +212,8 @@
     <section id="setSection">
         <hr>
         <p>
-            Icon-Set Definition:<br>
-            <textarea id="iconSetSpecTextArea" rows="8" cols="32" style="white-space: nowrap;  overflow: auto;">
-[]
-        </textarea><br>
+            Icon-Set/Texture Definition:<br>
+            <textarea id="iconSetSpecTextArea" rows="8" cols="32" style="white-space: nowrap;  overflow: auto;">{}</textarea><br>
             <label for="textureWidth">Texture Width:&nbsp;</label><input id="textureWidth" size="6" type="text" value="512">&nbsp;
             <button id="decrTextureWidth" type="button">-</button><button id="incrTextureWidth" type="button">+</button><br>
             <label for="textureHeight">Texture Height:&nbsp;</label><input id="textureHeight" size="6" type="text" value="0">&nbsp;
@@ -294,12 +294,15 @@
     const decrBackgroundWidth = document.getElementById("decrBackgroundWidth");
     const decrBackgroundHeight = document.getElementById("decrBackgroundHeight");
 
+    const inputTweakSize = document.getElementById("tweakSize");
     const inputTweakX = document.getElementById("tweakX");
     const inputTweakY = document.getElementById("tweakY");
 
+    const incrTweakSize = document.getElementById("incrTweakSize");
     const incrTweakX = document.getElementById("incrTweakX");
     const incrTweakY = document.getElementById("incrTweakY");
 
+    const decrTweakSize = document.getElementById("decrTweakSize");
     const decrTweakX = document.getElementById("decrTweakX");
     const decrTweakY = document.getElementById("decrTweakY");
 
@@ -382,7 +385,7 @@
         alignDiv.style.display = "block"
     })
 
-    const inputs = [inputResolution, selectFont, inputUnicode, inputSize, inputColor, inputBackgroundWidth, backgroundHeight, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2];
+    const inputs = [inputResolution, selectFont, inputUnicode, inputSize, inputColor, inputBackgroundWidth, backgroundHeight, inputTweakSize, inputTweakX, inputTweakY, inputCanvasColor1, inputCanvasColor2];
 
     function link() {
         return [
@@ -392,6 +395,8 @@
             }).join('&')
         ].join('?')
     }
+
+    const textureInputs = [inputTextureWidth, inputTextureHeight, inputSpritePadding, inputMipmapAbility, inputPreviewBackdropColor];
 
     function determineBounds(imgData) {
 
@@ -487,7 +492,7 @@
 
         const glyphCtx = canvas.getContext("2d")
 
-        glyphCtx.font = `${param.size * at}px ${param.font}`
+        glyphCtx.font = `${param.tweakSize * param.size * at}px ${param.font}`
         glyphCtx.textAlign = "center"
         glyphCtx.textBaseline = "middle"
 
@@ -528,7 +533,7 @@
 
     function redraw() {
 
-        const at = inputResolution.value === "4x" ? 4 : inputResolution.value === "2x" ? 2 : 1
+        const at = getResolution();
 
         const canvasColor1 = inputCanvasColor1.value
         const canvasColor2 = inputCanvasColor2.value
@@ -537,7 +542,8 @@
         ctx.drawImage(backdropCanvas, 0, 0)
 
         const param = {
-            size: parseInt(inputSize.value),
+            size: parseFloat(inputSize.value),
+            tweakSize: parseFloat(inputTweakSize.value),
             font: selectFont.value,
             unicode: parseInt(`0x${inputUnicode.value}`),
             color: inputColor.value,
@@ -573,15 +579,56 @@
 
         ctx.strokeStyle = "red"
         ctx.strokeRect(x0 - .5, y0 - .5, width * tile + 1, height * tile + 1)
+        ctx.setLineDash([4,4])
+        ctx.beginPath()
+        ctx.moveTo(x0 - .5, y0 + halfHeight * tile)
+        ctx.lineTo(x0 + width * tile + 1, y0 + halfHeight * tile)
         ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(x0 + halfWidth * tile, y0 - .5)
+        ctx.lineTo(x0 + halfWidth * tile, y0 + height * tile + 1)
+        ctx.stroke()
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = "red"
+        ctx.font = "18px sans-serif"
+        ctx.textAlign = "center"
+        ctx.textBaseline = "bottom"
+        ctx.fillText(`${width}`, Math.round(x0 + halfWidth * tile), y0 - 8)
+        ctx.textAlign = "left"
+        ctx.textBaseline = "middle"
+        ctx.fillText(`${height}`, Math.round(x0 + width * tile) + 8, Math.round(y0 + halfHeight * tile))
 
         const [left1, top1, right1, bot1] = determineBounds(imgData)
 
-        autoCenterX = Math.round((param.tweakX * param.size * at) + ((Math.abs(left1 - halfWidth) - (right1 - halfWidth)) / 2)) / (param.size * at)
-        autoCenterY = Math.round((param.tweakY * param.size * at) + ((Math.abs(top1 - halfHeight) - (bot1 - halfHeight)) / 2)) / (param.size * at)
+        const dx = param.tweakX * param.size * at
+        const dy = param.tweakY * param.size * at
+
+        autoCenterX = Math.round(dx + ((Math.abs(left1 - halfWidth) - (right1 - halfWidth)) / 2)) / (param.size * at)
+        autoCenterY = Math.round(dy + ((Math.abs(top1 - halfHeight) - (bot1 - halfHeight)) / 2)) / (param.size * at)
 
         ctx.strokeStyle = "green"
         ctx.strokeRect(x0 + left1 * tile - .5, y0 + top1 * tile - .5, (right1 - left1) * tile, (bot1 - top1) * tile + 1)
+
+        ctx.fillStyle = "green"
+        ctx.font = "18px sans-serif"
+        ctx.textAlign = "left"
+        ctx.textBaseline = "middle"
+        ctx.fillText(`${left1}`, x0 + left1 * tile - .5 + 2, y0 + ((top1 + bot1)/2) * tile - .5)
+        ctx.textAlign = "right"
+        ctx.textBaseline = "middle"
+        ctx.fillText(`${width - right1}`, x0 + left1 * tile - .5 + (right1 - left1) * tile - 2, y0 + ((top1 + bot1)/2) * tile - .5)
+        ctx.textAlign = "center"
+        ctx.textBaseline = "top"
+        ctx.fillText(`${top1}`, x0 + ((left1+right1)/2) * tile - .5, y0 + top1 * tile - .5 + 2)
+        ctx.textAlign = "center"
+        ctx.textBaseline = "bottom"
+        ctx.fillText(`${height - bot1}`, x0 + ((left1+right1)/2) * tile - .5, y0 + top1 * tile - .5 + (bot1 - top1) * tile + 1 - 2)
+        if (dx !== 0 || dy !== 0) {
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+            ctx.fillText(`${dx > 0 ? `+${dx}` : `${dx}`}, ${dy > 0 ? `+${dy}` : `${dy}`}`, x0 + ((left1+right1)/2) * tile - .5, y0 + ((top1 + bot1)/2) * tile - .5)
+        }
 
         const [hw1, hh1, ic1] = createIconCanvas(param, 1)
         const [hw2, hh2, ic2] = createIconCanvas(param, 2)
@@ -654,34 +701,85 @@
     }
 
     function addCurrentIconToIconSet(rowBreak = false) {
-        if (!currentIconName || !currentIconParam) {
+        updateSpecTextField(true, rowBreak)
+    }
+
+    function updateSpecInputFields() {
+        currSpec = JSON.parse(iconSetSpecTextArea.value)
+
+        if (!currSpec.hasOwnProperty("textureSpec")) {
+            throw "no textureSpec found";
+        }
+
+        const currTextureSpec =  currSpec["textureSpec"];
+
+        inputTextureWidth.value = `${currTextureSpec["textureWidth"]}`
+        inputTextureHeight.value = `${currTextureSpec["textureHeight"]}`
+        inputSpritePadding.value = `${currTextureSpec["spritePadding"]}`
+        inputMipmapAbility.value = `${currTextureSpec["mipmapAbility"]}`
+        inputPreviewBackdropColor.value = `${currTextureSpec["previewBackdrop"]}`
+    }
+
+    function updateSpecTextField(addIcon = false, rowBreak = false) {
+        if (addIcon && (!currentIconName || !currentIconParam)) {
             return
         }
+
         currSpec = JSON.parse(iconSetSpecTextArea.value)
-        const newItem = { "name": currentIconName, "br": rowBreak, "param": currentIconParam }
+        
+        const currIconSetSpec = currSpec.hasOwnProperty("iconSetSpec") ? currSpec["iconSetSpec"] : [];
+        const currTextureSpec = currSpec.hasOwnProperty("textureSpec") ? currSpec["textureSpec"] : {};
+
+        const newItem = {} 
+        if (addIcon) {
+            newItem["name"] = currentIconName
+            newItem["br"] = rowBreak
+            newItem["param"] = currentIconParam
+        }
+
         const lines = []
-        let emited = false
-        for (item of currSpec) {
-            if (!emited && item.name === newItem.name) {
-                lines.push(`    ${JSON.stringify(newItem)}`)
-                emited = true
+        let emitted = false
+        for (item of currIconSetSpec) {
+            if (addIcon && !emitted && item.name === newItem.name) {
+                lines.push(`            ${JSON.stringify(newItem)}`)
+                emitted = true
             } else {
-                lines.push(`    ${JSON.stringify(item)}`)
+                lines.push(`            ${JSON.stringify(item)}`)
             }
         }
-        if (!emited) {
-            if (lines.length > 0) {
-                iconSetSpecTextArea.value = `[\n    ${JSON.stringify(newItem)},\n${lines.join(",\n")}\n]`
-            } else {
-                iconSetSpecTextArea.value = `[ ${JSON.stringify(newItem)} ]`
-            }
-        } else {
-            iconSetSpecTextArea.value = `[\n${lines.join(",\n")}\n]`
+        if (addIcon && !emitted) {
+            lines.push(`            ${JSON.stringify(newItem)}`)
         }
+
+        const textureSpec = {
+            textureWidth: parseInt(inputTextureWidth.value),
+            textureHeight: parseInt(inputTextureHeight.value),
+            spritePadding: parseInt(inputSpritePadding.value),
+            mipmapAbility: parseInt(inputMipmapAbility.value),
+            previewBackdrop: inputPreviewBackdropColor.value
+        }
+
+        iconSetSpecTextArea.value = `{\n    "iconSetSpec": [${lines.length > 0 ? '\n' : ''}${lines.join(",\n")}],\n    "textureSpec": ${JSON.stringify(textureSpec)}\n}`;
+    }
+
+    function fillIconInputFields(param) {
+        console.log(param)
+        inputSize.value = param.size.toString(10)
+        inputTweakSize.value = param.tweakSize.toString(10)
+        selectFont.value = param.font
+        console.log(param.unicode.toString(16))
+        inputUnicode.value = param.unicode.toString(16)
+        inputColor.value = param.color
+        inputBackgroundWidth.value = param.backgroundWidth.toString(10)
+        inputBackgroundHeight.value = param.backgroundHeight.toString(10)
+        inputTweakX.value = param.tweakX.toString(10)
+        inputTweakY.value = param.tweakY.toString(10)
+        requestAnimationFrame(redraw)
     }
 
     function generateIconSetTexture() {
-        const iconSetSpec = JSON.parse(iconSetSpecTextArea.value)
+        const fullSpec = JSON.parse(iconSetSpecTextArea.value)
+        const iconSetSpec = fullSpec["iconSetSpec"];
         const textureWidth = parseInt(inputTextureWidth.value)
         let textureHeight = parseInt(inputTextureHeight.value)
         const spritePadding = parseInt(inputSpritePadding.value)
@@ -778,9 +876,26 @@
             const div = document.createElement("div")
             div.innerHTML =
                 `<p>Save: icons${at === 1 ? "" : at === 2 ? "@2x" : "@4x"}.png<br>
-    <img src="${dataURL}" width="${textureWidth}" height="${textureHeight}" style="background-color: ${backdropColor};">
+    <img id="textureImg${at}" src="${dataURL}" width="${textureWidth}" height="${textureHeight}" style="background-color: ${backdropColor};">
 </p>`
             generatedIconSetSection.appendChild(div)
+
+            const img = document.getElementById(`textureImg${at}`);
+            img.addEventListener("click", (e) => {
+                let x = e.pageX - img.offsetLeft;
+                let y = e.pageY - img.offsetTop;
+                for (name in atlas) {
+                    let [tx, ty, tw, th] = atlas[name];
+                    if (x >= tx && x < tx + tw && y >= ty && y < ty + th) {
+                        for (spec of iconSetSpec) {
+                            if (spec.name === name) {
+                                fillIconInputFields(spec.param)
+                                window.scrollTo(0,2000)
+                            }
+                        }
+                    }
+                }
+            })
         })
 
         const h2 = document.createElement("h2")
@@ -812,7 +927,7 @@ ${fontMetaItems.join(",\n")}
         },
         "generator": {
             "url": "http://wouterkuijper.com/iconic",
-            "definition": ${JSON.stringify(iconSetSpec)}
+            "definition": ${JSON.stringify(fullSpec)}
         }
     },
     "atlas": ${JSON.stringify(atlas)}
@@ -1022,6 +1137,27 @@ ${fontMetaItems.join(",\n")}
         requestAnimationFrame(redraw)
     })
 
+    incrTweakSize.addEventListener("click", () => {
+        let size = parseFloat(inputSize.value)
+        let at = getResolution()
+        let tweakSizeRatio = parseFloat(inputTweakSize.value)
+        let tweakedSize = size * at * tweakSizeRatio
+        tweakedSize = Math.floor(tweakedSize) + 1
+        tweakSizeRatio = tweakedSize / (size * at)
+        inputTweakSize.value = tweakSizeRatio.toString(10)
+        requestAnimationFrame(redraw)
+    })
+    decrTweakSize.addEventListener("click", () => {
+        let size = parseFloat(inputSize.value)
+        let at = getResolution()
+        let tweakSizeRatio = parseFloat(inputTweakSize.value)
+        let tweakedSize = size * at * tweakSizeRatio
+        tweakedSize = Math.ceil(tweakedSize) - 1
+        tweakSizeRatio = tweakedSize / (size * at)
+        inputTweakSize.value = tweakSizeRatio.toString(10)
+        requestAnimationFrame(redraw)
+    })
+
     incrTweakX.addEventListener("click", () => {
         let size = parseFloat(inputSize.value)
         let at = getResolution()
@@ -1109,6 +1245,7 @@ ${fontMetaItems.join(",\n")}
         width = Math.min(newWidth, 4096)
         inputTextureWidth.value = width.toString(10)
         updateTextureHeight(width);
+        updateSpecTextField();
     })
     decrTextureWidth.addEventListener("click", () => {
         let width = parseFloat(inputTextureWidth.value)
@@ -1122,6 +1259,7 @@ ${fontMetaItems.join(",\n")}
         width = Math.max(newWidth, 16)
         inputTextureWidth.value = width.toString(10)
         updateTextureHeight(width);
+        updateSpecTextField();
     })
 
     toggleTextureHeight.addEventListener("click", () => {
@@ -1132,6 +1270,7 @@ ${fontMetaItems.join(",\n")}
             height = 0;
         }
         inputTextureHeight.value = height.toString(10);
+        updateSpecTextField();
     });
 
     function updateMipmapAbility(padding) {
@@ -1151,6 +1290,7 @@ ${fontMetaItems.join(",\n")}
         padding = Math.min(newPadding, 256)
         inputSpritePadding.value = padding.toString(10)
         updateMipmapAbility(padding);
+        updateSpecTextField();
     })
     decrSpritePadding.addEventListener("click", () => {
         let padding = parseFloat(inputSpritePadding.value)
@@ -1181,7 +1321,12 @@ ${fontMetaItems.join(",\n")}
             mipmapAbility = 0;
         }
         inputMipmapAbility.value = mipmapAbility.toString(10);
+        updateSpecTextField();
     });
+
+    iconSetSpecTextArea.addEventListener("input", () => {
+        updateSpecInputFields();
+    })
 
     // attach generic event listeners
     inputs.forEach(
@@ -1192,6 +1337,14 @@ ${fontMetaItems.join(",\n")}
         }
     )
 
+    // attach generic event listeners
+    textureInputs.forEach(
+        (element) => {
+            element.addEventListener("input", () => {
+                updateSpecTextField();
+            })
+        }
+    )
     swapCanvasColorButton1.addEventListener("click", () => {
         [inputCanvasColor1.value, inputCanvasColor2.value] = [inputCanvasColor2.value, inputCanvasColor1.value]
         redrawBackdrop()
@@ -1214,5 +1367,6 @@ ${fontMetaItems.join(",\n")}
     })
 
     updateFont(getParameterByName('u'))
+    updateSpecTextField()
 </script>
 </html>
