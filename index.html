@@ -425,7 +425,7 @@
                     break
                 }
             }
-            if (top > 0) {
+            if (top >= 0) {
                 break
             }
         }
@@ -442,7 +442,7 @@
                         break
                     }
                 }
-                if (bot > 0) {
+                if (bot >= 0) {
                     break
                 }
             }
@@ -454,7 +454,7 @@
                         break
                     }
                 }
-                if (left > 0) {
+                if (left >= 0) {
                     break
                 }
             }
@@ -466,12 +466,12 @@
                         break
                     }
                 }
-                if (right > 0) {
+                if (right >= 0) {
                     break
                 }
             }
         }
-        return [left, top, right + 1, bot + 1]
+        return [left, top, right+1, bot+1]
     }
 
     function createIconCanvas(param, at) {
@@ -763,11 +763,9 @@
     }
 
     function fillIconInputFields(param) {
-        console.log(param)
         inputSize.value = param.size.toString(10)
         inputTweakSize.value = param.tweakSize.toString(10)
         selectFont.value = param.font
-        console.log(param.unicode.toString(16))
         inputUnicode.value = param.unicode.toString(16)
         inputColor.value = param.color
         inputBackgroundWidth.value = param.backgroundWidth.toString(10)
